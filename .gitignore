@@ -1,0 +1,8 @@
+*.pyc
+dist/*
+src/marcxml_parser.egg-info/*
+docs/_build
+MANIFEST
+*.html
+src/marcxml_parser/aleph
+src/marcxml_parser/decoders/aleph
