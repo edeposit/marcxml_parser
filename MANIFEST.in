@@ -1,0 +1,5 @@
+include CONTRIBUTORS.rst CHANGES.rst README.rst LICENSE.txt
+recursive-exclude tests *
+recursive-include docs *
+recursive-exclude docs *.pyc
+recursive-exclude docs/_build *
