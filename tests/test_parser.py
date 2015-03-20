@@ -7,6 +7,7 @@
 import os
 import os.path
 import glob
+from collections import OrderedDict
 
 import pytest
 
@@ -23,6 +24,21 @@ def aleph_files():
     files = glob.glob(DATA_DIR + "/aleph_*.xml")
 
     return map(lambda x: os.path.abspath(x), files)
+
+
+@pytest.fixture
+def unix_file():
+    files = aleph_files()
+
+    filename = next((x for x in files if "unix" in x))
+
+    with open(filename) as f:
+        return f.read()
+
+
+@pytest.fixture
+def record():
+    return marcxml.MARCXMLRecord(unix_file())
 
 
 # Tests =======================================================================
@@ -83,9 +99,36 @@ def test_input_output(aleph_files):
 
         parsed = marcxml.MARCXMLRecord(data, resort=False)
 
-        with open("orig.xml", "w") as f:
-            f.write(data)
-        with open("parsed.xml", "w") as f:
-            f.write(parsed.__str__())
-
         assert parsed.__str__().strip() == data.strip()
+
+
+def test_leader(record):
+    assert record.leader == "-----cam-a22------a-4500"
+
+
+def test_control_getters(record):
+    assert record.getControlRecord("001") == "cpk20051492461"
+    assert record.getControlRecord("003") == "CZ-PrNK"
+    assert record.getControlRecord("005") == "20120509091037.0"
+    assert record.getControlRecord("007") == "ta"
+    assert record.getControlRecord("008") == "041216s2004----xr-a---e-f----001-0-cze--"
+
+
+def test_data_getter_properties(record):
+    subrecord = record.getDataRecords("015", "a")
+
+    assert subrecord
+
+    subrecord = subrecord[0]
+
+    # test convertibility to string
+    assert subrecord == "cnb001492461"
+
+    # test 'I' getters
+    assert subrecord.getI1() == " "
+    assert subrecord.getI2() == " "
+
+    # test link to other subfileds
+    assert subrecord.getOtherSubfields() == OrderedDict(
+        [('ind1', ' '), ('ind2', ' '), ('a', ['cnb001492461'])]
+    )
