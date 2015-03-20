@@ -165,6 +165,7 @@ API
 # Imports =====================================================================
 from string import Template
 from collections import namedtuple
+from collections import OrderedDict
 
 
 import dhtmlparser
@@ -411,12 +412,22 @@ class MARCXMLRecord:
         - :meth:`getBinding`
         - :meth:`getOriginals`
     """
-    def __init__(self, xml=None):
+    def __init__(self, xml=None, resort=True):
+        """
+        Constructor.
+
+        Args:
+            xml (str, default None): XML to be parsed.
+            resort (bool, default True): Sort the output alphabetically?
+        """
         self.leader = None
         self.oai_marc = False
-        self.controlfields = {}
-        self.datafields = {}
+        self.controlfields = OrderedDict()
+        self.datafields = OrderedDict()
         self.valid_i_chars = list(" 0123456789")
+
+        # resort output XML alphabetically
+        self.resorted = resorted if resort else lambda x: x
 
         # it is always possible to create blank object and add values into it
         # piece by piece thru .addControlField()/.addDataField() methods.
@@ -513,11 +524,11 @@ class MARCXMLRecord:
         """
         if len(datafield) != 3:
             raise ValueError(
-                "datafield parameter have to be exactly 3 chars long!"
+                "`datafield` parameter have to be exactly 3 chars long!"
             )
         if len(subfield) != 1:
             raise ValueError(
-                "Bad subfield specification - subfield have to be 3 chars long!"
+                "Bad subfield specification - subfield have to be 1 char long!"
             )
 
         if datafield not in self.datafields:
@@ -914,7 +925,7 @@ class MARCXMLRecord:
 
         # check if there are any records
         record = xml.find("record")
-        if len(record) <= 0:
+        if not record:
             raise ValueError("There is no <record> in your MARC XML document!")
         record = record[0]
 
@@ -970,7 +981,7 @@ class MARCXMLRecord:
 
         """
         for field in fields:
-            field_repr = {}
+            field_repr = OrderedDict()
             params = field.params
 
             if tag_id not in params:
@@ -982,10 +993,10 @@ class MARCXMLRecord:
             # they look important (=they are everywhere)
             i1_name = self.getI(1)
             i2_name = self.getI(2)
-            field_repr = {
-                i1_name: " " if i1_name not in params else params[i1_name],
-                i2_name: " " if i2_name not in params else params[i2_name],
-            }
+            field_repr = OrderedDict([
+                [i1_name, " " if i1_name not in params else params[i1_name]],
+                [i2_name, " " if i2_name not in params else params[i2_name]],
+            ])
 
             # process all subfields
             for subfield in field.find("subfield"):
@@ -1009,7 +1020,7 @@ class MARCXMLRecord:
         field_name = "tag" if not self.oai_marc else "id"
 
         output = ""
-        for field_id in resorted(self.controlfields):
+        for field_id in self.resorted(self.controlfields):
             # some control fields are specific for oai
             # if not self.oai_marc and field_id in ["LDR", "FMT"]:
             if not self.oai_marc and not field_id.isdigit():
@@ -1031,7 +1042,7 @@ class MARCXMLRecord:
         field_name = "code" if not self.oai_marc else "label"
 
         output = ""
-        for field_id in resorted(subfields):
+        for field_id in self.resorted(subfields):
             for subfield in subfields[field_id]:
                 output += Template(template).substitute(
                     TAGNAME=tagname,
@@ -1055,7 +1066,7 @@ class MARCXMLRecord:
         i2_name = self.getI(2)
 
         output = ""
-        for field_id in resorted(self.datafields):
+        for field_id in self.resorted(self.datafields):
             # unpac dicts from array
             for dict_field in self.datafields[field_id]:
                 # this allows to convert between OAI and XML formats simply
