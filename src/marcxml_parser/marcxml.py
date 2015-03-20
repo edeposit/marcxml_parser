@@ -251,7 +251,7 @@ class MarcSubrecord(str):
     also useful to have access to the other subfields from this `subrecord`.
 
     This class provides this access by :meth:`getI1`/:meth:`getI2` and
-    :meth:`getOtherSubfiedls` getters. As a bonus, it is also fully replaceable
+    :meth:`getOtherSubfields` getters. As a bonus, it is also fully replaceable
     with string, in which case only the value of `subrecord` is preserved.
 
     Attributes:
@@ -277,7 +277,7 @@ class MarcSubrecord(str):
     def getI2(self):
         return self.ind2
 
-    def getOtherSubfiedls(self):
+    def getOtherSubfields(self):
         """
         Return reference to dictionary, from which the `subrecord` was given.
 
@@ -385,9 +385,9 @@ class MARCXMLRecord:
 
         - :meth:`~MarcSubrecord.getI1`
         - :meth:`~MarcSubrecord.getI2`
-        - :meth:`~MarcSubrecord.getOtherSubfiedls`
+        - :meth:`~MarcSubrecord.getOtherSubfields`
 
-    :meth:`~MarcSubrecord.getOtherSubfiedls` returns dictionary with other
+    :meth:`~MarcSubrecord.getOtherSubfields` returns dictionary with other
     subsections from subfield requested by calling :meth:`getDataRecords`. It
     works as backlink to object, from which you get the record.
 
@@ -803,7 +803,7 @@ class MARCXMLRecord:
             )
         parsed_corporations = []
         for corporation in self.getDataRecords(datafield, subfield, False):
-            other_subfields = corporation.getOtherSubfiedls()
+            other_subfields = corporation.getOtherSubfields()
 
             # check if corporation have at least one of the roles specified in
             # 'roles' parameter of function
@@ -853,7 +853,7 @@ class MARCXMLRecord:
         for person in raw_persons:
             ind1 = person.getI1()
             ind2 = person.getI2()
-            other_subfields = person.getOtherSubfiedls()
+            other_subfields = person.getOtherSubfields()
 
             # check if person have at least one of the roles specified in
             # 'roles' parameter of function
