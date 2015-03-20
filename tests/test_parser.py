@@ -76,12 +76,12 @@ http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
 """
 
 
-def _test_input_output(aleph_files):
+def test_input_output(aleph_files):
     for fn in aleph_files:
         with open(fn) as f:
             data = f.read()
 
-        parsed = marcxml.MARCXMLRecord(data)
+        parsed = marcxml.MARCXMLRecord(data, resort=False)
 
         with open("orig.xml", "w") as f:
             f.write(data)

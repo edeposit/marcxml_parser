@@ -101,11 +101,11 @@ http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
 <subfield code="g">Správné ISBN v publikaci není uvedeno</subfield>
 <subfield code="o">20111011</subfield>
 </datafield>
-<datafield tag="910" ind1="1" ind2=" ">
-<subfield code="a">ABA001</subfield>
-</datafield>
 <datafield tag="928" ind1="9" ind2=" ">
 <subfield code="a">Poutník</subfield>
+</datafield>
+<datafield tag="910" ind1="1" ind2=" ">
+<subfield code="a">ABA001</subfield>
 </datafield>
 <datafield tag="910" ind1="2" ind2=" ">
 <subfield code="a">BOA001</subfield>

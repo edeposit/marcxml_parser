@@ -128,13 +128,6 @@ http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
 <datafield tag="910" ind1="1" ind2=" ">
 <subfield code="a">ABA001</subfield>
 </datafield>
-<datafield tag="920" ind1=" " ind2=" ">
-<subfield code="a">000527670</subfield>
-<subfield code="z">OSA001</subfield>
-</datafield>
-<datafield tag="928" ind1="1" ind2=" ">
-<subfield code="a">Computer Press</subfield>
-</datafield>
 <datafield tag="910" ind1="2" ind2=" ">
 <subfield code="a">BOA001</subfield>
 <subfield code="b">2-1276.421</subfield>
@@ -142,5 +135,12 @@ http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
 <datafield tag="910" ind1="3" ind2=" ">
 <subfield code="a">OLA001</subfield>
 <subfield code="b">1-244.131</subfield>
+</datafield>
+<datafield tag="920" ind1=" " ind2=" ">
+<subfield code="a">000527670</subfield>
+<subfield code="z">OSA001</subfield>
+</datafield>
+<datafield tag="928" ind1="1" ind2=" ">
+<subfield code="a">Computer Press</subfield>
 </datafield>
 </record>
