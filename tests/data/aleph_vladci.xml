@@ -1,0 +1,82 @@
+<record xmlns="http://www.loc.gov/MARC21/slim/"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+<leader>-----nam-a22------a-4500</leader>
+<controlfield tag="001">cpk19950114753</controlfield>
+<controlfield tag="003">CZ-PrNK</controlfield>
+<controlfield tag="005">20080408090826.0</controlfield>
+<controlfield tag="007">tu</controlfield>
+<controlfield tag="008">960220s1995----xr-----e------000-1-cze--</controlfield>
+<datafield tag="015" ind1=" " ind2=" ">
+<subfield code="a">cnb000114753</subfield>
+</datafield>
+<datafield tag="020" ind1=" " ind2=" ">
+<subfield code="a">80-85892-15-4 (Klub Julese Vernea : brož.) :</subfield>
+<subfield code="c">Kč 69,00</subfield>
+</datafield>
+<datafield tag="035" ind1=" " ind2=" ">
+<subfield code="a">(OCoLC)36613782</subfield>
+</datafield>
+<datafield tag="040" ind1=" " ind2=" ">
+<subfield code="a">ABA001</subfield>
+<subfield code="b">cze</subfield>
+</datafield>
+<datafield tag="072" ind1=" " ind2="7">
+<subfield code="a">821-31/-34</subfield>
+<subfield code="x">Milostná, dobrodružná, fantastická próza</subfield>
+<subfield code="2">Konspekt</subfield>
+<subfield code="9">25</subfield>
+</datafield>
+<datafield tag="080" ind1=" " ind2=" ">
+<subfield code="a">885.0-31</subfield>
+<subfield code="2">undef</subfield>
+</datafield>
+<datafield tag="080" ind1=" " ind2=" ">
+<subfield code="a">82-31/-32</subfield>
+<subfield code="2">undef</subfield>
+</datafield>
+<datafield tag="100" ind1="1" ind2=" ">
+<subfield code="a">Kulhánek, Jiří,</subfield>
+<subfield code="d">1967-</subfield>
+<subfield code="7">jn99240000567</subfield>
+<subfield code="4">aut</subfield>
+</datafield>
+<datafield tag="245" ind1="1" ind2="0">
+<subfield code="a">Vládci strachu /</subfield>
+<subfield code="c">Jiří Kulhánek</subfield>
+</datafield>
+<datafield tag="260" ind1=" " ind2=" ">
+<subfield code="a">Praha :</subfield>
+<subfield code="b">United Fans :</subfield>
+<subfield code="b">Klub Julese Vernea,</subfield>
+<subfield code="c">1995</subfield>
+</datafield>
+<datafield tag="300" ind1=" " ind2=" ">
+<subfield code="a">281 s. ;</subfield>
+<subfield code="c">18 cm</subfield>
+</datafield>
+<datafield tag="490" ind1="1" ind2=" ">
+<subfield code="a">Poutník. Knižní řada ;</subfield>
+<subfield code="v">č. 18</subfield>
+</datafield>
+<datafield tag="500" ind1=" " ind2=" ">
+<subfield code="a">Frontispis</subfield>
+</datafield>
+<datafield tag="655" ind1=" " ind2="7">
+<subfield code="a">vědecko-fantastické romány</subfield>
+<subfield code="7">fd133847</subfield>
+<subfield code="2">czenas</subfield>
+</datafield>
+<datafield tag="830" ind1=" " ind2="0">
+<subfield code="a">Poutník.</subfield>
+<subfield code="p">Knižní řada</subfield>
+</datafield>
+<datafield tag="901" ind1=" " ind2=" ">
+<subfield code="o">19960117</subfield>
+<subfield code="f">[1. vyd.]</subfield>
+</datafield>
+<datafield tag="910" ind1="1" ind2=" ">
+<subfield code="a">ABA001</subfield>
+</datafield>
+</record>

@@ -1,0 +1,146 @@
+<record xmlns="http://www.loc.gov/MARC21/slim/"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+<leader>-----cam-a22------a-4500</leader>
+<controlfield tag="001">nkc20112251644</controlfield>
+<controlfield tag="003">CZ-PrNK</controlfield>
+<controlfield tag="005">20120208103533.0</controlfield>
+<controlfield tag="007">ta</controlfield>
+<controlfield tag="008">111110s2011----xr-a---e-f----001-0-cze-d</controlfield>
+<datafield tag="015" ind1=" " ind2=" ">
+<subfield code="a">cnb002251644</subfield>
+</datafield>
+<datafield tag="020" ind1=" " ind2=" ">
+<subfield code="a">978-80-251-3440-5 (brož.)</subfield>
+</datafield>
+<datafield tag="035" ind1=" " ind2=" ">
+<subfield code="a">(OCoLC)776506402</subfield>
+</datafield>
+<datafield tag="040" ind1=" " ind2=" ">
+<subfield code="a">OSA001</subfield>
+<subfield code="b">cze</subfield>
+<subfield code="d">ABA001</subfield>
+</datafield>
+<datafield tag="041" ind1="1" ind2=" ">
+<subfield code="a">cze</subfield>
+<subfield code="h">eng</subfield>
+</datafield>
+<datafield tag="072" ind1=" " ind2="7">
+<subfield code="a">004.4/.6</subfield>
+<subfield code="x">Programování. Software</subfield>
+<subfield code="2">Konspekt</subfield>
+<subfield code="9">23</subfield>
+</datafield>
+<datafield tag="080" ind1=" " ind2=" ">
+<subfield code="a">004.9:004.738.52</subfield>
+<subfield code="2">MRF</subfield>
+</datafield>
+<datafield tag="080" ind1=" " ind2=" ">
+<subfield code="a">004.42Drupal</subfield>
+<subfield code="2">MRF</subfield>
+</datafield>
+<datafield tag="080" ind1=" " ind2=" ">
+<subfield code="a">004.415</subfield>
+<subfield code="2">MRF</subfield>
+</datafield>
+<datafield tag="080" ind1=" " ind2=" ">
+<subfield code="a">(035)</subfield>
+<subfield code="2">MRF</subfield>
+</datafield>
+<datafield tag="245" ind1="0" ind2="0">
+<subfield code="a">Drupal :</subfield>
+<subfield code="b">programování modulů /</subfield>
+<subfield code="c">Matt Butcher ... [et al. ; překlad Ondřej Baše]</subfield>
+</datafield>
+<datafield tag="250" ind1=" " ind2=" ">
+<subfield code="a">Vyd. 1.</subfield>
+</datafield>
+<datafield tag="260" ind1=" " ind2=" ">
+<subfield code="a">Brno :</subfield>
+<subfield code="b">Computer Press,</subfield>
+<subfield code="c">2011</subfield>
+</datafield>
+<datafield tag="300" ind1=" " ind2=" ">
+<subfield code="a">360 s. :</subfield>
+<subfield code="b">il. ;</subfield>
+<subfield code="c">23 cm</subfield>
+</datafield>
+<datafield tag="500" ind1=" " ind2=" ">
+<subfield code="a">&quot;Včetně nových API, verze 7&quot;--Obálka</subfield>
+</datafield>
+<datafield tag="500" ind1=" " ind2=" ">
+<subfield code="a">Přeloženo z angličtiny</subfield>
+</datafield>
+<datafield tag="500" ind1=" " ind2=" ">
+<subfield code="a">Obsahuje rejstřík</subfield>
+</datafield>
+<datafield tag="650" ind1="0" ind2="7">
+<subfield code="a">systémy pro správu obsahu</subfield>
+<subfield code="7">ph553290</subfield>
+<subfield code="2">czenas</subfield>
+</datafield>
+<datafield tag="650" ind1="0" ind2="7">
+<subfield code="a">Drupal</subfield>
+<subfield code="7">ph449166</subfield>
+<subfield code="2">czenas</subfield>
+</datafield>
+<datafield tag="650" ind1="0" ind2="7">
+<subfield code="a">vývoj softwaru</subfield>
+<subfield code="7">ph127838</subfield>
+<subfield code="2">czenas</subfield>
+</datafield>
+<datafield tag="650" ind1="0" ind2="9">
+<subfield code="a">content management systems</subfield>
+<subfield code="2">eczenas</subfield>
+</datafield>
+<datafield tag="650" ind1="0" ind2="9">
+<subfield code="a">Drupal</subfield>
+<subfield code="2">eczenas</subfield>
+</datafield>
+<datafield tag="650" ind1="0" ind2="9">
+<subfield code="a">software development</subfield>
+<subfield code="2">eczenas</subfield>
+</datafield>
+<datafield tag="655" ind1=" " ind2="7">
+<subfield code="a">příručky</subfield>
+<subfield code="7">fd133209</subfield>
+<subfield code="2">czenas</subfield>
+</datafield>
+<datafield tag="655" ind1=" " ind2="9">
+<subfield code="a">handbooks, manuals, etc</subfield>
+<subfield code="2">eczenas</subfield>
+</datafield>
+<datafield tag="700" ind1="1" ind2=" ">
+<subfield code="a">Butcher, Matt</subfield>
+<subfield code="7">osa2011670222</subfield>
+<subfield code="4">aut</subfield>
+</datafield>
+<datafield tag="765" ind1="0" ind2=" ">
+<subfield code="t">Drupal 7 module development</subfield>
+<subfield code="9">Česky</subfield>
+</datafield>
+<datafield tag="901" ind1=" " ind2=" ">
+<subfield code="b">9788025134405</subfield>
+<subfield code="f">1. vyd.</subfield>
+<subfield code="o">20120112</subfield>
+</datafield>
+<datafield tag="910" ind1="1" ind2=" ">
+<subfield code="a">ABA001</subfield>
+</datafield>
+<datafield tag="920" ind1=" " ind2=" ">
+<subfield code="a">000527670</subfield>
+<subfield code="z">OSA001</subfield>
+</datafield>
+<datafield tag="928" ind1="1" ind2=" ">
+<subfield code="a">Computer Press</subfield>
+</datafield>
+<datafield tag="910" ind1="2" ind2=" ">
+<subfield code="a">BOA001</subfield>
+<subfield code="b">2-1276.421</subfield>
+</datafield>
+<datafield tag="910" ind1="3" ind2=" ">
+<subfield code="a">OLA001</subfield>
+<subfield code="b">1-244.131</subfield>
+</datafield>
+</record>

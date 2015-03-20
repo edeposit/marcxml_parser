@@ -1,0 +1,131 @@
+<record xmlns="http://www.loc.gov/MARC21/slim/"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+<leader>-----cam-a22------a-4500</leader>
+<controlfield tag="001">cpk20051492461</controlfield>
+<controlfield tag="003">CZ-PrNK</controlfield>
+<controlfield tag="005">20120509091037.0</controlfield>
+<controlfield tag="007">ta</controlfield>
+<controlfield tag="008">041216s2004----xr-a---e-f----001-0-cze--</controlfield>
+<datafield tag="015" ind1=" " ind2=" ">
+<subfield code="a">cnb001492461</subfield>
+</datafield>
+<datafield tag="020" ind1=" " ind2=" ">
+<subfield code="a">80-251-0225-4 (brož.) :</subfield>
+<subfield code="c">Kč 590,00</subfield>
+</datafield>
+<datafield tag="035" ind1=" " ind2=" ">
+<subfield code="a">(OCoLC)85131856</subfield>
+</datafield>
+<datafield tag="040" ind1=" " ind2=" ">
+<subfield code="a">BOA001</subfield>
+<subfield code="b">cze</subfield>
+<subfield code="d">ABA001</subfield>
+</datafield>
+<datafield tag="041" ind1="1" ind2=" ">
+<subfield code="a">cze</subfield>
+<subfield code="h">eng</subfield>
+</datafield>
+<datafield tag="072" ind1=" " ind2="7">
+<subfield code="a">004.4/.6</subfield>
+<subfield code="x">Programování. Software</subfield>
+<subfield code="2">Konspekt</subfield>
+<subfield code="9">23</subfield>
+</datafield>
+<datafield tag="080" ind1=" " ind2=" ">
+<subfield code="a">004.451.9Unix</subfield>
+<subfield code="2">MRF</subfield>
+</datafield>
+<datafield tag="080" ind1=" " ind2=" ">
+<subfield code="a">004.451</subfield>
+<subfield code="2">MRF</subfield>
+</datafield>
+<datafield tag="080" ind1=" " ind2=" ">
+<subfield code="a">004.42</subfield>
+<subfield code="2">MRF</subfield>
+</datafield>
+<datafield tag="080" ind1=" " ind2=" ">
+<subfield code="a">(035)</subfield>
+<subfield code="2">MRF</subfield>
+</datafield>
+<datafield tag="100" ind1="1" ind2=" ">
+<subfield code="a">Raymond, Eric S.</subfield>
+<subfield code="7">jn20020721375</subfield>
+<subfield code="4">aut</subfield>
+</datafield>
+<datafield tag="245" ind1="1" ind2="0">
+<subfield code="a">Umění programování v UNIXu /</subfield>
+<subfield code="c">Eric S. Raymond</subfield>
+</datafield>
+<datafield tag="250" ind1=" " ind2=" ">
+<subfield code="a">Vyd. 1.</subfield>
+</datafield>
+<datafield tag="260" ind1=" " ind2=" ">
+<subfield code="a">Brno :</subfield>
+<subfield code="b">Computer Press,</subfield>
+<subfield code="c">2004</subfield>
+</datafield>
+<datafield tag="300" ind1=" " ind2=" ">
+<subfield code="a">509 s. :</subfield>
+<subfield code="b">il. ;</subfield>
+<subfield code="c">23 cm</subfield>
+</datafield>
+<datafield tag="500" ind1=" " ind2=" ">
+<subfield code="a">Glosář</subfield>
+</datafield>
+<datafield tag="504" ind1=" " ind2=" ">
+<subfield code="a">Obsahuje bibliografii, bibliografické odkazy a rejstřík</subfield>
+</datafield>
+<datafield tag="546" ind1=" " ind2=" ">
+<subfield code="a">Přeloženo z angličtiny</subfield>
+</datafield>
+<datafield tag="650" ind1="0" ind2="7">
+<subfield code="a">UNIX</subfield>
+<subfield code="7">ph117153</subfield>
+<subfield code="2">czenas</subfield>
+</datafield>
+<datafield tag="650" ind1="0" ind2="7">
+<subfield code="a">operační systémy</subfield>
+<subfield code="7">ph115593</subfield>
+<subfield code="2">czenas</subfield>
+</datafield>
+<datafield tag="650" ind1="0" ind2="7">
+<subfield code="a">programování</subfield>
+<subfield code="7">ph115891</subfield>
+<subfield code="2">czenas</subfield>
+</datafield>
+<datafield tag="650" ind1="0" ind2="9">
+<subfield code="a">UNIX</subfield>
+<subfield code="2">eczenas</subfield>
+</datafield>
+<datafield tag="650" ind1="0" ind2="9">
+<subfield code="a">operating systems</subfield>
+<subfield code="2">eczenas</subfield>
+</datafield>
+<datafield tag="650" ind1="0" ind2="9">
+<subfield code="a">programming</subfield>
+<subfield code="2">eczenas</subfield>
+</datafield>
+<datafield tag="655" ind1=" " ind2="7">
+<subfield code="a">příručky</subfield>
+<subfield code="7">fd133209</subfield>
+<subfield code="2">czenas</subfield>
+</datafield>
+<datafield tag="655" ind1=" " ind2="9">
+<subfield code="a">handbooks, manuals, etc.</subfield>
+<subfield code="2">eczenas</subfield>
+</datafield>
+<datafield tag="765" ind1="0" ind2=" ">
+<subfield code="t">Art of UNIX programming</subfield>
+<subfield code="9">Česky</subfield>
+</datafield>
+<datafield tag="901" ind1=" " ind2=" ">
+<subfield code="b">9788025102251</subfield>
+<subfield code="f">1. vyd.</subfield>
+<subfield code="o">20050217</subfield>
+</datafield>
+<datafield tag="910" ind1="1" ind2=" ">
+<subfield code="a">ABA001</subfield>
+</datafield>
+</record>

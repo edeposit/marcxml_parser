@@ -1,0 +1,114 @@
+<record xmlns="http://www.loc.gov/MARC21/slim/"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+<leader>-----cam-a22------a-4500</leader>
+<controlfield tag="001">nkc20081807432</controlfield>
+<controlfield tag="003">CZ-PrNK</controlfield>
+<controlfield tag="005">20111012085733.0</controlfield>
+<controlfield tag="007">ta</controlfield>
+<controlfield tag="008">080513s2008----xr-----g------000-f-cze-d</controlfield>
+<datafield tag="015" ind1=" " ind2=" ">
+<subfield code="a">cnb001807432</subfield>
+</datafield>
+<datafield tag="020" ind1=" " ind2=" ">
+<subfield code="a">978-80-260-0791-3 (v knize neuvedeno : brož.)</subfield>
+<subfield code="z">978-80-85892-15-4</subfield>
+<subfield code="z">80-85892-15-4 :</subfield>
+<subfield code="c">Kč 99,00</subfield>
+</datafield>
+<datafield tag="035" ind1=" " ind2=" ">
+<subfield code="a">(OCoLC)761168326</subfield>
+</datafield>
+<datafield tag="040" ind1=" " ind2=" ">
+<subfield code="a">KMG001</subfield>
+<subfield code="b">cze</subfield>
+<subfield code="d">ULG001</subfield>
+<subfield code="d">BOA001</subfield>
+<subfield code="d">ABA001</subfield>
+</datafield>
+<datafield tag="072" ind1=" " ind2="7">
+<subfield code="a">821.162.3-3</subfield>
+<subfield code="x">Česká próza</subfield>
+<subfield code="2">Konspekt</subfield>
+<subfield code="9">25</subfield>
+</datafield>
+<datafield tag="080" ind1=" " ind2=" ">
+<subfield code="a">821.162.3-31</subfield>
+<subfield code="2">MRF</subfield>
+</datafield>
+<datafield tag="080" ind1=" " ind2=" ">
+<subfield code="a">(0:82-311.9)</subfield>
+<subfield code="2">MRF</subfield>
+</datafield>
+<datafield tag="100" ind1="1" ind2=" ">
+<subfield code="a">Mostecký, Jaroslav,</subfield>
+<subfield code="d">1963-</subfield>
+<subfield code="7">jn19990009938</subfield>
+<subfield code="4">aut</subfield>
+</datafield>
+<datafield tag="245" ind1="1" ind2="0">
+<subfield code="a">Děti otroků /</subfield>
+<subfield code="c">Jaroslav Mostecký</subfield>
+</datafield>
+<datafield tag="250" ind1=" " ind2=" ">
+<subfield code="a">Vyd. 1.</subfield>
+</datafield>
+<datafield tag="260" ind1=" " ind2=" ">
+<subfield code="a">Praha :</subfield>
+<subfield code="b">Golem,</subfield>
+<subfield code="c">2008</subfield>
+</datafield>
+<datafield tag="300" ind1=" " ind2=" ">
+<subfield code="a">120 s. ;</subfield>
+<subfield code="c">19 cm</subfield>
+</datafield>
+<datafield tag="490" ind1="1" ind2=" ">
+<subfield code="a">Mark Stone ;</subfield>
+<subfield code="v">21</subfield>
+</datafield>
+<datafield tag="500" ind1=" " ind2=" ">
+<subfield code="a">Vydalo nakl. Golem ve spolupráci s nakl. Poutník</subfield>
+</datafield>
+<datafield tag="655" ind1=" " ind2="7">
+<subfield code="a">české romány</subfield>
+<subfield code="7">fd133974</subfield>
+<subfield code="2">czenas</subfield>
+</datafield>
+<datafield tag="655" ind1=" " ind2="7">
+<subfield code="a">vědecko-fantastické romány</subfield>
+<subfield code="7">fd133847</subfield>
+<subfield code="2">czenas</subfield>
+</datafield>
+<datafield tag="655" ind1=" " ind2="9">
+<subfield code="a">Czech fiction</subfield>
+<subfield code="2">eczenas</subfield>
+</datafield>
+<datafield tag="655" ind1=" " ind2="9">
+<subfield code="a">science fiction novels</subfield>
+<subfield code="2">eczenas</subfield>
+</datafield>
+<datafield tag="830" ind1=" " ind2="0">
+<subfield code="a">Mark Stone</subfield>
+<subfield code="0">s</subfield>
+</datafield>
+<datafield tag="901" ind1=" " ind2=" ">
+<subfield code="a">ISBN 978-80-85892-15-4</subfield>
+<subfield code="a">ISBN 80-85892-.15-4</subfield>
+<subfield code="c">9788085892154</subfield>
+<subfield code="f">1. vyd.</subfield>
+<subfield code="g">ISBN i čárový kód neplatné - neoprávněně přiděleno a chybné; identifikátor náleží Klubu Julese Vernea. Praha, který publikaci nevydal</subfield>
+<subfield code="g">Správné ISBN v publikaci není uvedeno</subfield>
+<subfield code="o">20111011</subfield>
+</datafield>
+<datafield tag="910" ind1="1" ind2=" ">
+<subfield code="a">ABA001</subfield>
+</datafield>
+<datafield tag="928" ind1="9" ind2=" ">
+<subfield code="a">Poutník</subfield>
+</datafield>
+<datafield tag="910" ind1="2" ind2=" ">
+<subfield code="a">BOA001</subfield>
+<subfield code="b">1-1208.017</subfield>
+</datafield>
+</record>
