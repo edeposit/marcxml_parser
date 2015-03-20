@@ -132,3 +132,188 @@ def test_data_getter_properties(record):
     assert subrecord.getOtherSubfields() == OrderedDict(
         [('ind1', ' '), ('ind2', ' '), ('a', ['cnb001492461'])]
     )
+
+    with pytest.raises(KeyError):
+        record.getDataRecords("015", "b")
+
+    assert record.getDataRecords("015", "b", throw_exceptions=False) == []
+
+
+def test_data_getters(record):
+    assert record.getDataRecords("015", "a")[0] == "cnb001492461"
+    ind_test = record.getDataRecords("015", "a")[-1]
+    assert ind_test.getI1() == " "
+    assert ind_test.getI2() == " "
+
+    assert record.getDataRecords("020", "a")[0] == "80-251-0225-4 (brož.) :"
+    assert record.getDataRecords("020", "c")[0] == "Kč 590,00"
+    ind_test = record.getDataRecords("020", "c")[-1]
+    assert ind_test.getI1() == " "
+    assert ind_test.getI2() == " "
+
+    assert record.getDataRecords("035", "a")[0] == "(OCoLC)85131856"
+    ind_test = record.getDataRecords("035", "a")[-1]
+    assert ind_test.getI1() == " "
+    assert ind_test.getI2() == " "
+
+    assert record.getDataRecords("040", "a")[0] == "BOA001"
+    assert record.getDataRecords("040", "b")[0] == "cze"
+    assert record.getDataRecords("040", "d")[0] == "ABA001"
+    ind_test = record.getDataRecords("040", "d")[-1]
+    assert ind_test.getI1() == " "
+    assert ind_test.getI2() == " "
+
+    assert record.getDataRecords("041", "a")[0] == "cze"
+    assert record.getDataRecords("041", "h")[0] == "eng"
+    ind_test = record.getDataRecords("041", "h")[-1]
+    assert ind_test.getI1() == "1"
+    assert ind_test.getI2() == " "
+
+    assert record.getDataRecords("072", "a")[0] == "004.4/.6"
+    assert record.getDataRecords("072", "x")[0] == "Programování. Software"
+    assert record.getDataRecords("072", "2")[0] == "Konspekt"
+    assert record.getDataRecords("072", "9")[0] == "23"
+    ind_test = record.getDataRecords("072", "9")[-1]
+    assert ind_test.getI1() == " "
+    assert ind_test.getI2() == "7"
+
+    assert record.getDataRecords("080", "a")[0] == "004.451.9Unix"
+    assert record.getDataRecords("080", "2")[0] == "MRF"
+    ind_test = record.getDataRecords("080", "2")[-1]
+    assert ind_test.getI1() == " "
+    assert ind_test.getI2() == " "
+
+    assert record.getDataRecords("080", "a")[1] == "004.451"
+    assert record.getDataRecords("080", "2")[1] == "MRF"
+    ind_test = record.getDataRecords("080", "2")[-1]
+    assert ind_test.getI1() == " "
+    assert ind_test.getI2() == " "
+
+    assert record.getDataRecords("080", "a")[2] == "004.42"
+    assert record.getDataRecords("080", "2")[2] == "MRF"
+    ind_test = record.getDataRecords("080", "2")[-1]
+    assert ind_test.getI1() == " "
+    assert ind_test.getI2() == " "
+
+    assert record.getDataRecords("080", "a")[3] == "(035)"
+    assert record.getDataRecords("080", "2")[3] == "MRF"
+    ind_test = record.getDataRecords("080", "2")[-1]
+    assert ind_test.getI1() == " "
+    assert ind_test.getI2() == " "
+
+    assert record.getDataRecords("100", "a")[0] == "Raymond, Eric S."
+    assert record.getDataRecords("100", "7")[0] == "jn20020721375"
+    assert record.getDataRecords("100", "4")[0] == "aut"
+    ind_test = record.getDataRecords("100", "4")[-1]
+    assert ind_test.getI1() == "1"
+    assert ind_test.getI2() == " "
+
+    assert record.getDataRecords("245", "a")[0] == "Umění programování v UNIXu /"
+    assert record.getDataRecords("245", "c")[0] == "Eric S. Raymond"
+    ind_test = record.getDataRecords("245", "c")[-1]
+    assert ind_test.getI1() == "1"
+    assert ind_test.getI2() == "0"
+
+    assert record.getDataRecords("250", "a")[0] == "Vyd. 1."
+    ind_test = record.getDataRecords("250", "a")[-1]
+    assert ind_test.getI1() == " "
+    assert ind_test.getI2() == " "
+
+    assert record.getDataRecords("260", "a")[0] == "Brno :"
+    assert record.getDataRecords("260", "b")[0] == "Computer Press,"
+    assert record.getDataRecords("260", "c")[0] == "2004"
+    ind_test = record.getDataRecords("260", "c")[-1]
+    assert ind_test.getI1() == " "
+    assert ind_test.getI2() == " "
+
+    assert record.getDataRecords("300", "a")[0] == "509 s. :"
+    assert record.getDataRecords("300", "b")[0] == "il. ;"
+    assert record.getDataRecords("300", "c")[0] == "23 cm"
+    ind_test = record.getDataRecords("300", "c")[-1]
+    assert ind_test.getI1() == " "
+    assert ind_test.getI2() == " "
+
+    assert record.getDataRecords("500", "a")[0] == "Glosář"
+    ind_test = record.getDataRecords("500", "a")[-1]
+    assert ind_test.getI1() == " "
+    assert ind_test.getI2() == " "
+
+    assert record.getDataRecords("504", "a")[0] == "Obsahuje bibliografii, bibliografické odkazy a rejstřík"
+    ind_test = record.getDataRecords("504", "a")[-1]
+    assert ind_test.getI1() == " "
+    assert ind_test.getI2() == " "
+
+    assert record.getDataRecords("546", "a")[0] == "Přeloženo z angličtiny"
+    ind_test = record.getDataRecords("546", "a")[-1]
+    assert ind_test.getI1() == " "
+    assert ind_test.getI2() == " "
+
+    assert record.getDataRecords("650", "a")[0] == "UNIX"
+    assert record.getDataRecords("650", "7")[0] == "ph117153"
+    assert record.getDataRecords("650", "2")[0] == "czenas"
+    ind_test = record.getDataRecords("650", "2")[-1]
+    assert ind_test.getI1() == "0"
+    assert ind_test.getI2() == "7"
+
+    # assert record.getDataRecords("650", "a")[0] == "operační systémy"
+    # assert record.getDataRecords("650", "7")[0] == "ph115593"
+    # assert record.getDataRecords("650", "2")[0] == "czenas"
+    # ind_test = record.getDataRecords("650", "2")[-1]
+    # assert ind_test.getI1() == "0"
+    # assert ind_test.getI2() == "7"
+
+    # assert record.getDataRecords("650", "a")[0] == "programování"
+    # assert record.getDataRecords("650", "7")[0] == "ph115891"
+    # assert record.getDataRecords("650", "2")[0] == "czenas"
+    # ind_test = record.getDataRecords("650", "2")[-1]
+    # assert ind_test.getI1() == "0"
+    # assert ind_test.getI2() == "7"
+
+    # assert record.getDataRecords("650", "a")[0] == "UNIX"
+    # assert record.getDataRecords("650", "2")[0] == "eczenas"
+    # ind_test = record.getDataRecords("650", "2")[-1]
+    # assert ind_test.getI1() == "0"
+    # assert ind_test.getI2() == "9"
+
+    # assert record.getDataRecords("650", "a")[0] == "operating systems"
+    # assert record.getDataRecords("650", "2")[0] == "eczenas"
+    # ind_test = record.getDataRecords("650", "2")[-1]
+    # assert ind_test.getI1() == "0"
+    # assert ind_test.getI2() == "9"
+
+    # assert record.getDataRecords("650", "a")[0] == "programming"
+    # assert record.getDataRecords("650", "2")[0] == "eczenas"
+    # ind_test = record.getDataRecords("650", "2")[-1]
+    # assert ind_test.getI1() == "0"
+    # assert ind_test.getI2() == "9"
+
+    # assert record.getDataRecords("655", "a")[0] == "příručky"
+    # assert record.getDataRecords("655", "7")[0] == "fd133209"
+    # assert record.getDataRecords("655", "2")[0] == "czenas"
+    # ind_test = record.getDataRecords("655", "2")[-1]
+    # assert ind_test.getI1() == " "
+    # assert ind_test.getI2() == "7"
+
+    # assert record.getDataRecords("655", "a")[0] == "handbooks, manuals, etc."
+    # assert record.getDataRecords("655", "2")[0] == "eczenas"
+    # ind_test = record.getDataRecords("655", "2")[-1]
+    # assert ind_test.getI1() == " "
+    # assert ind_test.getI2() == "9"
+
+    # assert record.getDataRecords("765", "t")[0] == "Art of UNIX programming"
+    # assert record.getDataRecords("765", "9")[0] == "Česky"
+    # ind_test = record.getDataRecords("765", "9")[-1]
+    # assert ind_test.getI1() == "0"
+    # assert ind_test.getI2() == " "
+
+    # assert record.getDataRecords("901", "b")[0] == "9788025102251"
+    # assert record.getDataRecords("901", "f")[0] == "1. vyd."
+    # assert record.getDataRecords("901", "o")[0] == "20050217"
+    # ind_test = record.getDataRecords("901", "o")[-1]
+    # assert ind_test.getI1() == " "
+    # assert ind_test.getI2() == " "
+
+    # assert record.getDataRecords("910", "a")[0] == "ABA001"
+    # ind_test = record.getDataRecords("910", "a")[-1]
+    # assert ind_test.getI1() == "1"
+    # assert ind_test.getI2() == " "
