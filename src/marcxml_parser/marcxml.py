@@ -3,7 +3,6 @@
 #
 # Interpreter version: python 2.7
 #
-# Imports =====================================================================
 """
 Module for parsing and high-level processing of MARC XML records.
 
@@ -163,6 +162,7 @@ anyone interested.
 API
 ===
 """
+# Imports =====================================================================
 from string import Template
 from collections import namedtuple
 
