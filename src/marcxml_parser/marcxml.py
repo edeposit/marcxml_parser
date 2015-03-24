@@ -5,12 +5,14 @@
 #
 # Imports =====================================================================
 from string import Template
-from collections import namedtuple
 from collections import OrderedDict
 
 
 import dhtmlparser
 from dhtmlparser import HTMLElement
+
+from structures import Person
+from structures import Corporation
 
 
 # Functions ===================================================================
@@ -50,35 +52,6 @@ def resorted(values):
 
 
 # Classes =====================================================================
-class Person(namedtuple("Person", ["name",
-                                   "second_name",
-                                   "surname",
-                                   "title"])):
-    """
-    This class represents informations about persons as they are defined in
-    MARC standards.
-
-    Attributes:
-        name (str)
-        second_name (str)
-        surname (str)
-        title (str)
-    """
-    pass
-
-
-class Corporation(namedtuple("Corporation", ["name", "place", "date"])):
-    """
-    Some informations about corporations (fields 110, 610, 710, 810).
-
-    Attributes:
-        name (str):  Name of the corporation.
-        place (str): Location of the corporation/action.
-        date (str):  Date in unspecified format.
-    """
-    pass
-
-
 class MarcSubrecord(str):
     """
     This class is used to store data returned from
