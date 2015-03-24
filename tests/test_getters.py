@@ -6,7 +6,8 @@
 # Imports =====================================================================
 import pytest
 
-from marcxml_parser import marcxml
+from marcxml_parser import Person
+from marcxml_parser import MARCXMLQuery
 
 from test_parser import unix_file
 
@@ -18,7 +19,7 @@ from test_parser import unix_file
 # Functions & classes =========================================================
 @pytest.fixture
 def parsed():
-    return marcxml.MARCXMLRecord(unix_file())
+    return MARCXMLQuery(unix_file())
 
 
 # Tests =======================================================================
@@ -68,7 +69,7 @@ def test_getPubPlace(parsed):
 
 
 def test_getAuthors(parsed):
-    author = marcxml.Person(
+    author = Person(
         name='Eric S.',
         second_name="",
         surname='Raymond',

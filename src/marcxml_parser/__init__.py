@@ -4,17 +4,10 @@
 # Interpreter version: python 2.7
 #
 # Imports =====================================================================
+from query import MARCXMLQuery
+from marcxml import MARCXMLRecord
 
+from structures import Person
+from structures import Corporation
 
-
-# Variables ===================================================================
-
-
-
-# Functions & classes =========================================================
-
-
-
-# Main program ================================================================
-if __name__ == '__main__':
-    pass
+from structures import MarcSubrecord
