@@ -70,9 +70,11 @@ def test_getPubPlace(parsed):
 def test_getAuthors(parsed):
     author = marcxml.Person(
         name='Eric S.',
-        surname='Raymond'
+        second_name="",
+        surname='Raymond',
+        title="",
     )
- 
+
     assert parsed.getAuthors() == [author]
 
 
