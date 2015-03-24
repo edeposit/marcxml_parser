@@ -292,7 +292,7 @@ class MarcSubrecord(str):
         return self.arg
 
 
-class MARCXMLRecord:
+class MARCXMLRecord(object):
     """
     Class for serialization/deserialization of MARC XML and MARC OAI
     documents.
