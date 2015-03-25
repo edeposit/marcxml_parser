@@ -113,27 +113,6 @@ class MARCXMLRecord(object):
     :meth:`~MarcSubrecord.getOtherSubfields` returns dictionary with other
     subsections from subfield requested by calling :meth:`getDataRecords`. It
     works as backlink to object, from which you get the record.
-
-    **Highlevel abstractions**
-
-    There is also lot of highlevel getters:
-
-        - :meth:`getName`
-        - :meth:`getSubname`
-        - :meth:`getPrice`
-        - :meth:`getPart`
-        - :meth:`getPartName`
-        - :meth:`getPublisher`
-        - :meth:`getPubDate`
-        - :meth:`getPubOrder`
-        - :meth:`getFormat`
-        - :meth:`getPubPlace`
-        - :meth:`getAuthors`
-        - :meth:`getCorporations`
-        - :meth:`getDistributors`
-        - :meth:`getISBNs`
-        - :meth:`getBinding`
-        - :meth:`getOriginals`
     """
     def __init__(self, xml=None, resort=True):
         """

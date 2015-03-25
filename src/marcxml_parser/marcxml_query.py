@@ -30,6 +30,28 @@ def _undefinedPattern(value, fn, undefined):
 
 
 class MARCXMLQuery(MARCXMLRecord):
+    """
+    Highlevel abstractions
+    ++++++++++++++++++++++
+
+    Getters:
+        - :meth:`getName`
+        - :meth:`getSubname`
+        - :meth:`getPrice`
+        - :meth:`getPart`
+        - :meth:`getPartName`
+        - :meth:`getPublisher`
+        - :meth:`getPubDate`
+        - :meth:`getPubOrder`
+        - :meth:`getFormat`
+        - :meth:`getPubPlace`
+        - :meth:`getAuthors`
+        - :meth:`getCorporations`
+        - :meth:`getDistributors`
+        - :meth:`getISBNs`
+        - :meth:`getBinding`
+        - :meth:`getOriginals`
+    """
     def __init__(self, xml=None, resort=True):
         super(MARCXMLQuery, self).__init__(xml, resort)
 
