@@ -136,6 +136,115 @@ class MARCXMLParser(object):
             self._original_xml = xml
             self._parseString(xml)
 
+    def _parseString(self, xml):
+        """
+        Parse MARC XML document to dicts, which are contained in
+        self.controlfields and self.datafields.
+
+        Args:
+            xml (str or HTMLElement): input data
+
+        Also detect if this is oai marc format or not (see elf.oai_marc).
+        """
+        if not isinstance(xml, HTMLElement):
+            xml = dhtmlparser.parseString(str(xml))
+
+        # check if there are any records
+        record = xml.find("record")
+        if not record:
+            raise ValueError("There is no <record> in your MARC XML document!")
+        record = record[0]
+
+        self.oai_marc = len(record.find("oai_marc")) > 0
+
+        # leader is separate only in marc21
+        if not self.oai_marc:
+            leader = record.find("leader")
+            if len(leader) >= 1:
+                self.leader = leader[0].getContent()
+
+        # parse body in respect of OAI MARC format possibility
+        if self.oai_marc:
+            self._parseControlFields(record.find("fixfield"), "id")
+            self._parseDataFields(record.find("varfield"), "id", "label")
+        else:
+            self._parseControlFields(record.find("controlfield"), "tag")
+            self._parseDataFields(record.find("datafield"), "tag", "code")
+
+        # for backward compatibility of MARC XML with OAI
+        if self.oai_marc and "LDR" in self.controlfields:
+            self.leader = self.controlfields["LDR"]
+
+    def _parseControlFields(self, fields, tag_id="tag"):
+        """
+        Parse control fields.
+
+        Args:
+            fields (list): list of HTMLElements
+            tag_id (str):  parameter name, which holds the information, about
+                           field name this is normally "tag", but in case of
+                           oai_marc "id".
+        """
+        for field in fields:
+            params = field.params
+
+            # skip tags without parameters
+            if tag_id not in params:
+                continue
+
+            self.controlfields[params[tag_id]] = field.getContent().strip()
+
+    def _parseDataFields(self, fields, tag_id="tag", sub_id="code"):
+        """
+        Parse data fields.
+
+        Args:
+            fields (list): of HTMLElements
+            tag_id (str): parameter name, which holds the information, about
+                          field name this is normally "tag", but in case of
+                          oai_marc "id"
+            sub_id (str): id of parameter, which holds informations about
+                          subfield name this is normally "code" but in case of
+                          oai_marc "label"
+
+        """
+        for field in fields:
+            params = field.params
+
+            if tag_id not in params:
+                continue
+
+            # take care of iX/indX (indicator) parameters
+            i1_name = self.getI(1)
+            i2_name = self.getI(2)
+            field_repr = OrderedDict([
+                [i1_name, " " if i1_name not in params else params[i1_name]],
+                [i2_name, " " if i2_name not in params else params[i2_name]],
+            ])
+
+            # process all subfields
+            for subfield in field.find("subfield"):
+                if sub_id not in subfield.params:
+                    continue
+
+                content = MarcSubrecord(
+                    subfield.getContent().strip(),
+                    field_repr[i1_name],
+                    field_repr[i2_name],
+                    field_repr
+                )
+                code = subfield.params[sub_id]
+                if code in field_repr:
+                    field_repr[code].append(content)
+                else:
+                    field_repr[code] = [content]
+
+            tag = params[tag_id]
+            if tag in self.datafields:
+                self.datafields[tag].append(field_repr)
+            else:
+                self.datafields[tag] = [field_repr]
+
     def addControlField(self, name, value):
         """
         Add new control field `value` with under `name` into control field
@@ -281,112 +390,3 @@ class MARCXMLParser(object):
         i_name = "ind" if not is_oai else "i"
 
         return i_name + str(num)
-
-    def _parseString(self, xml):
-        """
-        Parse MARC XML document to dicts, which are contained in
-        self.controlfields and self.datafields.
-
-        Args:
-            xml (str or HTMLElement): input data
-
-        Also detect if this is oai marc format or not (see elf.oai_marc).
-        """
-        if not isinstance(xml, HTMLElement):
-            xml = dhtmlparser.parseString(str(xml))
-
-        # check if there are any records
-        record = xml.find("record")
-        if not record:
-            raise ValueError("There is no <record> in your MARC XML document!")
-        record = record[0]
-
-        self.oai_marc = len(record.find("oai_marc")) > 0
-
-        # leader is separate only in marc21
-        if not self.oai_marc:
-            leader = record.find("leader")
-            if len(leader) >= 1:
-                self.leader = leader[0].getContent()
-
-        # parse body in respect of OAI MARC format possibility
-        if self.oai_marc:
-            self._parseControlFields(record.find("fixfield"), "id")
-            self._parseDataFields(record.find("varfield"), "id", "label")
-        else:
-            self._parseControlFields(record.find("controlfield"), "tag")
-            self._parseDataFields(record.find("datafield"), "tag", "code")
-
-        # for backward compatibility of MARC XML with OAI
-        if self.oai_marc and "LDR" in self.controlfields:
-            self.leader = self.controlfields["LDR"]
-
-    def _parseControlFields(self, fields, tag_id="tag"):
-        """
-        Parse control fields.
-
-        Args:
-            fields (list): list of HTMLElements
-            tag_id (str):  parameter name, which holds the information, about
-                           field name this is normally "tag", but in case of
-                           oai_marc "id".
-        """
-        for field in fields:
-            params = field.params
-
-            # skip tags without parameters
-            if tag_id not in params:
-                continue
-
-            self.controlfields[params[tag_id]] = field.getContent().strip()
-
-    def _parseDataFields(self, fields, tag_id="tag", sub_id="code"):
-        """
-        Parse data fields.
-
-        Args:
-            fields (list): of HTMLElements
-            tag_id (str): parameter name, which holds the information, about
-                          field name this is normally "tag", but in case of
-                          oai_marc "id"
-            sub_id (str): id of parameter, which holds informations about
-                          subfield name this is normally "code" but in case of
-                          oai_marc "label"
-
-        """
-        for field in fields:
-            params = field.params
-
-            if tag_id not in params:
-                continue
-
-            # take care of iX/indX (indicator) parameters
-            i1_name = self.getI(1)
-            i2_name = self.getI(2)
-            field_repr = OrderedDict([
-                [i1_name, " " if i1_name not in params else params[i1_name]],
-                [i2_name, " " if i2_name not in params else params[i2_name]],
-            ])
-
-            # process all subfields
-            for subfield in field.find("subfield"):
-                if sub_id not in subfield.params:
-                    continue
-
-                content = MarcSubrecord(
-                    subfield.getContent().strip(),
-                    field_repr[i1_name],
-                    field_repr[i2_name],
-                    field_repr
-                )
-                code = subfield.params[sub_id]
-                if code in field_repr:
-                    field_repr[code].append(content)
-                else:
-                    field_repr[code] = [content]
-
-            tag = params[tag_id]
-            if tag in self.datafields:
-                self.datafields[tag].append(field_repr)
-            else:
-                self.datafields[tag] = [field_repr]
