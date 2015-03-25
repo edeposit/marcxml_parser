@@ -204,22 +204,22 @@ class MARCXMLParser(object):
         """
         return self.controlfields[controlfield]
 
-    def getDataRecords(self, datafield, subfield, i1=None, i2=None,
-                       throw_exceptions=True):
+    def getDataRecords(self, datafield, subfield, throw_exceptions=True,
+                       i1=None, i2=None):
         """
         Return content of given `subfield` in `datafield`.
 
         Args:
             datafield (str): Section name (for example "001", "100", "700").
             subfield (str):  Subfield name (for example "a", "1", etc..).
-            i1 (str, default None): Optional i1/ind1 parameter value, which
-               will be used for search.
-            i2 (str, default None): Optional i2/ind2 parameter value, which
-               will be used for search.
             throw_exceptions (bool): If ``True``, :exc:`~exceptions.KeyError`
                              is raised if method couldn't found given
                              `datafield`/`subfield`. If ``False``, blank array
                              ``[]`` is returned.
+            i1 (str, default None): Optional i1/ind1 parameter value, which
+               will be used for search.
+            i2 (str, default None): Optional i2/ind2 parameter value, which
+               will be used for search.
 
         Returns:
             list: of :class:`MarcSubrecord`. MarcSubrecord is practically     \
@@ -251,14 +251,7 @@ class MARCXMLParser(object):
             # records are not returned just like plain string, but like
             # MarcSubrecord, because you will need ind1/ind2 values
             for sfield in datafield[subfield]:
-                output.append(
-                    MarcSubrecord(  # TODO: refactor this to parser
-                        sfield,
-                        datafield[self.getI(1)],
-                        datafield[self.getI(2)],
-                        datafield
-                    )
-                )
+                output.append(sfield)
 
         if not output and throw_exceptions:
             raise KeyError(subfield + " couldn't be found in subfields!")
@@ -380,8 +373,13 @@ class MARCXMLParser(object):
                 if sub_id not in subfield.params:
                     continue
 
+                content = MarcSubrecord(
+                    subfield.getContent().strip(),
+                    field_repr[i1_name],
+                    field_repr[i2_name],
+                    field_repr
+                )
                 code = subfield.params[sub_id]
-                content = subfield.getContent().strip()
                 if code in field_repr:
                     field_repr[code].append(content)
                 else:
