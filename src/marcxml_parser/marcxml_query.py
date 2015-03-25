@@ -4,12 +4,18 @@
 # Interpreter version: python 2.7
 #
 # Imports =====================================================================
+import remove_hairs
+from remove_hairs import remove_hairs as remove_hairs_fn
 from remove_hairs import remove_hairs_decorator
 
 from marcxml import MARCXMLRecord
 
 from structures import Person
 from structures import Corporation
+
+
+# Variables ===================================================================
+remove_hairs.HAIRS = r" :;<>(){}[]\/"
 
 
 # Functions & classes =========================================================
@@ -161,6 +167,7 @@ class MARCXMLQuery(MARCXMLRecord):
 
         return parsed_persons
 
+    @remove_hairs_decorator
     def getName(self):
         """
         Returns:
@@ -171,6 +178,7 @@ class MARCXMLQuery(MARCXMLRecord):
         """
         return "".join(self.getDataRecords("245", "a", True))
 
+    @remove_hairs_decorator
     def getSubname(self, undefined=""):
         """
         Args:
@@ -185,6 +193,7 @@ class MARCXMLQuery(MARCXMLRecord):
             undefined
         )
 
+    @remove_hairs_decorator
     def getPrice(self, undefined=""):
         """
         Returns:
@@ -196,6 +205,7 @@ class MARCXMLQuery(MARCXMLRecord):
             undefined
         )
 
+    @remove_hairs_decorator
     def getPart(self, undefined=""):
         """
         Returns:
@@ -207,6 +217,7 @@ class MARCXMLQuery(MARCXMLRecord):
             undefined
         )
 
+    @remove_hairs_decorator
     def getPartName(self, undefined=""):
         """
         Returns:
@@ -218,6 +229,7 @@ class MARCXMLQuery(MARCXMLRecord):
             undefined
         )
 
+    @remove_hairs_decorator
     def getPublisher(self, undefined=""):
         """
         Returns:
@@ -229,6 +241,7 @@ class MARCXMLQuery(MARCXMLRecord):
             undefined
         )
 
+    @remove_hairs_decorator
     def getPubDate(self, undefined=""):
         """
         Returns:
@@ -240,6 +253,7 @@ class MARCXMLQuery(MARCXMLRecord):
             undefined
         )
 
+    @remove_hairs_decorator
     def getPubOrder(self, undefined=""):
         """
         Returns:
@@ -251,6 +265,7 @@ class MARCXMLQuery(MARCXMLRecord):
             undefined
         )
 
+    @remove_hairs_decorator
     def getFormat(self, undefined=""):
         """
         Returns:
@@ -262,6 +277,7 @@ class MARCXMLQuery(MARCXMLRecord):
             undefined
         )
 
+    @remove_hairs_decorator
     def getPubPlace(self, undefined=""):
         """
         Returns:
@@ -317,13 +333,13 @@ class MARCXMLQuery(MARCXMLRecord):
             list: array with ISBN strings
         """
 
-        if len(self.getDataRecords("020", "a", False)) != 0:
+        if self.getDataRecords("020", "a", False):
             return map(
                 lambda ISBN: ISBN.strip().split(" ", 1)[0],
                 self.getDataRecords("020", "a", True)
             )
 
-        if len(self.getDataRecords("901", "i", False)) != 0:
+        if self.getDataRecords("901", "i", False):
             return map(
                 lambda ISBN: ISBN.strip().split(" ", 1)[0],
                 self.getDataRecords("901", "i", True)
@@ -336,9 +352,11 @@ class MARCXMLQuery(MARCXMLRecord):
         Returns:
             list: array of strings with bindings (``["brož."]``) or blank list
         """
-        if len(self.getDataRecords("020", "a", False)) != 0:
+        if self.getDataRecords("020", "a", False):
             return map(
-                lambda x: x.strip().split(" ", 1)[1],
+                lambda x: remove_hairs_fn(
+                    x.strip().split(" ", 1)[1]
+                ),
                 filter(
                     lambda x: "-" in x and " " in x,
                     self.getDataRecords("020", "a", True)
