@@ -11,7 +11,7 @@ from collections import OrderedDict
 
 import pytest
 
-from marcxml_parser import marcxml
+from marcxml_parser import MARCXMLRecord
 
 
 # Variables ===================================================================
@@ -38,7 +38,7 @@ def unix_file():
 
 @pytest.fixture
 def record():
-    return marcxml.MARCXMLRecord(unix_file())
+    return MARCXMLRecord(unix_file())
 
 
 # Tests =======================================================================
@@ -56,7 +56,7 @@ http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
 </datafield>
 </record>
 """
-    parsed = marcxml.MARCXMLRecord(xml, resort=False)
+    parsed = MARCXMLRecord(xml, resort=False)
 
     assert xml == parsed.__str__()
 
@@ -75,7 +75,7 @@ http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
 </datafield>
 </record>
 """
-    parsed = marcxml.MARCXMLRecord(xml, resort=True)
+    parsed = MARCXMLRecord(xml, resort=True)
 
     assert parsed.__str__() == """<record xmlns="http://www.loc.gov/MARC21/slim/"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -97,7 +97,7 @@ def test_input_output(aleph_files):
         with open(fn) as f:
             data = f.read()
 
-        parsed = marcxml.MARCXMLRecord(data, resort=False)
+        parsed = MARCXMLRecord(data, resort=False)
 
         assert parsed.__str__().strip() == data.strip()
 
