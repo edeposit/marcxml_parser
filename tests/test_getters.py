@@ -12,10 +12,6 @@ from marcxml_parser import MARCXMLQuery
 from test_parser import unix_file
 
 
-# Variables ===================================================================
-
-
-
 # Functions & classes =========================================================
 @pytest.fixture
 def parsed():
