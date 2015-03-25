@@ -92,7 +92,7 @@ def test_getISBNs(parsed):
 
 
 def test_getBinding(parsed):
-    assert parsed.getBinding() == "brož."
+    assert parsed.getBinding() == ["brož."]
 
 
 def test_getOriginals(parsed):
