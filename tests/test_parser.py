@@ -179,13 +179,13 @@ def test_data_getters(record):
 
     assert record.getDataRecords("080", "a")[0] == "004.451.9Unix"
     assert record.getDataRecords("080", "2")[0] == "MRF"
-    ind_test = record.getDataRecords("080", "2")[-1]
+    ind_test = record.getDataRecords("080", "2")[0]
     assert ind_test.getI1() == " "
     assert ind_test.getI2() == " "
 
     assert record.getDataRecords("080", "a")[1] == "004.451"
     assert record.getDataRecords("080", "2")[1] == "MRF"
-    ind_test = record.getDataRecords("080", "2")[-1]
+    ind_test = record.getDataRecords("080", "2")[1]
     assert ind_test.getI1() == " "
     assert ind_test.getI2() == " "
 
@@ -251,69 +251,69 @@ def test_data_getters(record):
     assert record.getDataRecords("650", "a")[0] == "UNIX"
     assert record.getDataRecords("650", "7")[0] == "ph117153"
     assert record.getDataRecords("650", "2")[0] == "czenas"
-    ind_test = record.getDataRecords("650", "2")[-1]
+    ind_test = record.getDataRecords("650", "2")[0]
     assert ind_test.getI1() == "0"
     assert ind_test.getI2() == "7"
 
-    # assert record.getDataRecords("650", "a")[0] == "operační systémy"
-    # assert record.getDataRecords("650", "7")[0] == "ph115593"
-    # assert record.getDataRecords("650", "2")[0] == "czenas"
-    # ind_test = record.getDataRecords("650", "2")[-1]
-    # assert ind_test.getI1() == "0"
-    # assert ind_test.getI2() == "7"
+    assert record.getDataRecords("650", "a")[1] == "operační systémy"
+    assert record.getDataRecords("650", "7")[1] == "ph115593"
+    assert record.getDataRecords("650", "2")[1] == "czenas"
+    ind_test = record.getDataRecords("650", "2")[1]
+    assert ind_test.getI1() == "0"
+    assert ind_test.getI2() == "7"
 
-    # assert record.getDataRecords("650", "a")[0] == "programování"
-    # assert record.getDataRecords("650", "7")[0] == "ph115891"
-    # assert record.getDataRecords("650", "2")[0] == "czenas"
-    # ind_test = record.getDataRecords("650", "2")[-1]
-    # assert ind_test.getI1() == "0"
-    # assert ind_test.getI2() == "7"
+    assert record.getDataRecords("650", "a")[2] == "programování"
+    assert record.getDataRecords("650", "7")[2] == "ph115891"
+    assert record.getDataRecords("650", "2")[2] == "czenas"
+    ind_test = record.getDataRecords("650", "2")[2]
+    assert ind_test.getI1() == "0"
+    assert ind_test.getI2() == "7"
 
-    # assert record.getDataRecords("650", "a")[0] == "UNIX"
-    # assert record.getDataRecords("650", "2")[0] == "eczenas"
-    # ind_test = record.getDataRecords("650", "2")[-1]
-    # assert ind_test.getI1() == "0"
-    # assert ind_test.getI2() == "9"
+    assert record.getDataRecords("650", "a")[3] == "UNIX"
+    assert record.getDataRecords("650", "2")[3] == "eczenas"
+    ind_test = record.getDataRecords("650", "2")[3]
+    assert ind_test.getI1() == "0"
+    assert ind_test.getI2() == "9"
 
-    # assert record.getDataRecords("650", "a")[0] == "operating systems"
-    # assert record.getDataRecords("650", "2")[0] == "eczenas"
-    # ind_test = record.getDataRecords("650", "2")[-1]
-    # assert ind_test.getI1() == "0"
-    # assert ind_test.getI2() == "9"
+    assert record.getDataRecords("650", "a")[4] == "operating systems"
+    assert record.getDataRecords("650", "2")[4] == "eczenas"
+    ind_test = record.getDataRecords("650", "2")[4]
+    assert ind_test.getI1() == "0"
+    assert ind_test.getI2() == "9"
 
-    # assert record.getDataRecords("650", "a")[0] == "programming"
-    # assert record.getDataRecords("650", "2")[0] == "eczenas"
-    # ind_test = record.getDataRecords("650", "2")[-1]
-    # assert ind_test.getI1() == "0"
-    # assert ind_test.getI2() == "9"
+    assert record.getDataRecords("650", "a")[5] == "programming"
+    assert record.getDataRecords("650", "2")[5] == "eczenas"
+    ind_test = record.getDataRecords("650", "2")[5]
+    assert ind_test.getI1() == "0"
+    assert ind_test.getI2() == "9"
 
-    # assert record.getDataRecords("655", "a")[0] == "příručky"
-    # assert record.getDataRecords("655", "7")[0] == "fd133209"
-    # assert record.getDataRecords("655", "2")[0] == "czenas"
-    # ind_test = record.getDataRecords("655", "2")[-1]
-    # assert ind_test.getI1() == " "
-    # assert ind_test.getI2() == "7"
+    assert record.getDataRecords("655", "a")[0] == "příručky"
+    assert record.getDataRecords("655", "7")[0] == "fd133209"
+    assert record.getDataRecords("655", "2")[0] == "czenas"
+    ind_test = record.getDataRecords("655", "2")[0]
+    assert ind_test.getI1() == " "
+    assert ind_test.getI2() == "7"
 
-    # assert record.getDataRecords("655", "a")[0] == "handbooks, manuals, etc."
-    # assert record.getDataRecords("655", "2")[0] == "eczenas"
-    # ind_test = record.getDataRecords("655", "2")[-1]
-    # assert ind_test.getI1() == " "
-    # assert ind_test.getI2() == "9"
+    assert record.getDataRecords("655", "a")[1] == "handbooks, manuals, etc."
+    assert record.getDataRecords("655", "2")[1] == "eczenas"
+    ind_test = record.getDataRecords("655", "2")[1]
+    assert ind_test.getI1() == " "
+    assert ind_test.getI2() == "9"
 
-    # assert record.getDataRecords("765", "t")[0] == "Art of UNIX programming"
-    # assert record.getDataRecords("765", "9")[0] == "Česky"
-    # ind_test = record.getDataRecords("765", "9")[-1]
-    # assert ind_test.getI1() == "0"
-    # assert ind_test.getI2() == " "
+    assert record.getDataRecords("765", "t")[0] == "Art of UNIX programming"
+    assert record.getDataRecords("765", "9")[0] == "Česky"
+    ind_test = record.getDataRecords("765", "9")[-1]
+    assert ind_test.getI1() == "0"
+    assert ind_test.getI2() == " "
 
-    # assert record.getDataRecords("901", "b")[0] == "9788025102251"
-    # assert record.getDataRecords("901", "f")[0] == "1. vyd."
-    # assert record.getDataRecords("901", "o")[0] == "20050217"
-    # ind_test = record.getDataRecords("901", "o")[-1]
-    # assert ind_test.getI1() == " "
-    # assert ind_test.getI2() == " "
+    assert record.getDataRecords("901", "b")[0] == "9788025102251"
+    assert record.getDataRecords("901", "f")[0] == "1. vyd."
+    assert record.getDataRecords("901", "o")[0] == "20050217"
+    ind_test = record.getDataRecords("901", "o")[-1]
+    assert ind_test.getI1() == " "
+    assert ind_test.getI2() == " "
 
-    # assert record.getDataRecords("910", "a")[0] == "ABA001"
-    # ind_test = record.getDataRecords("910", "a")[-1]
-    # assert ind_test.getI1() == "1"
-    # assert ind_test.getI2() == " "
+    assert record.getDataRecords("910", "a")[0] == "ABA001"
+    ind_test = record.getDataRecords("910", "a")[-1]
+    assert ind_test.getI1() == "1"
+    assert ind_test.getI2() == " "
