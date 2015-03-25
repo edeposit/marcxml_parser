@@ -204,13 +204,18 @@ class MARCXMLParser(object):
         """
         return self.controlfields[controlfield]
 
-    def getDataRecords(self, datafield, subfield, throw_exceptions=True):
+    def getDataRecords(self, datafield, subfield, i1=None, i2=None,
+                       throw_exceptions=True):
         """
         Return content of given `subfield` in `datafield`.
 
         Args:
-            datafield (str): Section name (for example "001", "100", "700")
-            subfield (str):  Subfield name (for example "a", "1", etc..)
+            datafield (str): Section name (for example "001", "100", "700").
+            subfield (str):  Subfield name (for example "a", "1", etc..).
+            i1 (str, default None): Optional i1/ind1 parameter value, which
+               will be used for search.
+            i2 (str, default None): Optional i2/ind2 parameter value, which
+               will be used for search.
             throw_exceptions (bool): If ``True``, :exc:`~exceptions.KeyError`
                              is raised if method couldn't found given
                              `datafield`/`subfield`. If ``False``, blank array
@@ -239,24 +244,24 @@ class MARCXMLParser(object):
                 return []
 
         output = []
-        for df in self.datafields[datafield]:
-            if subfield not in df:
-                if throw_exceptions:
-                    raise KeyError(subfield + " is not in subfields!")
-                else:
-                    return []
+        for datafield in self.datafields[datafield]:
+            if subfield not in datafield:
+                continue
 
             # records are not returned just like plain string, but like
             # MarcSubrecord, because you will need ind1/ind2 values
-            for i in df[subfield]:
+            for sfield in datafield[subfield]:
                 output.append(
-                    MarcSubrecord(
-                        i,
-                        df[self.getI(1)],
-                        df[self.getI(2)],
-                        df
+                    MarcSubrecord(  # TODO: refactor this to parser
+                        sfield,
+                        datafield[self.getI(1)],
+                        datafield[self.getI(2)],
+                        datafield
                     )
                 )
+
+        if not output and throw_exceptions:
+            raise KeyError(subfield + " couldn't be found in subfields!")
 
         return output
 
@@ -335,7 +340,9 @@ class MARCXMLParser(object):
         """
         for field in fields:
             params = field.params
-            if tag_id not in params:  # skip tags with blank parameters
+
+            # skip tags without parameters
+            if tag_id not in params:
                 continue
 
             self.controlfields[params[tag_id]] = field.getContent().strip()
