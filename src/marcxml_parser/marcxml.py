@@ -10,8 +10,8 @@ from collections import OrderedDict
 import dhtmlparser
 from dhtmlparser import HTMLElement
 
+import resorted
 from structures import MarcSubrecord
-from resorted import resorted
 
 
 # Classes =====================================================================
@@ -129,13 +129,13 @@ class MARCXMLRecord(object):
         self.valid_i_chars = list(" 0123456789")
 
         # resort output XML alphabetically
-        self.resorted = resorted if resort else lambda x: x
+        self.resorted = resorted.resorted if resort else lambda x: x
 
         # it is always possible to create blank object and add values into it
         # piece by piece thru .addControlField()/.addDataField() methods.
         if xml is not None:
             self._original_xml = xml
-            self.__parseString(xml)
+            self._parseString(xml)
 
     def addControlField(self, name, value):
         """
@@ -285,7 +285,7 @@ class MARCXMLRecord(object):
 
         return i_name + str(num)
 
-    def __parseString(self, xml):
+    def _parseString(self, xml):
         """
         Parse MARC XML document to dicts, which are contained in
         self.controlfields and self.datafields.
@@ -314,17 +314,17 @@ class MARCXMLRecord(object):
 
         # parse body in respect of OAI MARC format possibility
         if self.oai_marc:
-            self.__parseControlFields(record.find("fixfield"), "id")
-            self.__parseDataFields(record.find("varfield"), "id", "label")
+            self._parseControlFields(record.find("fixfield"), "id")
+            self._parseDataFields(record.find("varfield"), "id", "label")
         else:
-            self.__parseControlFields(record.find("controlfield"), "tag")
-            self.__parseDataFields(record.find("datafield"), "tag", "code")
+            self._parseControlFields(record.find("controlfield"), "tag")
+            self._parseDataFields(record.find("datafield"), "tag", "code")
 
         # for backward compatibility of MARC XML with OAI
         if self.oai_marc and "LDR" in self.controlfields:
             self.leader = self.controlfields["LDR"]
 
-    def __parseControlFields(self, fields, tag_id="tag"):
+    def _parseControlFields(self, fields, tag_id="tag"):
         """
         Parse control fields.
 
@@ -341,7 +341,7 @@ class MARCXMLRecord(object):
 
             self.controlfields[params[tag_id]] = field.getContent().strip()
 
-    def __parseDataFields(self, fields, tag_id="tag", sub_id="code"):
+    def _parseDataFields(self, fields, tag_id="tag", sub_id="code"):
         """
         Parse data fields.
 
@@ -389,7 +389,7 @@ class MARCXMLRecord(object):
             else:
                 self.datafields[tag] = [field_repr]
 
-    def __serializeControlFields(self):
+    def _serializeControlFields(self):
         template = '<$TAGNAME $FIELD_NAME="$FIELD_ID">$CONTENT</$TAGNAME>\n'
         tagname = "controlfield" if not self.oai_marc else "fixfield"
         field_name = "tag" if not self.oai_marc else "id"
@@ -410,7 +410,7 @@ class MARCXMLRecord(object):
 
         return output
 
-    def __serializeDataSubfields(self, subfields):
+    def _serializeDataSubfields(self, subfields):
         template = '\n<$TAGNAME $FIELD_NAME="$FIELD_ID">$CONTENT</$TAGNAME>'
 
         tagname = "subfield"
@@ -428,7 +428,7 @@ class MARCXMLRecord(object):
 
         return output
 
-    def __serializeDataFields(self):
+    def _serializeDataFields(self):
         template = '<$TAGNAME $FIELD_NAME="$FIELD_ID" $I1_NAME="$I1_VAL" '
         template += '$I2_NAME="$I2_VAL">'
         template += '$CONTENT\n'
@@ -466,7 +466,7 @@ class MARCXMLRecord(object):
                     I2_NAME=i2_name,
                     I1_VAL=i1_val,
                     I2_VAL=i2_val,
-                    CONTENT=self.__serializeDataSubfields(dict_field)
+                    CONTENT=self._serializeDataSubfields(dict_field)
                 )
 
                 # put back temporarily removed i1/i2
@@ -516,8 +516,8 @@ $DATA_FIELDS
         xml_template = oai_template if self.oai_marc else marcxml_template
         xml_output = Template(xml_template).substitute(
             LEADER=leader.strip(),
-            CONTROL_FIELDS=self.__serializeControlFields().strip(),
-            DATA_FIELDS=self.__serializeDataFields().strip()
+            CONTROL_FIELDS=self._serializeControlFields().strip(),
+            DATA_FIELDS=self._serializeDataFields().strip()
         )
 
         return xml_output
