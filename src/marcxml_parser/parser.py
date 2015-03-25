@@ -355,16 +355,12 @@ class MARCXMLParser(object):
 
         """
         for field in fields:
-            field_repr = OrderedDict()
             params = field.params
 
             if tag_id not in params:
                 continue
 
-            tag = params[tag_id]
-
-            # take care of iX/indX parameter - I have no idea what is this, but
-            # they look important (=they are everywhere)
+            # take care of iX/indX (indicator) parameters
             i1_name = self.getI(1)
             i2_name = self.getI(2)
             field_repr = OrderedDict([
@@ -376,13 +372,15 @@ class MARCXMLParser(object):
             for subfield in field.find("subfield"):
                 if sub_id not in subfield.params:
                     continue
+
                 code = subfield.params[sub_id]
-
+                content = subfield.getContent().strip()
                 if code in field_repr:
-                    field_repr[code].append(subfield.getContent().strip())
+                    field_repr[code].append(content)
                 else:
-                    field_repr[code] = [subfield.getContent().strip()]
+                    field_repr[code] = [content]
 
+            tag = params[tag_id]
             if tag in self.datafields:
                 self.datafields[tag].append(field_repr)
             else:
