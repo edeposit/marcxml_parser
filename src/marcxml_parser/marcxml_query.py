@@ -4,6 +4,8 @@
 # Interpreter version: python 2.7
 #
 # Imports =====================================================================
+from remove_hairs import remove_hairs_decorator
+
 from marcxml import MARCXMLRecord
 
 from structures import Person
