@@ -217,9 +217,10 @@ class MARCXMLParser(object):
             # take care of iX/indX (indicator) parameters
             i1_name = self.getI(1)
             i2_name = self.getI(2)
+
             field_repr = OrderedDict([
-                [i1_name, " " if i1_name not in params else params[i1_name]],
-                [i2_name, " " if i2_name not in params else params[i2_name]],
+                [i1_name, params.get(i1_name, " ")],
+                [i2_name, params.get(i2_name, " ")],
             ])
 
             # process all subfields
@@ -228,11 +229,13 @@ class MARCXMLParser(object):
                     continue
 
                 content = MarcSubrecord(
-                    subfield.getContent().strip(),
-                    field_repr[i1_name],
-                    field_repr[i2_name],
-                    field_repr
+                    arg=subfield.getContent().strip(),
+                    ind1=field_repr[i1_name],
+                    ind2=field_repr[i2_name],
+                    other_subfields=field_repr
                 )
+
+                # add or append content to list of other contents
                 code = subfield.params[sub_id]
                 if code in field_repr:
                     field_repr[code].append(content)
@@ -259,11 +262,13 @@ class MARCXMLParser(object):
         """
         Add new datafield into :attr:`datafields`.
 
+        Function take care of OAI MARC differencies.
+
         Args:
-            name (str): name of datafield
-            i1 (char): value of i1/ind1 parameter
-            i2 (char): value of i2/ind2 parameter
-            subfields_dict (dict): dictionary containing subfields
+            name (str): Name of datafield.
+            i1 (char): Value of i1/ind1 parameter.
+            i2 (char): Value of i2/ind2 parameter.
+            subfields_dict (dict): Dictionary containing subfields (as list).
 
         `subfields_dict` is expected to be in this format::
 
@@ -276,28 +281,48 @@ class MARCXMLParser(object):
         Warning:
             ``field_id`` can be only one character long!
 
-        Function takes care of OAI MARC.
         """
         if i1 not in self.valid_i_chars:
-            raise ValueError("Invalid i1parameter '" + i1 + "'!")
+            raise ValueError("Invalid i1 parameter '" + i1 + "'!")
         if i2 not in self.valid_i_chars:
-            raise ValueError("Invalid i2parameter '" + i2 + "'!")
+            raise ValueError("Invalid i2 parameter '" + i2 + "'!")
+
         if len(name) != 3:
-            raise ValueError("name parameter have to be exactly 3 chars long!")
+            raise ValueError(
+                "`name` parameter have to be exactly 3 chars long!"
+            )
         if not isinstance(subfields_dict, dict):
             raise ValueError(
-                "subfields_dict parameter has to be dict instance!"
+                "`subfields_dict` parameter has to be dict instance!"
             )
-        for key in subfields_dict:
+
+        # check local keys, convert strings to MarcSubrecord instances
+        subrecords = []
+        for key, val in subfields_dict.items():
             if len(key) > 1:
                 raise KeyError(
-                    "subfields_dict can be only one character long!"
-                )
-            if not isinstance(subfields_dict[key], list):
-                raise ValueError(
-                    "Values at under '" + key + "' have to be list!"
+                    "`subfields_dict` can be only one character long!"
                 )
 
+            # convert tuples to lists
+            if isinstance(val, tuple):
+                val = list(val)
+
+            # convert other values to lists
+            if not isinstance(val, list):
+                val = [val]
+
+            subfield = MarcSubrecord(
+                val,
+                i1,
+                i2,
+                None
+            )
+
+            subfields_dict[key] = subfield
+            subrecords.append(subfield)
+
+        # save i/ind values
         subfields_dict[self.getI(1)] = i1
         subfields_dict[self.getI(2)] = i2
 
@@ -307,35 +332,70 @@ class MARCXMLParser(object):
         else:
             self.datafields[name] = [subfields_dict]
 
-    def getControlRecord(self, controlfield):
-        """
-        Return record from given `controlfield`. Returned type: str.
-        """
-        return self.controlfields[controlfield]
+        # to each subrecord add reference to list of all subfields in this
+        # datafield
+        other_subfields = self.datafields[name]
+        for record in subrecords:
+            record.other_subfields = other_subfields
 
-    def getDataRecords(self, datafield, subfield, throw_exceptions=True,
-                       i1=None, i2=None):
+    def getControlRecord(self, controlfield, alt=None):
+        """
+        Method wrapper over :attr:`.controlfields` dictionary.
+
+        Args:
+            controlfield (str): Name of the controlfield.
+            alt (object, default None): Alternative value of the `controlfield`
+                couldn't be found.
+
+        Returns:
+            str: record from given `controlfield`
+        """
+        if not alt:
+            return self.controlfields[controlfield]
+
+        return self.controlfields.get(controlfield, alt)
+
+    def getDataRecords(self, datafield, subfield, throw_exceptions=True):
+        """
+        .. deprecated::
+            Use :func:`get_subfield` instead.
+        """
+        return self.get_subfield(
+            datafield=datafield,
+            subfield=subfield,
+            exception=throw_exceptions
+        )
+
+    def get_subfield(self, datafield, subfield, i1=None, i2=None,
+                     exception=False):
         """
         Return content of given `subfield` in `datafield`.
 
         Args:
             datafield (str): Section name (for example "001", "100", "700").
             subfield (str):  Subfield name (for example "a", "1", etc..).
-            throw_exceptions (bool): If ``True``, :exc:`~exceptions.KeyError`
-                             is raised if method couldn't found given
-                             `datafield`/`subfield`. If ``False``, blank array
-                             ``[]`` is returned.
             i1 (str, default None): Optional i1/ind1 parameter value, which
                will be used for search.
             i2 (str, default None): Optional i2/ind2 parameter value, which
                will be used for search.
+            exception (bool): If ``True``, :exc:`~exceptions.KeyError` is
+                      raised when method couldn't found given `datafield` /
+                      `subfield`. If ``False``, blank array ``[]`` is returned.
 
         Returns:
-            list: of :class:`MarcSubrecord`. MarcSubrecord is practically     \
-        same thing as string, but has defined :meth:`~MarcSubrecord.getI1()`  \
-        and :meth:`~MarcSubrecord.getI2()` properties. Believe me, you will   \
-        need to be able to get this, because MARC XML depends on them from    \
-        time to time (name of authors for example).
+            list: of :class:`.MarcSubrecord`.
+
+        Raises:
+            KeyError: If the subfield or datafield couldn't be found.
+
+        Note:
+            MarcSubrecord is practically same thing as string, but has defined
+            :meth:`.MarcSubrecord.getI1()` and :meth:`~MarcSubrecord.getI2()`
+            methods.
+
+            Believe me, you will need to be able to get this, because MARC XML
+            depends on them from time to time (name of authors for example).
+
         """
         if len(datafield) != 3:
             raise ValueError(
@@ -346,12 +406,14 @@ class MARCXMLParser(object):
                 "Bad subfield specification - subfield have to be 1 char long!"
             )
 
+        # if datafield not found, return or raise exception
         if datafield not in self.datafields:
-            if throw_exceptions:
+            if exception:
                 raise KeyError(datafield + " is not in datafields!")
-            else:
-                return []
 
+            return []
+
+        # look for subfield defined by `subfield`, `i1` and `i2` parameters
         output = []
         for datafield in self.datafields[datafield]:
             if subfield not in datafield:
@@ -360,9 +422,15 @@ class MARCXMLParser(object):
             # records are not returned just like plain string, but like
             # MarcSubrecord, because you will need ind1/ind2 values
             for sfield in datafield[subfield]:
+                if i1 and sfield.ind1 != i1:
+                    continue
+
+                if i2 and sfield.ind2 != i2:
+                    continue
+
                 output.append(sfield)
 
-        if not output and throw_exceptions:
+        if not output and exception:
             raise KeyError(subfield + " couldn't be found in subfields!")
 
         return output
@@ -374,15 +442,15 @@ class MARCXMLParser(object):
 
         Args:
             num (int): Which indicator you need (1/2).
-            is_oai (bool/None): If None, :attr:`MARCXMLRecord.oai_marc` is
+            is_oai (bool/None): If None, :attr:`.oai_marc` is
                    used.
 
         Returns:
             str: current name of ``i1``/``ind1`` parameter based on \
                  :attr:`oai_marc` property.
         """
-        if num != 1 and num != 2:
-            raise ValueError("num parameter have to be 1 or 2!")
+        if num not in (1, 2):
+            raise ValueError("`num` parameter have to be 1 or 2!")
 
         if is_oai is None:
             is_oai = self.oai_marc
