@@ -8,7 +8,7 @@ import remove_hairs
 from remove_hairs import remove_hairs as remove_hairs_fn
 from remove_hairs import remove_hairs_decorator
 
-from marcxml import MARCXMLRecord
+from . import record
 
 from structures import Person
 from structures import Corporation
@@ -29,7 +29,7 @@ def _undefinedPattern(value, fn, undefined):
     return value
 
 
-class MARCXMLQuery(MARCXMLRecord):
+class MARCXMLQuery(record.MARCXMLRecord):
     """
     Highlevel abstractions
     ++++++++++++++++++++++

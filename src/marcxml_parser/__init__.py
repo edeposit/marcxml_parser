@@ -4,8 +4,9 @@
 # Interpreter version: python 2.7
 #
 # Imports =====================================================================
-from marcxml import MARCXMLRecord
-from marcxml_query import MARCXMLQuery
+from .parser import MARCXMLParser
+from .record import MARCXMLRecord
+from .query import MARCXMLQuery
 
 from structures import Person
 from structures import Corporation
