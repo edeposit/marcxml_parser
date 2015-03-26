@@ -4,7 +4,7 @@
 # Interpreter version: python 2.7
 #
 # Tests =======================================================================
-def test_imports():
+def test_structures_imports():
     from marcxml_parser.structures import Person
     from marcxml_parser.structures import Corporation
     from marcxml_parser.structures import MARCSubrecord
