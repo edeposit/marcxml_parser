@@ -130,12 +130,10 @@ class MARCXMLQuery(record.MARCXMLRecord):
         parsed_persons = []
         raw_persons = self.getDataRecords(datafield, subfield, False)
         for person in raw_persons:
-            ind1 = person.getI1()
-            ind2 = person.getI2()
-            other_subfields = person.getOtherSubfields()
 
             # check if person have at least one of the roles specified in
             # 'roles' parameter of function
+            other_subfields = person.getOtherSubfields()
             if "4" in other_subfields and roles != ["any"]:
                 person_roles = other_subfields["4"]  # list of role parameters
 
@@ -145,7 +143,9 @@ class MARCXMLQuery(record.MARCXMLRecord):
                 if not relevant:
                     continue
 
-            # result is string, so ind1/2 in MarcSubrecord are lost
+            # result of .strip() is string, so ind1/2 in MarcSubrecord are lost
+            ind1 = person.getI1()
+            ind2 = person.getI2()
             person = person.strip()
 
             name = ""

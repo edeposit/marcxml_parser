@@ -19,9 +19,9 @@ def parsed():
 
 
 # Tests =======================================================================
-def test_getI(parsed):
-    assert parsed.getI(1) == "ind1"
-    assert parsed.getI(2) == "ind2"
+def test_get_i_name(parsed):
+    assert parsed.get_i_name(1) == "ind1"
+    assert parsed.get_i_name(2) == "ind2"
 
 
 def test_getName(parsed):

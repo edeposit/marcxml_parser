@@ -107,11 +107,13 @@ def test_leader(record):
 
 
 def test_control_getters(record):
-    assert record.getControlRecord("001") == "cpk20051492461"
-    assert record.getControlRecord("003") == "CZ-PrNK"
-    assert record.getControlRecord("005") == "20120509091037.0"
-    assert record.getControlRecord("007") == "ta"
-    assert record.getControlRecord("008") == "041216s2004----xr-a---e-f----001-0-cze--"
+    assert record.get_ctlfield("001") == "cpk20051492461"
+    assert record.get_ctlfield("003") == "CZ-PrNK"
+    assert record.get_ctlfield("005") == "20120509091037.0"
+    assert record.get_ctlfield("007") == "ta"
+    assert record.get_ctlfield("008") == "041216s2004----xr-a---e-f----001-0-cze--"
+
+    assert record.get_ctlfield("azgabash", alt="xe") == "xe"
 
 
 def test_data_getter_properties(record):
@@ -317,3 +319,5 @@ def test_data_getters(record):
     ind_test = record.getDataRecords("910", "a")[-1]
     assert ind_test.getI1() == "1"
     assert ind_test.getI2() == " "
+
+# def test_

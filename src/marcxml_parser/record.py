@@ -18,7 +18,7 @@ class MARCXMLRecord(MARCXMLParser):
     def __init__(self, xml=None, resort=True):
         super(MARCXMLRecord, self).__init__(xml, resort)
 
-    def _serializeControlFields(self):
+    def _serialize_ctl_fields(self):
         template = '<$TAGNAME $FIELD_NAME="$FIELD_ID">$CONTENT</$TAGNAME>\n'
         tagname = "controlfield" if not self.oai_marc else "fixfield"
         field_name = "tag" if not self.oai_marc else "id"
@@ -39,7 +39,7 @@ class MARCXMLRecord(MARCXMLParser):
 
         return output
 
-    def _serializeDataSubfields(self, subfields):
+    def _serialize_data_subfields(self, subfields):
         template = '\n<$TAGNAME $FIELD_NAME="$FIELD_ID">$CONTENT</$TAGNAME>'
 
         tagname = "subfield"
@@ -57,7 +57,7 @@ class MARCXMLRecord(MARCXMLParser):
 
         return output
 
-    def _serializeDataFields(self):
+    def _serialize_data_fields(self):
         template = '<$TAGNAME $FIELD_NAME="$FIELD_ID" $I1_NAME="$I1_VAL" '
         template += '$I2_NAME="$I2_VAL">'
         template += '$CONTENT\n'
@@ -66,19 +66,17 @@ class MARCXMLRecord(MARCXMLParser):
         tagname = "datafield" if not self.oai_marc else "varfield"
         field_name = "tag" if not self.oai_marc else "id"
 
-        i1_name = self.getI(1)
-        i2_name = self.getI(2)
-
         output = ""
         for field_id in self.resorted(self.datafields):
             # unpac dicts from array
             for dict_field in self.datafields[field_id]:
                 # this allows to convert between OAI and XML formats simply
                 # by switching .oai_marc property
-                real_i1_name = i1_name if i1_name in dict_field \
-                                       else self.getI(1, not self.oai_marc)
-                real_i2_name = i2_name if i2_name in dict_field \
-                                       else self.getI(2, not self.oai_marc)
+                oai = not self.oai_marc
+                real_i1_name = self.i1_name if self.i1_name in dict_field \
+                                            else self.get_i_name(1, oai)
+                real_i2_name = self.i2_name if self.i2_name in dict_field \
+                                            else self.get_i_name(2, oai)
 
                 i1_val = dict_field[real_i1_name]
                 i2_val = dict_field[real_i2_name]
@@ -91,11 +89,11 @@ class MARCXMLRecord(MARCXMLParser):
                     TAGNAME=tagname,
                     FIELD_NAME=field_name,
                     FIELD_ID=field_id,
-                    I1_NAME=i1_name,
-                    I2_NAME=i2_name,
+                    I1_NAME=self.i1_name,
+                    I2_NAME=self.i2_name,
                     I1_VAL=i1_val,
                     I2_VAL=i2_val,
-                    CONTENT=self._serializeDataSubfields(dict_field)
+                    CONTENT=self._serialize_data_subfields(dict_field)
                 )
 
                 # put back temporarily removed i1/i2
@@ -104,7 +102,7 @@ class MARCXMLRecord(MARCXMLParser):
 
         return output
 
-    def toXML(self):
+    def to_XML(self):
         """
         Convert object back to XML string.
 
@@ -145,14 +143,14 @@ $DATA_FIELDS
         xml_template = oai_template if self.oai_marc else marcxml_template
         xml_output = Template(xml_template).substitute(
             LEADER=leader.strip(),
-            CONTROL_FIELDS=self._serializeControlFields().strip(),
-            DATA_FIELDS=self._serializeDataFields().strip()
+            CONTROL_FIELDS=self._serialize_ctl_fields().strip(),
+            DATA_FIELDS=self._serialize_data_fields().strip()
         )
 
         return xml_output
 
     def __str__(self):
-        return self.toXML()
+        return self.to_XML()
 
     def __repr__(self):
         return str(self.__dict__)

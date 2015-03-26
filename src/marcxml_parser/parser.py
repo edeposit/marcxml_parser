@@ -82,13 +82,13 @@ class MARCXMLParser(object):
     To access data little bit easier, there are defined two methods to
     access and two methods to add data to internal dictionaries:
 
-        - :meth:`addControlField`
-        - :meth:`addDataField`
+        - :meth:`add_ctl_field`
+        - :meth:`add_data_field`
 
     Getters are also simple to use:
 
         - :meth:`getControlRecord`
-        - :meth:`getDataRecords`
+        - :meth:`get_subfield`
 
     :meth:`getControlRecord` is just wrapper over :attr:`controlfields` and
     works same way as accessing ``.controlfields[controlfield]``.
@@ -131,12 +131,12 @@ class MARCXMLParser(object):
         self.resorted = tools.resorted if resort else lambda x: x
 
         # it is always possible to create blank object and add values into it
-        # piece by piece thru .addControlField()/.addDataField() methods.
+        # piece by piece using .add_ctl_field()/.add_data_field() methods.
         if xml is not None:
             self._original_xml = xml
-            self._parseString(xml)
+            self._parse_string(xml)
 
-    def _parseString(self, xml):
+    def _parse_string(self, xml):
         """
         Parse MARC XML document to dicts, which are contained in
         self.controlfields and self.datafields.
@@ -165,17 +165,17 @@ class MARCXMLParser(object):
 
         # parse body in respect of OAI MARC format possibility
         if self.oai_marc:
-            self._parseControlFields(record.find("fixfield"), "id")
-            self._parseDataFields(record.find("varfield"), "id", "label")
+            self._parse_control_fields(record.find("fixfield"), "id")
+            self._parse_data_fields(record.find("varfield"), "id", "label")
         else:
-            self._parseControlFields(record.find("controlfield"), "tag")
-            self._parseDataFields(record.find("datafield"), "tag", "code")
+            self._parse_control_fields(record.find("controlfield"), "tag")
+            self._parse_data_fields(record.find("datafield"), "tag", "code")
 
         # for backward compatibility of MARC XML with OAI
         if self.oai_marc and "LDR" in self.controlfields:
             self.leader = self.controlfields["LDR"]
 
-    def _parseControlFields(self, fields, tag_id="tag"):
+    def _parse_control_fields(self, fields, tag_id="tag"):
         """
         Parse control fields.
 
@@ -194,7 +194,7 @@ class MARCXMLParser(object):
 
             self.controlfields[params[tag_id]] = field.getContent().strip()
 
-    def _parseDataFields(self, fields, tag_id="tag", sub_id="code"):
+    def _parse_data_fields(self, fields, tag_id="tag", sub_id="code"):
         """
         Parse data fields.
 
@@ -215,12 +215,9 @@ class MARCXMLParser(object):
                 continue
 
             # take care of iX/indX (indicator) parameters
-            i1_name = self.getI(1)
-            i2_name = self.getI(2)
-
             field_repr = OrderedDict([
-                [i1_name, params.get(i1_name, " ")],
-                [i2_name, params.get(i2_name, " ")],
+                [self.i1_name, params.get(self.i1_name, " ")],
+                [self.i2_name, params.get(self.i2_name, " ")],
             ])
 
             # process all subfields
@@ -230,8 +227,8 @@ class MARCXMLParser(object):
 
                 content = MarcSubrecord(
                     arg=subfield.getContent().strip(),
-                    ind1=field_repr[i1_name],
-                    ind2=field_repr[i2_name],
+                    ind1=field_repr[self.i1_name],
+                    ind2=field_repr[self.i2_name],
                     other_subfields=field_repr
                 )
 
@@ -248,7 +245,7 @@ class MARCXMLParser(object):
             else:
                 self.datafields[tag] = [field_repr]
 
-    def addControlField(self, name, value):
+    def add_ctl_field(self, name, value):
         """
         Add new control field `value` with under `name` into control field
         dictionary :attr:`controlfields`.
@@ -258,7 +255,7 @@ class MARCXMLParser(object):
 
         self.controlfields[name] = value
 
-    def addDataField(self, name, i1, i2, subfields_dict):
+    def add_data_field(self, name, i1, i2, subfields_dict):
         """
         Add new datafield into :attr:`datafields`.
 
@@ -323,8 +320,8 @@ class MARCXMLParser(object):
             subrecords.append(subfield)
 
         # save i/ind values
-        subfields_dict[self.getI(1)] = i1
-        subfields_dict[self.getI(2)] = i2
+        subfields_dict[self.i1_name] = i1
+        subfields_dict[self.i2_name] = i2
 
         # append dict, or add new dict into self.datafields
         if name in self.datafields:
@@ -338,7 +335,39 @@ class MARCXMLParser(object):
         for record in subrecords:
             record.other_subfields = other_subfields
 
-    def getControlRecord(self, controlfield, alt=None):
+    def get_i_name(self, num, is_oai=None):
+        """
+        This method is used mainly internally, but it can be handy if you work
+        with with raw MARC XML object and not using getters.
+
+        Args:
+            num (int): Which indicator you need (1/2).
+            is_oai (bool/None): If None, :attr:`.oai_marc` is
+                   used.
+
+        Returns:
+            str: current name of ``i1``/``ind1`` parameter based on \
+                 :attr:`oai_marc` property.
+        """
+        if num not in (1, 2):
+            raise ValueError("`num` parameter have to be 1 or 2!")
+
+        if is_oai is None:
+            is_oai = self.oai_marc
+
+        i_name = "ind" if not is_oai else "i"
+
+        return i_name + str(num)
+
+    @property
+    def i1_name(self):
+        return self.get_i_name(1)
+
+    @property
+    def i2_name(self):
+        return self.get_i_name(2)
+
+    def get_ctlfield(self, controlfield, alt=None):
         """
         Method wrapper over :attr:`.controlfields` dictionary.
 
@@ -393,8 +422,8 @@ class MARCXMLParser(object):
             :meth:`.MarcSubrecord.getI1()` and :meth:`~MarcSubrecord.getI2()`
             methods.
 
-            Believe me, you will need to be able to get this, because MARC XML
-            depends on them from time to time (name of authors for example).
+            You may need to be able to get this, because MARC XML depends on
+            i/ind parameters from time to time (names of authors for example).
 
         """
         if len(datafield) != 3:
@@ -434,27 +463,3 @@ class MARCXMLParser(object):
             raise KeyError(subfield + " couldn't be found in subfields!")
 
         return output
-
-    def getI(self, num, is_oai=None):
-        """
-        This method is used mainly internally, but it can be handy if you work
-        with with raw MARC XML object and not using getters.
-
-        Args:
-            num (int): Which indicator you need (1/2).
-            is_oai (bool/None): If None, :attr:`.oai_marc` is
-                   used.
-
-        Returns:
-            str: current name of ``i1``/``ind1`` parameter based on \
-                 :attr:`oai_marc` property.
-        """
-        if num not in (1, 2):
-            raise ValueError("`num` parameter have to be 1 or 2!")
-
-        if is_oai is None:
-            is_oai = self.oai_marc
-
-        i_name = "ind" if not is_oai else "i"
-
-        return i_name + str(num)
