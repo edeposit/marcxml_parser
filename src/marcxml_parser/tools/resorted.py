@@ -25,8 +25,23 @@ def resorted(values):
     Returns:
         list of sorted values, but with numbers after words
     """
+    if not values:
+        return values
+
     values = sorted(values)
-    words = filter(lambda x: not x.isdigit(), values)
-    numbers = filter(lambda x: x.isdigit(), values)
+
+    # look for first word
+    first_word = next(
+        (cnt for cnt, val in enumerate(values)
+             if val and not val[0].isdigit()),
+        None
+    )
+
+    # if not found, just return the values
+    if first_word is None:
+        return values
+
+    words = values[first_word:]
+    numbers = values[:first_word]
 
     return words + numbers
