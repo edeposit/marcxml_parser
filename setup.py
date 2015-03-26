@@ -16,7 +16,7 @@ long_description = "\n\n".join([
 setup(
     name='marcxml_parser',
     version=getVersion(changelog),
-    description="MARC XML / OAI parser.",
+    description="MARC XML / OAI parser, with few highlevel getters.",
     long_description=long_description,
     url='https://github.com/edeposit/marcxml_parser',
 
@@ -33,8 +33,6 @@ setup(
     packages=find_packages('src'),
     package_dir={'': 'src'},
     include_package_data=True,
-
-    # scripts=[''],
 
     zip_safe=False,
     install_requires=[
