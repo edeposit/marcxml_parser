@@ -92,6 +92,14 @@ http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
 """
 
 
+def test_get_i_name(record):
+    assert record.get_i_name(1) == "ind1"
+    assert record.get_i_name(2) == "ind2"
+
+    assert record.i1_name == "ind1"
+    assert record.i2_name == "ind2"
+
+
 def test_input_output(aleph_files):
     for fn in aleph_files:
         with open(fn) as f:

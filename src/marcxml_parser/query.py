@@ -35,22 +35,22 @@ class MARCXMLQuery(record.MARCXMLRecord):
     ++++++++++++++++++++++
 
     Getters:
-        - :meth:`getName`
-        - :meth:`getSubname`
-        - :meth:`getPrice`
-        - :meth:`getPart`
-        - :meth:`getPartName`
-        - :meth:`getPublisher`
-        - :meth:`getPubDate`
-        - :meth:`getPubOrder`
-        - :meth:`getFormat`
-        - :meth:`getPubPlace`
-        - :meth:`getAuthors`
-        - :meth:`getCorporations`
-        - :meth:`getDistributors`
-        - :meth:`getISBNs`
-        - :meth:`getBinding`
-        - :meth:`getOriginals`
+        - :meth:`get_name`
+        - :meth:`get_subname`
+        - :meth:`get_price`
+        - :meth:`get_part`
+        - :meth:`get_part_name`
+        - :meth:`get_publisher`
+        - :meth:`get_pub_date`
+        - :meth:`get_pub_order`
+        - :meth:`get_pub_place`
+        - :meth:`get_format`
+        - :meth:`get_authors`
+        - :meth:`get_corporations`
+        - :meth:`get_distributors`
+        - :meth:`get_ISBNs`
+        - :meth:`get_binding`
+        - :meth:`get_originals`
     """
     def __init__(self, xml=None, resort=True):
         super(MARCXMLQuery, self).__init__(xml, resort)
@@ -190,7 +190,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
         return parsed_persons
 
     @remove_hairs_decorator
-    def getName(self):
+    def get_name(self):
         """
         Returns:
             str: Name of the book.
@@ -201,7 +201,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
         return "".join(self.getDataRecords("245", "a", True))
 
     @remove_hairs_decorator
-    def getSubname(self, undefined=""):
+    def get_subname(self, undefined=""):
         """
         Args:
             undefined (optional): returned if sub-name record is not found.
@@ -216,7 +216,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
         )
 
     @remove_hairs_decorator
-    def getPrice(self, undefined=""):
+    def get_price(self, undefined=""):
         """
         Returns:
             str: Price of the book (with currency).
@@ -228,7 +228,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
         )
 
     @remove_hairs_decorator
-    def getPart(self, undefined=""):
+    def get_part(self, undefined=""):
         """
         Returns:
             str: Which part of the book series is this record.
@@ -240,7 +240,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
         )
 
     @remove_hairs_decorator
-    def getPartName(self, undefined=""):
+    def get_part_name(self, undefined=""):
         """
         Returns:
             str: Name of the part of the series.
@@ -252,7 +252,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
         )
 
     @remove_hairs_decorator
-    def getPublisher(self, undefined=""):
+    def get_publisher(self, undefined=""):
         """
         Returns:
             str: name of the publisher ("``Grada``" for example)
@@ -264,7 +264,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
         )
 
     @remove_hairs_decorator
-    def getPubDate(self, undefined=""):
+    def get_pub_date(self, undefined=""):
         """
         Returns:
             str: date of publication (month and year usually)
@@ -276,7 +276,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
         )
 
     @remove_hairs_decorator
-    def getPubOrder(self, undefined=""):
+    def get_pub_order(self, undefined=""):
         """
         Returns:
             str: information about order in which was the book published
@@ -288,19 +288,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
         )
 
     @remove_hairs_decorator
-    def getFormat(self, undefined=""):
-        """
-        Returns:
-            str: dimensions of the book ('``23 cm``' for example)
-        """
-        return _undefinedPattern(
-            "".join(self.getDataRecords("300", "c", False)),
-            lambda x: x.strip() == "",
-            undefined
-        )
-
-    @remove_hairs_decorator
-    def getPubPlace(self, undefined=""):
+    def get_pub_place(self, undefined=""):
         """
         Returns:
             str: name of city/country where the book was published
@@ -311,7 +299,18 @@ class MARCXMLQuery(record.MARCXMLRecord):
             undefined
         )
 
-    def getAuthors(self):
+    @remove_hairs_decorator
+    def get_format(self, undefined=""):
+        """_p  _p     Returns:
+            str: dimensions of the book ('``23 cm``' for example)
+        """
+        return _undefinedPattern(
+            "".join(self.getDataRecords("300", "c", False)),
+            lambda x: x.strip() == "",
+            undefined
+        )
+
+    def get_authors(self):
         """
         Returns:
             list: authors represented as Person objects
@@ -323,7 +322,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
 
         return authors
 
-    def getCorporations(self, roles=["dst"]):
+    def get_corporations(self, roles=["dst"]):
         """
         Args:
             roles (list, optional): specify which types of corporations you
@@ -342,14 +341,14 @@ class MARCXMLQuery(record.MARCXMLRecord):
 
         return corporations
 
-    def getDistributors(self):
+    def get_distributors(self):
         """
         Returns:
             list: distributors represented as :class:`Corporation` object
         """
-        return self.getCorporations(roles=["dst"])
+        return self.get_corporations(roles=["dst"])
 
-    def getISBNs(self):
+    def get_ISBNs(self):
         """
         Returns:
             list: array with ISBN strings
@@ -369,7 +368,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
 
         return []
 
-    def getBinding(self):
+    def get_binding(self):
         """
         Returns:
             list: array of strings with bindings (``["brož."]``) or blank list
@@ -387,7 +386,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
 
         return []
 
-    def getOriginals(self):
+    def get_originals(self):
         """
         Returns:
             list: of original names
