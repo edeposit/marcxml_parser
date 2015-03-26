@@ -276,6 +276,10 @@ class MARCXMLParser(object):
             }
 
         Warning:
+            For your own good, use OrderedDict for `subfields_dict`, or
+            `resort` parameter.
+
+        Warning:
             ``field_id`` can be only one character long!
 
         """
@@ -287,6 +291,10 @@ class MARCXMLParser(object):
         if len(name) != 3:
             raise ValueError(
                 "`name` parameter have to be exactly 3 chars long!"
+            )
+        if not subfields_dict:
+            raise ValueError(
+                "`subfields_dict` have to contain something!"
             )
         if not isinstance(subfields_dict, dict):
             raise ValueError(
@@ -301,23 +309,17 @@ class MARCXMLParser(object):
                     "`subfields_dict` can be only one character long!"
                 )
 
-            # convert tuples to lists
-            if isinstance(val, tuple):
-                val = list(val)
-
             # convert other values to lists
             if not isinstance(val, list):
                 val = [val]
 
-            subfield = MarcSubrecord(
-                val,
-                i1,
-                i2,
-                None
+            subfields = map(
+                lambda x: MarcSubrecord(x, i1, i2, None),
+                val
             )
 
-            subfields_dict[key] = subfield
-            subrecords.append(subfield)
+            subfields_dict[key] = subfields
+            subrecords.extend(subfields)
 
         # save i/ind values
         subfields_dict[self.i1_name] = i1
