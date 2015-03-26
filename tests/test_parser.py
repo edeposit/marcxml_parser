@@ -4,28 +4,17 @@
 # Interpreter version: python 2.7
 #
 # Imports =====================================================================
-import os
-import os.path
-import glob
+
 from collections import OrderedDict
 
 import pytest
 
 from marcxml_parser import MARCXMLRecord
 
-
-# Variables ===================================================================
-DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
+from test_record import aleph_files
 
 
 # Functions & classes =========================================================
-@pytest.fixture
-def aleph_files():
-    files = glob.glob(DATA_DIR + "/aleph_*.xml")
-
-    return map(lambda x: os.path.abspath(x), files)
-
-
 @pytest.fixture
 def unix_file():
     files = aleph_files()
@@ -48,16 +37,6 @@ def test_get_i_name(record):
 
     assert record.i1_name == "ind1"
     assert record.i2_name == "ind2"
-
-
-def test_input_output(aleph_files):
-    for fn in aleph_files:
-        with open(fn) as f:
-            data = f.read()
-
-        parsed = MARCXMLRecord(data, resort=False)
-
-        assert parsed.__str__().strip() == data.strip()
 
 
 def test_leader(record):
@@ -294,3 +273,81 @@ def test_get_subfield_i_parameters(record):
 
     assert record.get_subfield("650", "a", "0", "9")[2] == "programming"
     assert record.get_subfield("650", "2", "0", "9")[2] == "eczenas"
+
+
+def test_add_ctl_field():
+    rec = MARCXMLRecord()
+    rec.controlfields = OrderedDict()
+
+    rec.add_ctl_field("ASD", "Hello")
+
+    assert rec.controlfields == OrderedDict([["ASD", "Hello"]])
+
+    rec.get_ctl_field("ASD") == "Hello"
+
+
+def test_add_ctl_field_rewrite():
+    rec = MARCXMLRecord()
+
+    rec.add_ctl_field("ASD", "Hello")
+    rec.add_ctl_field("ASD", "Hi")
+
+    assert rec.controlfields == OrderedDict([["ASD", "Hi"]])
+
+    rec.get_ctl_field("ASD") == "Hi"
+
+
+def test_add_ctl_field_error():
+    rec = MARCXMLRecord()
+
+    with pytest.raises(ValueError):
+        rec.add_ctl_field("A", "Hello")
+
+
+def test_add_data_field():
+    rec = MARCXMLRecord()
+    rec.datafields = OrderedDict()
+
+    rec.add_data_field("OST", " ", " ", {"a": "1"})
+
+    assert rec.datafields == OrderedDict([
+        ["OST", [{"a": ["1"], "ind1": " ", "ind2": " "}]],
+    ])
+
+
+def test_add_data_field_multiple_fields():
+    rec = MARCXMLRecord()
+    rec.datafields = OrderedDict()
+
+    rec.add_data_field("OST", " ", " ", {"a": "aaa"})
+    rec.add_data_field("OST", "1", "2", {"a": "bbb"})
+
+    assert rec.datafields == OrderedDict([
+        ["OST", [
+            {"a": ["aaa"], "ind1": " ", "ind2": " "},
+            {"a": ["bbb"], "ind1": "1", "ind2": "2"}
+        ]],
+    ])
+
+    assert rec.get_subfield("OST", "a") == ["aaa", "bbb"]
+    assert rec.get_subfield("OST", "a", " ", " ") == ["aaa"]
+    assert rec.get_subfield("OST", "a", "1", "2") == ["bbb"]
+
+
+def test_add_data_field_exceptions():
+    rec = MARCXMLRecord()
+
+    with pytest.raises(ValueError):
+        rec.add_data_field("OST", " ", " ", [])
+
+    with pytest.raises(ValueError):
+        rec.add_data_field("OST", " ", " ", {})
+
+    with pytest.raises(ValueError):
+        rec.add_data_field("O", " ", " ", {"a": "bbb"})
+
+    with pytest.raises(ValueError):
+        rec.add_data_field("OST", "z", " ", {"a": "bbb"})
+
+    with pytest.raises(ValueError):
+        rec.add_data_field("OST", " ", "z", {"a": "bbb"})

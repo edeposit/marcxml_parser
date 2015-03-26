@@ -4,10 +4,38 @@
 # Interpreter version: python 2.7
 #
 # Imports =====================================================================
+import os
+import os.path
+import glob
+
+import pytest
+
 from marcxml_parser import MARCXMLRecord
 
 
-# Functions & classes =========================================================
+# Variables ===================================================================
+DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
+
+
+# Fixtures ====================================================================
+@pytest.fixture
+def aleph_files():
+    files = glob.glob(DATA_DIR + "/aleph_*.xml")
+
+    return map(lambda x: os.path.abspath(x), files)
+
+
+# Tests =======================================================================
+def test_input_output(aleph_files):
+    for fn in aleph_files:
+        with open(fn) as f:
+            data = f.read()
+
+        parsed = MARCXMLRecord(data, resort=False)
+
+        assert parsed.__str__().strip() == data.strip()
+
+
 def test_order_original():
     xml = """<record xmlns="http://www.loc.gov/MARC21/slim/"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
