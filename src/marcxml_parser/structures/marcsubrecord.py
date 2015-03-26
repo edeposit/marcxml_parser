@@ -31,31 +31,14 @@ class MarcSubrecord(str):
                                 `subrecord`.
 
     """
-    def __new__(self, arg, ind1, ind2, other_subfields):
+    def __new__(self, arg, i1, i2, other_subfields):
         return str.__new__(self, arg)
 
-    def __init__(self, arg, ind1, ind2, other_subfields):
+    def __init__(self, arg, i1, i2, other_subfields):
         self.arg = arg
-        self.ind1 = ind1
-        self.ind2 = ind2
+        self.i1 = i1
+        self.i2 = i2
         self.other_subfields = other_subfields
-
-    def getI1(self):
-        return self.ind1
-
-    def getI2(self):
-        return self.ind2
-
-    def getOtherSubfields(self):
-        """
-        Return reference to dictionary, from which the `subrecord` was given.
-
-        Note:
-            This method is used to get `backlink` to other fields (reference to
-            field in :attr:`MARCXMLRecord.datafields`). It is not clean, but it
-            works.
-        """
-        return self.other_subfields
 
     def __str__(self):
         return self.arg
