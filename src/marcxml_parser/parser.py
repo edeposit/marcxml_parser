@@ -451,10 +451,10 @@ class MARCXMLParser(object):
             # records are not returned just like plain string, but like
             # MarcSubrecord, because you will need ind1/ind2 values
             for sfield in datafield[subfield]:
-                if i1 and sfield.ind1 != i1:
+                if i1 and sfield.i1 != i1:
                     continue
 
-                if i2 and sfield.ind2 != i2:
+                if i2 and sfield.i2 != i2:
                     continue
 
                 output.append(sfield)
