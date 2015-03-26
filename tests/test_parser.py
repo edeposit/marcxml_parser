@@ -42,56 +42,6 @@ def record():
 
 
 # Tests =======================================================================
-def test_order_original():
-    xml = """<record xmlns="http://www.loc.gov/MARC21/slim/"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://www.loc.gov/MARC21/slim
-http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
-
-
-<datafield tag="650" ind1="0" ind2="7">
-<subfield code="a">programování</subfield>
-<subfield code="7">ph115891</subfield>
-<subfield code="2">czenas</subfield>
-</datafield>
-</record>
-"""
-    parsed = MARCXMLRecord(xml, resort=False)
-
-    assert xml == parsed.__str__()
-
-
-def test_order_resort():
-    xml = """<record xmlns="http://www.loc.gov/MARC21/slim/"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://www.loc.gov/MARC21/slim
-http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
-
-
-<datafield tag="650" ind1="0" ind2="7">
-<subfield code="a">programování</subfield>
-<subfield code="7">ph115891</subfield>
-<subfield code="2">czenas</subfield>
-</datafield>
-</record>
-"""
-    parsed = MARCXMLRecord(xml, resort=True)
-
-    assert parsed.__str__() == """<record xmlns="http://www.loc.gov/MARC21/slim/"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://www.loc.gov/MARC21/slim
-http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
-
-
-<datafield tag="650" ind1="0" ind2="7">
-<subfield code="a">programování</subfield>
-<subfield code="2">czenas</subfield>
-<subfield code="7">ph115891</subfield>
-</datafield>
-</record>
-"""
-
-
 def test_get_i_name(record):
     assert record.get_i_name(1) == "ind1"
     assert record.get_i_name(2) == "ind2"
@@ -115,13 +65,13 @@ def test_leader(record):
 
 
 def test_control_getters(record):
-    assert record.get_ctlfield("001") == "cpk20051492461"
-    assert record.get_ctlfield("003") == "CZ-PrNK"
-    assert record.get_ctlfield("005") == "20120509091037.0"
-    assert record.get_ctlfield("007") == "ta"
-    assert record.get_ctlfield("008") == "041216s2004----xr-a---e-f----001-0-cze--"
+    assert record.get_ctl_field("001") == "cpk20051492461"
+    assert record.get_ctl_field("003") == "CZ-PrNK"
+    assert record.get_ctl_field("005") == "20120509091037.0"
+    assert record.get_ctl_field("007") == "ta"
+    assert record.get_ctl_field("008") == "041216s2004----xr-a---e-f----001-0-cze--"
 
-    assert record.get_ctlfield("azgabash", alt="xe") == "xe"
+    assert record.get_ctl_field("azgabash", alt="xe") == "xe"
 
 
 def test_data_getter_properties(record):
