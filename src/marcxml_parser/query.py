@@ -19,7 +19,7 @@ remove_hairs.HAIRS = r" :;<>(){}[]\/"
 
 
 # Functions & classes =========================================================
-def _undefinedPattern(value, fn, undefined):
+def _undefined_pattern(value, fn, undefined):
     """
     If ``fn(value) == True``, return `undefined`, else `value`.
     """
@@ -209,7 +209,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
         Returns:
             str: Sub-name of the book or `undefined` if name is not defined.
         """
-        return _undefinedPattern(
+        return _undefined_pattern(
             "".join(self.getDataRecords("245", "b", False)),
             lambda x: x.strip() == "",
             undefined
@@ -221,7 +221,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
         Returns:
             str: Price of the book (with currency).
         """
-        return _undefinedPattern(
+        return _undefined_pattern(
             "".join(self.getDataRecords("020", "c", False)),
             lambda x: x.strip() == "",
             undefined
@@ -233,7 +233,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
         Returns:
             str: Which part of the book series is this record.
         """
-        return _undefinedPattern(
+        return _undefined_pattern(
             "".join(self.getDataRecords("245", "p", False)),
             lambda x: x.strip() == "",
             undefined
@@ -245,7 +245,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
         Returns:
             str: Name of the part of the series.
         """
-        return _undefinedPattern(
+        return _undefined_pattern(
             "".join(self.getDataRecords("245", "n", False)),
             lambda x: x.strip() == "",
             undefined
@@ -257,7 +257,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
         Returns:
             str: name of the publisher ("``Grada``" for example)
         """
-        return _undefinedPattern(
+        return _undefined_pattern(
             "".join(self.getDataRecords("260", "b", False)),
             lambda x: x.strip() == "",
             undefined
@@ -269,7 +269,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
         Returns:
             str: date of publication (month and year usually)
         """
-        return _undefinedPattern(
+        return _undefined_pattern(
             "".join(self.getDataRecords("260", "c", False)),
             lambda x: x.strip() == "",
             undefined
@@ -281,7 +281,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
         Returns:
             str: information about order in which was the book published
         """
-        return _undefinedPattern(
+        return _undefined_pattern(
             "".join(self.getDataRecords("901", "f", False)),
             lambda x: x.strip() == "",
             undefined
@@ -293,7 +293,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
         Returns:
             str: name of city/country where the book was published
         """
-        return _undefinedPattern(
+        return _undefined_pattern(
             "".join(self.getDataRecords("260", "a", False)),
             lambda x: x.strip() == "",
             undefined
@@ -304,7 +304,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
         """_p  _p     Returns:
             str: dimensions of the book ('``23 cm``' for example)
         """
-        return _undefinedPattern(
+        return _undefined_pattern(
             "".join(self.getDataRecords("300", "c", False)),
             lambda x: x.strip() == "",
             undefined
