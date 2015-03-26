@@ -367,7 +367,7 @@ class MARCXMLParser(object):
     def i2_name(self):
         return self.get_i_name(2)
 
-    def get_ctlfield(self, controlfield, alt=None):
+    def get_ctl_field(self, controlfield, alt=None):
         """
         Method wrapper over :attr:`.controlfields` dictionary.
 
