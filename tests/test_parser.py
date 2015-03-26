@@ -329,5 +329,18 @@ def test_data_getters(record):
     assert ind_test.i2 == " "
 
 
-def test_get_subfield(record):
-    pass
+def test_get_subfield_i_parameters(record):
+    assert record.get_subfield("901", "b", " ", " ")[0] == "9788025102251"
+    assert record.get_subfield("901", "f", " ", " ")[0] == "1. vyd."
+    assert record.get_subfield("901", "o", " ", " ")[0] == "20050217"
+
+    assert len(record.get_subfield("650", "a", "0", "9")) == 3
+
+    assert record.get_subfield("650", "a", "0", "9")[0] == "UNIX"
+    assert record.get_subfield("650", "2", "0", "9")[0] == "eczenas"
+
+    assert record.get_subfield("650", "a", "0", "9")[1] == "operating systems"
+    assert record.get_subfield("650", "2", "0", "9")[1] == "eczenas"
+
+    assert record.get_subfield("650", "a", "0", "9")[2] == "programming"
+    assert record.get_subfield("650", "2", "0", "9")[2] == "eczenas"
