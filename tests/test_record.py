@@ -7,6 +7,7 @@
 import os
 import os.path
 import glob
+from collections import OrderedDict
 
 import pytest
 
@@ -81,6 +82,108 @@ http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
 <subfield code="a">programování</subfield>
 <subfield code="2">czenas</subfield>
 <subfield code="7">ph115891</subfield>
+</datafield>
+</record>
+"""
+
+
+def test_creation_and_resort():
+    rec = MARCXMLRecord()
+
+    rec.add_data_field("222", "1", "2", {"a": "bbb"})
+    rec.add_data_field("111", " ", " ", {"a": "aaa"})
+
+    assert rec.__str__() == """<record xmlns="http://www.loc.gov/MARC21/slim/"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+
+
+<datafield tag="111" ind1=" " ind2=" ">
+<subfield code="a">aaa</subfield>
+</datafield>
+<datafield tag="222" ind1="1" ind2="2">
+<subfield code="a">bbb</subfield>
+</datafield>
+</record>
+"""
+
+
+def test_creation_and_resort_disabled():
+    rec = MARCXMLRecord(resort=False)
+
+    rec.add_data_field("222", "1", "2", {"a": "bbb"})
+    rec.add_data_field("111", " ", " ", {"a": "aaa"})
+
+    assert rec.__str__() == """<record xmlns="http://www.loc.gov/MARC21/slim/"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+
+
+<datafield tag="222" ind1="1" ind2="2">
+<subfield code="a">bbb</subfield>
+</datafield>
+<datafield tag="111" ind1=" " ind2=" ">
+<subfield code="a">aaa</subfield>
+</datafield>
+</record>
+"""
+
+
+def test_creation_and_subfields_resort():
+    rec = MARCXMLRecord()
+
+    rec.add_data_field(
+        "111",
+        " ",
+        " ",
+        OrderedDict([
+            ["a", "1"],
+            ["u", "1"],
+            ["c", "1"]
+        ])
+    )
+
+    assert rec.__str__() == """<record xmlns="http://www.loc.gov/MARC21/slim/"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+
+
+<datafield tag="111" ind1=" " ind2=" ">
+<subfield code="a">1</subfield>
+<subfield code="c">1</subfield>
+<subfield code="u">1</subfield>
+</datafield>
+</record>
+"""
+
+
+def test_creation_and_subfields_resort_disabled():
+    rec = MARCXMLRecord(resort=False)
+
+    rec.add_data_field(
+        "111",
+        " ",
+        " ",
+        OrderedDict([
+            ["a", "1"],
+            ["u", "1"],
+            ["c", "1"]
+        ])
+    )
+
+    assert rec.__str__() == """<record xmlns="http://www.loc.gov/MARC21/slim/"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+
+
+<datafield tag="111" ind1=" " ind2=" ">
+<subfield code="a">1</subfield>
+<subfield code="u">1</subfield>
+<subfield code="c">1</subfield>
 </datafield>
 </record>
 """
