@@ -143,7 +143,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
                 if not relevant:
                     continue
 
-            # result of .strip() is string, so ind1/2 in MarcSubrecord are lost
+            # result of .strip() is string, so ind1/2 in MARCSubrecord are lost
             ind1 = person.i1
             ind2 = person.i2
             person = person.strip()

@@ -10,7 +10,7 @@ import dhtmlparser
 from dhtmlparser import HTMLElement
 
 from . import tools
-from .structures import MarcSubrecord
+from .structures import MARCSubrecord
 
 
 # Functions & classes =========================================================
@@ -94,22 +94,22 @@ class MARCXMLParser(object):
     works same way as accessing ``.controlfields[controlfield]``.
 
     ``.getDataRecords(datafield, subfield, throw_exceptions)`` return list of
-    :class:`MarcSubrecord` objects* with informations from section `datafield`
+    :class:`MARCSubrecord` objects* with informations from section `datafield`
     subsection `subfield`.
 
     If `throw_exceptions` parameter is set to ``False``, method returns empty
     list instead of throwing :exc:`~exceptions.KeyError`.
 
-    \*As I said, function returns list of :class:`MarcSubrecord` objects. They
+    \*As I said, function returns list of :class:`MARCSubrecord` objects. They
     are almost same thing as normal ``str`` (they are actually subclassed
     strings), but defines few important methods, which can make your life
     little bit easier:
 
-        - :meth:`~MarcSubrecord.getI1`
-        - :meth:`~MarcSubrecord.getI2`
-        - :meth:`~MarcSubrecord.getOtherSubfields`
+        - :meth:`~MARCSubrecord.getI1`
+        - :meth:`~MARCSubrecord.getI2`
+        - :meth:`~MARCSubrecord.getOtherSubfields`
 
-    :meth:`~MarcSubrecord.getOtherSubfields` returns dictionary with other
+    :meth:`~MARCSubrecord.getOtherSubfields` returns dictionary with other
     subsections from subfield requested by calling :meth:`getDataRecords`. It
     works as backlink to object, from which you get the record.
     """
@@ -225,7 +225,7 @@ class MARCXMLParser(object):
                 if sub_id not in subfield.params:
                     continue
 
-                content = MarcSubrecord(
+                content = MARCSubrecord(
                     arg=subfield.getContent().strip(),
                     i1=field_repr[self.i1_name],
                     i2=field_repr[self.i2_name],
@@ -301,7 +301,7 @@ class MARCXMLParser(object):
                 "`subfields_dict` parameter has to be dict instance!"
             )
 
-        # check local keys, convert strings to MarcSubrecord instances
+        # check local keys, convert strings to MARCSubrecord instances
         subrecords = []
         for key, val in subfields_dict.items():
             if len(key) > 1:
@@ -314,7 +314,7 @@ class MARCXMLParser(object):
                 val = [val]
 
             subfields = map(
-                lambda x: MarcSubrecord(x, i1, i2, None),
+                lambda x: MARCSubrecord(x, i1, i2, None),
                 val
             )
 
@@ -414,14 +414,14 @@ class MARCXMLParser(object):
                       `subfield`. If ``False``, blank array ``[]`` is returned.
 
         Returns:
-            list: of :class:`.MarcSubrecord`.
+            list: of :class:`.MARCSubrecord`.
 
         Raises:
             KeyError: If the subfield or datafield couldn't be found.
 
         Note:
-            MarcSubrecord is practically same thing as string, but has defined
-            :meth:`.MarcSubrecord.i1` and :attr:`.MarcSubrecord.i2`
+            MARCSubrecord is practically same thing as string, but has defined
+            :meth:`.MARCSubrecord.i1` and :attr:`.MARCSubrecord.i2`
             methods.
 
             You may need to be able to get this, because MARC XML depends on
@@ -451,7 +451,7 @@ class MARCXMLParser(object):
                 continue
 
             # records are not returned just like plain string, but like
-            # MarcSubrecord, because you will need ind1/ind2 values
+            # MARCSubrecord, because you will need ind1/ind2 values
             for sfield in datafield[subfield]:
                 if i1 and sfield.i1 != i1:
                     continue

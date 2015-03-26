@@ -11,4 +11,4 @@ from .query import MARCXMLQuery
 from structures import Person
 from structures import Corporation
 
-from structures import MarcSubrecord
+from structures import MARCSubrecord

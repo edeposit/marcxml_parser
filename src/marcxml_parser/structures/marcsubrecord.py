@@ -7,10 +7,10 @@
 
 
 # Functions & classes =========================================================
-class MarcSubrecord(str):
+class MARCSubrecord(str):
     """
     This class is used to store data returned from
-    :meth:`MARCXMLRecord.getDataRecords()`.
+    :meth:`.MARCXMLParser.get_datafield()`.
 
     It looks kinda like overshot, but when you are parsing the MARC XML,
     values from `subrecords`, you need to know the context in which the

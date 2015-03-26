@@ -6,4 +6,4 @@
 # Imports =====================================================================
 from person import Person
 from corporation import Corporation
-from marcsubrecord import MarcSubrecord
+from marcsubrecord import MARCSubrecord
