@@ -227,8 +227,8 @@ class MARCXMLParser(object):
 
                 content = MarcSubrecord(
                     arg=subfield.getContent().strip(),
-                    ind1=field_repr[self.i1_name],
-                    ind2=field_repr[self.i2_name],
+                    i1=field_repr[self.i1_name],
+                    i2=field_repr[self.i2_name],
                     other_subfields=field_repr
                 )
 
@@ -419,7 +419,7 @@ class MARCXMLParser(object):
 
         Note:
             MarcSubrecord is practically same thing as string, but has defined
-            :meth:`.MarcSubrecord.getI1()` and :meth:`~MarcSubrecord.getI2()`
+            :meth:`.MarcSubrecord.i1` and :attr:`.MarcSubrecord.i2`
             methods.
 
             You may need to be able to get this, because MARC XML depends on

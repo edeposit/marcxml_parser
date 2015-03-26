@@ -55,7 +55,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
     def __init__(self, xml=None, resort=True):
         super(MARCXMLQuery, self).__init__(xml, resort)
 
-    def _parseCorporations(self, datafield, subfield, roles=["any"]):
+    def _parse_corporations(self, datafield, subfield, roles=["any"]):
         """
         Parse informations about corporations from given field identified
         by `datafield` parameter.
@@ -81,8 +81,8 @@ class MARCXMLQuery(record.MARCXMLRecord):
                 "Bad subfield specification - subield have to be 3 chars long!"
             )
         parsed_corporations = []
-        for corporation in self.getDataRecords(datafield, subfield, False):
-            other_subfields = corporation.getOtherSubfields()
+        for corporation in self.get_subfield(datafield, subfield):
+            other_subfields = corporation.other_subfields
 
             # check if corporation have at least one of the roles specified in
             # 'roles' parameter of function
@@ -110,7 +110,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
 
         return parsed_corporations
 
-    def _parsePersons(self, datafield, subfield, roles=["aut"]):
+    def _parse_persons(self, datafield, subfield, roles=["aut"]):
         """
         Parse persons from given datafield.
 
@@ -128,12 +128,12 @@ class MARCXMLQuery(record.MARCXMLRecord):
         """
         # parse authors
         parsed_persons = []
-        raw_persons = self.getDataRecords(datafield, subfield, False)
+        raw_persons = self.get_subfield(datafield, subfield)
         for person in raw_persons:
 
             # check if person have at least one of the roles specified in
             # 'roles' parameter of function
-            other_subfields = person.getOtherSubfields()
+            other_subfields = person.other_subfields
             if "4" in other_subfields and roles != ["any"]:
                 person_roles = other_subfields["4"]  # list of role parameters
 
@@ -144,8 +144,8 @@ class MARCXMLQuery(record.MARCXMLRecord):
                     continue
 
             # result of .strip() is string, so ind1/2 in MarcSubrecord are lost
-            ind1 = person.getI1()
-            ind2 = person.getI2()
+            ind1 = person.i1
+            ind2 = person.i2
             person = person.strip()
 
             name = ""
@@ -198,7 +198,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
         Raises:
             KeyError: when name is not specified.
         """
-        return "".join(self.getDataRecords("245", "a", True))
+        return "".join(self.get_subfield("245", "a"))
 
     @remove_hairs_decorator
     def get_subname(self, undefined=""):
@@ -210,7 +210,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
             str: Sub-name of the book or `undefined` if name is not defined.
         """
         return _undefined_pattern(
-            "".join(self.getDataRecords("245", "b", False)),
+            "".join(self.get_subfield("245", "b")),
             lambda x: x.strip() == "",
             undefined
         )
@@ -222,7 +222,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
             str: Price of the book (with currency).
         """
         return _undefined_pattern(
-            "".join(self.getDataRecords("020", "c", False)),
+            "".join(self.get_subfield("020", "c")),
             lambda x: x.strip() == "",
             undefined
         )
@@ -234,7 +234,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
             str: Which part of the book series is this record.
         """
         return _undefined_pattern(
-            "".join(self.getDataRecords("245", "p", False)),
+            "".join(self.get_subfield("245", "p")),
             lambda x: x.strip() == "",
             undefined
         )
@@ -246,7 +246,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
             str: Name of the part of the series.
         """
         return _undefined_pattern(
-            "".join(self.getDataRecords("245", "n", False)),
+            "".join(self.get_subfield("245", "n")),
             lambda x: x.strip() == "",
             undefined
         )
@@ -258,7 +258,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
             str: name of the publisher ("``Grada``" for example)
         """
         return _undefined_pattern(
-            "".join(self.getDataRecords("260", "b", False)),
+            "".join(self.get_subfield("260", "b")),
             lambda x: x.strip() == "",
             undefined
         )
@@ -270,7 +270,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
             str: date of publication (month and year usually)
         """
         return _undefined_pattern(
-            "".join(self.getDataRecords("260", "c", False)),
+            "".join(self.get_subfield("260", "c")),
             lambda x: x.strip() == "",
             undefined
         )
@@ -282,7 +282,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
             str: information about order in which was the book published
         """
         return _undefined_pattern(
-            "".join(self.getDataRecords("901", "f", False)),
+            "".join(self.get_subfield("901", "f")),
             lambda x: x.strip() == "",
             undefined
         )
@@ -294,7 +294,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
             str: name of city/country where the book was published
         """
         return _undefined_pattern(
-            "".join(self.getDataRecords("260", "a", False)),
+            "".join(self.get_subfield("260", "a")),
             lambda x: x.strip() == "",
             undefined
         )
@@ -305,7 +305,7 @@ class MARCXMLQuery(record.MARCXMLRecord):
             str: dimensions of the book ('``23 cm``' for example)
         """
         return _undefined_pattern(
-            "".join(self.getDataRecords("300", "c", False)),
+            "".join(self.get_subfield("300", "c")),
             lambda x: x.strip() == "",
             undefined
         )
@@ -315,10 +315,10 @@ class MARCXMLQuery(record.MARCXMLRecord):
         Returns:
             list: authors represented as Person objects
         """
-        authors = self._parsePersons("100", "a")
-        authors += self._parsePersons("600", "a")
-        authors += self._parsePersons("700", "a")
-        authors += self._parsePersons("800", "a")
+        authors = self._parse_persons("100", "a")
+        authors += self._parse_persons("600", "a")
+        authors += self._parse_persons("700", "a")
+        authors += self._parse_persons("800", "a")
 
         return authors
 
@@ -334,10 +334,10 @@ class MARCXMLQuery(record.MARCXMLRecord):
         Returns:
             list: :class:`Corporation` objects specified by roles parameter.
         """
-        corporations = self._parseCorporations("110", "a", roles)
-        corporations += self._parseCorporations("610", "a", roles)
-        corporations += self._parseCorporations("710", "a", roles)
-        corporations += self._parseCorporations("810", "a", roles)
+        corporations = self._parse_corporations("110", "a", roles)
+        corporations += self._parse_corporations("610", "a", roles)
+        corporations += self._parse_corporations("710", "a", roles)
+        corporations += self._parse_corporations("810", "a", roles)
 
         return corporations
 
@@ -354,16 +354,16 @@ class MARCXMLQuery(record.MARCXMLRecord):
             list: array with ISBN strings
         """
 
-        if self.getDataRecords("020", "a", False):
+        if self.get_subfield("020", "a"):
             return map(
                 lambda ISBN: ISBN.strip().split(" ", 1)[0],
-                self.getDataRecords("020", "a", True)
+                self.get_subfield("020", "a", exception=True)
             )
 
-        if self.getDataRecords("901", "i", False):
+        if self.get_subfield("901", "i"):
             return map(
                 lambda ISBN: ISBN.strip().split(" ", 1)[0],
-                self.getDataRecords("901", "i", True)
+                self.get_subfield("901", "i", exception=True)
             )
 
         return []
@@ -373,14 +373,14 @@ class MARCXMLQuery(record.MARCXMLRecord):
         Returns:
             list: array of strings with bindings (``["brož."]``) or blank list
         """
-        if self.getDataRecords("020", "a", False):
+        if self.get_subfield("020", "a"):
             return map(
                 lambda x: remove_hairs_fn(
                     x.strip().split(" ", 1)[1]
                 ),
                 filter(
                     lambda x: "-" in x and " " in x,
-                    self.getDataRecords("020", "a", True)
+                    self.get_subfield("020", "a", exception=True)
                 )
             )
 
@@ -391,4 +391,4 @@ class MARCXMLQuery(record.MARCXMLRecord):
         Returns:
             list: of original names
         """
-        return self.getDataRecords("765", "t", False)
+        return self.get_subfield("765", "t")
