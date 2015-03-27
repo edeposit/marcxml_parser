@@ -1,0 +1,150 @@
+<record>
+<metadata>
+<oai_marc>
+<fixfield id="LDR">-----nas-a22------a-4500</fixfield>
+<fixfield id="FMT">SE</fixfield>
+<fixfield id="001">nkc20150003059</fixfield>
+<fixfield id="003">CZ-PrNK</fixfield>
+<fixfield id="005">20150326133612.0</fixfield>
+<fixfield id="007">ta</fixfield>
+<fixfield id="008">150312c20149999xr--u---------0---b0cze--</fixfield>
+<varfield id="BAS" i1=" " i2=" ">
+<subfield label="a">01</subfield>
+</varfield>
+<varfield id="040" i1=" " i2=" ">
+<subfield label="a">ABA001</subfield>
+<subfield label="b">cze</subfield>
+</varfield>
+<varfield id="245" i1="0" i2="0">
+<subfield label="a">Echa ... :</subfield>
+<subfield label="b">[fórum pro literární vědu] /</subfield>
+<subfield label="c">Jiří Brabec ... [et al.]</subfield>
+</varfield>
+<varfield id="246" i1="3" i2=" ">
+<subfield label="a">Echa Institutu pro studium literatury ...</subfield>
+</varfield>
+<varfield id="260" i1=" " i2=" ">
+<subfield label="a">Praha :</subfield>
+<subfield label="b">Institut pro studium literatury,</subfield>
+<subfield label="c">[2014?]-</subfield>
+</varfield>
+<varfield id="300" i1=" " i2=" ">
+<subfield label="a">^^^ online zdroj</subfield>
+</varfield>
+<varfield id="362" i1="0" i2=" ">
+<subfield label="a">2010/2011</subfield>
+</varfield>
+<varfield id="500" i1=" " i2=" ">
+<subfield label="a">Součástí názvu je označení rozmezí let, od r. 2012 součástí názvu označení kalendářního roku vzniku příspěvků</subfield>
+</varfield>
+<varfield id="500" i1=" " i2=" ">
+<subfield label="a">V některých formátech autoři neuvedeni</subfield>
+</varfield>
+<varfield id="500" i1=" " i2=" ">
+<subfield label="a">Jednotlivé sv. mají ISBN</subfield>
+</varfield>
+<varfield id="500" i1=" " i2=" ">
+<subfield label="a">Popsáno podle: 2010/2011</subfield>
+</varfield>
+<varfield id="700" i1="1" i2=" ">
+<subfield label="a">Brabec, Jiří</subfield>
+<subfield label="4">aut</subfield>
+</varfield>
+<varfield id="856" i1="4" i2="0">
+<subfield label="u">http://edeposit-test.nkp.cz/producents/nakladatelstvi-delta/epublications/echa-2010-2011/echa-2010-2011-eva-jelinkova-michael-spirit-eds.pdf</subfield>
+<subfield label="z">2010-2011</subfield>
+<subfield label="4">N</subfield>
+</varfield>
+<varfield id="856" i1="4" i2="0">
+<subfield label="u">http://edeposit-test.nkp.cz/producents/nakladatelstvi-delta/epublications/echa-2010-2011-1/echa-2010-2011-eva-jelinkova-michael-spirit-eds.epub</subfield>
+<subfield label="z">2010-2011</subfield>
+<subfield label="4">N</subfield>
+</varfield>
+<varfield id="856" i1="4" i2="0">
+<subfield label="u">http://edeposit-test.nkp.cz/producents/nakladatelstvi-delta/epublications/echa-2010-2011-1/echa-2010-2011-eva-jelinkova-michael-spirit-eds.mobi</subfield>
+<subfield label="z">201-2011</subfield>
+<subfield label="4">N</subfield>
+</varfield>
+<varfield id="856" i1="4" i2="0">
+<subfield label="u">http://edeposit-test.nkp.cz/producents/nakladatelstvi-delta/epublications/echa-2012-1/echa-2012-eva-jelinkova-michael-spirit-eds.mobi</subfield>
+<subfield label="z">2012</subfield>
+<subfield label="4">N</subfield>
+</varfield>
+<varfield id="856" i1="4" i2="0">
+<subfield label="u">http://edeposit-test.nkp.cz/producents/nakladatelstvi-delta/epublications/echa-2010-2011/echa-2013-eva-jelinkova-michael-spirit-eds.epub</subfield>
+<subfield label="z">2013</subfield>
+<subfield label="4">N</subfield>
+</varfield>
+<varfield id="902" i1=" " i2=" ">
+<subfield label="a">978-80-87899-10-6</subfield>
+<subfield label="q">(2010/2011 :</subfield>
+<subfield label="q">online :</subfield>
+<subfield label="q">pdf)</subfield>
+</varfield>
+<varfield id="902" i1=" " i2=" ">
+<subfield label="a">978-80-87899-09-0</subfield>
+<subfield label="q">(2010/2011 :</subfield>
+<subfield label="q">online :</subfield>
+<subfield label="q">Mobipocket)</subfield>
+</varfield>
+<varfield id="902" i1=" " i2=" ">
+<subfield label="a">978-80-87899-08-3</subfield>
+<subfield label="q">(2010/2011 :</subfield>
+<subfield label="q">online :</subfield>
+<subfield label="q">ePub)</subfield>
+</varfield>
+<varfield id="902" i1=" " i2=" ">
+<subfield label="a">978-80-87899-06-9</subfield>
+<subfield label="q">(2012 :</subfield>
+<subfield label="q">online :</subfield>
+<subfield label="q">Mobipocket)</subfield>
+</varfield>
+<varfield id="902" i1=" " i2=" ">
+<subfield label="a">978-80-87899-05-2</subfield>
+<subfield label="q">(2012 :</subfield>
+<subfield label="q">online :</subfield>
+<subfield label="q">ePub)</subfield>
+<subfield label="z">978-80-87899-07-6</subfield>
+</varfield>
+<varfield id="902" i1=" " i2=" ">
+<subfield label="a">978-80-87899-07-6</subfield>
+<subfield label="q">(2012 :</subfield>
+<subfield label="q">online :</subfield>
+<subfield label="q">pdf)</subfield>
+<subfield label="z">978-80-87899-05-2</subfield>
+</varfield>
+<varfield id="902" i1=" " i2=" ">
+<subfield label="a">978-80-87899-02-1</subfield>
+<subfield label="q">(2013 :</subfield>
+<subfield label="q">online :</subfield>
+<subfield label="q">ePub)</subfield>
+</varfield>
+<varfield id="902" i1=" " i2=" ">
+<subfield label="a">978-80-87899-03-8</subfield>
+<subfield label="q">(2013 :</subfield>
+<subfield label="q">online :</subfield>
+<subfield label="q">Mobipocket)</subfield>
+</varfield>
+<varfield id="902" i1=" " i2=" ">
+<subfield label="a">978-80-87899-04-5</subfield>
+<subfield label="q">(2013 :</subfield>
+<subfield label="q">online :</subfield>
+<subfield label="q">pdf)</subfield>
+</varfield>
+<varfield id="910" i1=" " i2=" ">
+<subfield label="a">ABA001</subfield>
+<subfield label="s">2010/2011, 2012-2013-</subfield>
+</varfield>
+<varfield id="998" i1=" " i2=" ">
+<subfield label="a">http://aleph.nkp.cz/F/?func=direct&amp;doc_number=000003059&amp;local_base=CZE-DEP</subfield>
+</varfield>
+<varfield id="PSP" i1=" " i2=" ">
+<subfield label="a">BK</subfield>
+</varfield>
+<varfield id="IST" i1="1" i2=" ">
+<subfield label="a">jp20150312</subfield>
+<subfield label="b">kola</subfield>
+</varfield>
+</oai_marc>
+</metadata>
+</record>
