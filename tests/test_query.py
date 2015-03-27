@@ -113,7 +113,24 @@ def test_get_urls(parsed):
 
 
 def test_publication_type(parsed):
-    assert parsed.get_publication_type() == PublicationType.monographic
+    assert parsed.get_pub_type() == PublicationType.monographic
+
+
+def test_is_monographic(parsed):
+    assert parsed.is_monographic() == True
+
+
+def test_is_multi_mono(parsed):
+    assert parsed.is_multi_mono() == False
+
+
+def test_is_continuing(parsed):
+    assert parsed.is_continuing() == False
+
+
+def test_is_single_unit(parsed):
+    assert parsed.is_single_unit() == False
+
 
 
 # Tests of epub file ==========================================================
@@ -138,4 +155,20 @@ def test_epub_get_internal_urls(epub):
 
 
 def test_epub_publication_type(epub):
-    assert epub.get_publication_type() == PublicationType.monographic
+    assert epub.get_pub_type() == PublicationType.monographic
+
+
+def test_epub_is_monographic(epub):
+    assert epub.is_monographic() == True
+
+
+def test_epub_is_multi_mono(epub):
+    assert epub.is_multi_mono() == False
+
+
+def test_epub_is_continuing(epub):
+    assert epub.is_continuing() == False
+
+
+def test_epub_is_single_unit(epub):
+    assert epub.is_single_unit() == False
