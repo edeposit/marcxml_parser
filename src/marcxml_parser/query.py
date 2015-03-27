@@ -457,3 +457,51 @@ class MARCXMLQuery(MARCXMLSerializer):
 
     def is_single_unit(self):
         return self.get_pub_type() == PublicationType.single_unit
+
+    def __getitem__(self, item):
+        """
+        Query inteface shortcut for :meth:`.MARCXMLParser.get_ctl_fields` and
+        :meth:`.MARCXMLParser.get_subfields`.
+
+        First three characters are considered as `datafield`, next character
+        as `subfield` and optionaly, two others as `i1` / `i2` parameters.
+
+        Returned value is str/None in case of ``len(item)`` == 3 (ctl_fields)
+        or list (or blank list) in case of ``len(item) >= 4``.
+
+        Returns:
+            list/str: See :meth:`.MARCXMLParser.get_subfields` for details.
+        """
+        if not isinstance(item, basestring):
+            raise ValueError("Only str/unide indexes are supported!")
+
+        if len(item) == 3:
+            return self.controlfields.get(item, None)
+
+        if len(item) < 3:
+            raise ValueError(
+                "Required at least 3 chars for field id."
+            )
+
+        if len(item) > 6:
+            raise ValueError(
+                "Too many indexing characters. use 4-6."
+            )
+
+        datafield = item[:3]
+        subfield = item[3]
+
+        i1 = None
+        i2 = None
+        if len(item) >= 5:
+            i1 = item[4]
+        if len(item) >= 6:
+            i2 = item[5]
+
+        return self.get_subfields(
+            datafield=datafield,
+            subfield=subfield,
+            i1=i1,
+            i2=i2,
+            exception=False
+        )
