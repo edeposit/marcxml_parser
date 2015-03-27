@@ -389,6 +389,29 @@ class MARCXMLQuery(MARCXMLSerializer):
     def get_originals(self):
         """
         Returns:
-            list: of original names
+            list: List of strings with original names.
         """
         return self.get_subfields("765", "t")
+
+    def get_urls(self):
+        """
+        Returns:
+            list: List of urls defined by producer (typically one pointing to \
+                  producers homepage).
+        """
+        urls = self.get_subfields("856", "u", i1="4", i2="2")
+
+        return map(lambda x: x.replace("&amp;", "&"), urls)
+
+    def get_internal_urls(self):
+        """
+        Returns:
+            list: List of internal urls. Url's may point to edeposit, aleph, \
+                  kramerius and so on.
+        """
+        internal_urls = self.get_subfields("856", "u", i1="4", i2="0")
+        internal_urls.extend(
+            self.get_subfields("998", "a")
+        )
+
+        return map(lambda x: x.replace("&amp;", "&"), internal_urls)
