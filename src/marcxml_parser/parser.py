@@ -88,7 +88,7 @@ class MARCXMLParser(object):
     Getters are also simple to use:
 
         - :meth:`getControlRecord`
-        - :meth:`get_subfield`
+        - :meth:`get_subfields`
 
     :meth:`getControlRecord` is just wrapper over :attr:`controlfields` and
     works same way as accessing ``.controlfields[controlfield]``.
@@ -389,16 +389,16 @@ class MARCXMLParser(object):
     def getDataRecords(self, datafield, subfield, throw_exceptions=True):
         """
         .. deprecated::
-            Use :func:`get_subfield` instead.
+            Use :func:`get_subfields` instead.
         """
-        return self.get_subfield(
+        return self.get_subfields(
             datafield=datafield,
             subfield=subfield,
             exception=throw_exceptions
         )
 
-    def get_subfield(self, datafield, subfield, i1=None, i2=None,
-                     exception=False):
+    def get_subfields(self, datafield, subfield, i1=None, i2=None,
+                      exception=False):
         """
         Return content of given `subfield` in `datafield`.
 

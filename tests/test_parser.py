@@ -73,206 +73,206 @@ def test_data_getter_properties(record):
     )
 
     with pytest.raises(KeyError):
-        record.get_subfield("015", "b", exception=True)
+        record.get_subfields("015", "b", exception=True)
 
-    assert record.get_subfield("015", "b", exception=False) == []
+    assert record.get_subfields("015", "b", exception=False) == []
 
 
 def test_data_getters(record):
-    assert record.get_subfield("015", "a")[0] == "cnb001492461"
-    ind_test = record.get_subfield("015", "a")[-1]
+    assert record.get_subfields("015", "a")[0] == "cnb001492461"
+    ind_test = record.get_subfields("015", "a")[-1]
     assert ind_test.i1 == " "
     assert ind_test.i2 == " "
 
-    assert record.get_subfield("020", "a")[0] == "80-251-0225-4 (brož.) :"
-    assert record.get_subfield("020", "c")[0] == "Kč 590,00"
-    ind_test = record.get_subfield("020", "c")[-1]
+    assert record.get_subfields("020", "a")[0] == "80-251-0225-4 (brož.) :"
+    assert record.get_subfields("020", "c")[0] == "Kč 590,00"
+    ind_test = record.get_subfields("020", "c")[-1]
     assert ind_test.i1 == " "
     assert ind_test.i2 == " "
 
-    assert record.get_subfield("035", "a")[0] == "(OCoLC)85131856"
-    ind_test = record.get_subfield("035", "a")[-1]
+    assert record.get_subfields("035", "a")[0] == "(OCoLC)85131856"
+    ind_test = record.get_subfields("035", "a")[-1]
     assert ind_test.i1 == " "
     assert ind_test.i2 == " "
 
-    assert record.get_subfield("040", "a")[0] == "BOA001"
-    assert record.get_subfield("040", "b")[0] == "cze"
-    assert record.get_subfield("040", "d")[0] == "ABA001"
-    ind_test = record.get_subfield("040", "d")[-1]
+    assert record.get_subfields("040", "a")[0] == "BOA001"
+    assert record.get_subfields("040", "b")[0] == "cze"
+    assert record.get_subfields("040", "d")[0] == "ABA001"
+    ind_test = record.get_subfields("040", "d")[-1]
     assert ind_test.i1 == " "
     assert ind_test.i2 == " "
 
-    assert record.get_subfield("041", "a")[0] == "cze"
-    assert record.get_subfield("041", "h")[0] == "eng"
-    ind_test = record.get_subfield("041", "h")[-1]
+    assert record.get_subfields("041", "a")[0] == "cze"
+    assert record.get_subfields("041", "h")[0] == "eng"
+    ind_test = record.get_subfields("041", "h")[-1]
     assert ind_test.i1 == "1"
     assert ind_test.i2 == " "
 
-    assert record.get_subfield("072", "a")[0] == "004.4/.6"
-    assert record.get_subfield("072", "x")[0] == "Programování. Software"
-    assert record.get_subfield("072", "2")[0] == "Konspekt"
-    assert record.get_subfield("072", "9")[0] == "23"
-    ind_test = record.get_subfield("072", "9")[-1]
+    assert record.get_subfields("072", "a")[0] == "004.4/.6"
+    assert record.get_subfields("072", "x")[0] == "Programování. Software"
+    assert record.get_subfields("072", "2")[0] == "Konspekt"
+    assert record.get_subfields("072", "9")[0] == "23"
+    ind_test = record.get_subfields("072", "9")[-1]
     assert ind_test.i1 == " "
     assert ind_test.i2 == "7"
 
-    assert record.get_subfield("080", "a")[0] == "004.451.9Unix"
-    assert record.get_subfield("080", "2")[0] == "MRF"
-    ind_test = record.get_subfield("080", "2")[0]
+    assert record.get_subfields("080", "a")[0] == "004.451.9Unix"
+    assert record.get_subfields("080", "2")[0] == "MRF"
+    ind_test = record.get_subfields("080", "2")[0]
     assert ind_test.i1 == " "
     assert ind_test.i2 == " "
 
-    assert record.get_subfield("080", "a")[1] == "004.451"
-    assert record.get_subfield("080", "2")[1] == "MRF"
-    ind_test = record.get_subfield("080", "2")[1]
+    assert record.get_subfields("080", "a")[1] == "004.451"
+    assert record.get_subfields("080", "2")[1] == "MRF"
+    ind_test = record.get_subfields("080", "2")[1]
     assert ind_test.i1 == " "
     assert ind_test.i2 == " "
 
-    assert record.get_subfield("080", "a")[2] == "004.42"
-    assert record.get_subfield("080", "2")[2] == "MRF"
-    ind_test = record.get_subfield("080", "2")[-1]
+    assert record.get_subfields("080", "a")[2] == "004.42"
+    assert record.get_subfields("080", "2")[2] == "MRF"
+    ind_test = record.get_subfields("080", "2")[-1]
     assert ind_test.i1 == " "
     assert ind_test.i2 == " "
 
-    assert record.get_subfield("080", "a")[3] == "(035)"
-    assert record.get_subfield("080", "2")[3] == "MRF"
-    ind_test = record.get_subfield("080", "2")[-1]
+    assert record.get_subfields("080", "a")[3] == "(035)"
+    assert record.get_subfields("080", "2")[3] == "MRF"
+    ind_test = record.get_subfields("080", "2")[-1]
     assert ind_test.i1 == " "
     assert ind_test.i2 == " "
 
-    assert record.get_subfield("100", "a")[0] == "Raymond, Eric S."
-    assert record.get_subfield("100", "7")[0] == "jn20020721375"
-    assert record.get_subfield("100", "4")[0] == "aut"
-    ind_test = record.get_subfield("100", "4")[-1]
+    assert record.get_subfields("100", "a")[0] == "Raymond, Eric S."
+    assert record.get_subfields("100", "7")[0] == "jn20020721375"
+    assert record.get_subfields("100", "4")[0] == "aut"
+    ind_test = record.get_subfields("100", "4")[-1]
     assert ind_test.i1 == "1"
     assert ind_test.i2 == " "
 
-    assert record.get_subfield("245", "a")[0] == "Umění programování v UNIXu /"
-    assert record.get_subfield("245", "c")[0] == "Eric S. Raymond"
-    ind_test = record.get_subfield("245", "c")[-1]
+    assert record.get_subfields("245", "a")[0] == "Umění programování v UNIXu /"
+    assert record.get_subfields("245", "c")[0] == "Eric S. Raymond"
+    ind_test = record.get_subfields("245", "c")[-1]
     assert ind_test.i1 == "1"
     assert ind_test.i2 == "0"
 
-    assert record.get_subfield("250", "a")[0] == "Vyd. 1."
-    ind_test = record.get_subfield("250", "a")[-1]
+    assert record.get_subfields("250", "a")[0] == "Vyd. 1."
+    ind_test = record.get_subfields("250", "a")[-1]
     assert ind_test.i1 == " "
     assert ind_test.i2 == " "
 
-    assert record.get_subfield("260", "a")[0] == "Brno :"
-    assert record.get_subfield("260", "b")[0] == "Computer Press,"
-    assert record.get_subfield("260", "c")[0] == "2004"
-    ind_test = record.get_subfield("260", "c")[-1]
+    assert record.get_subfields("260", "a")[0] == "Brno :"
+    assert record.get_subfields("260", "b")[0] == "Computer Press,"
+    assert record.get_subfields("260", "c")[0] == "2004"
+    ind_test = record.get_subfields("260", "c")[-1]
     assert ind_test.i1 == " "
     assert ind_test.i2 == " "
 
-    assert record.get_subfield("300", "a")[0] == "509 s. :"
-    assert record.get_subfield("300", "b")[0] == "il. ;"
-    assert record.get_subfield("300", "c")[0] == "23 cm"
-    ind_test = record.get_subfield("300", "c")[-1]
+    assert record.get_subfields("300", "a")[0] == "509 s. :"
+    assert record.get_subfields("300", "b")[0] == "il. ;"
+    assert record.get_subfields("300", "c")[0] == "23 cm"
+    ind_test = record.get_subfields("300", "c")[-1]
     assert ind_test.i1 == " "
     assert ind_test.i2 == " "
 
-    assert record.get_subfield("500", "a")[0] == "Glosář"
-    ind_test = record.get_subfield("500", "a")[-1]
+    assert record.get_subfields("500", "a")[0] == "Glosář"
+    ind_test = record.get_subfields("500", "a")[-1]
     assert ind_test.i1 == " "
     assert ind_test.i2 == " "
 
-    assert record.get_subfield("504", "a")[0] == "Obsahuje bibliografii, bibliografické odkazy a rejstřík"
-    ind_test = record.get_subfield("504", "a")[-1]
+    assert record.get_subfields("504", "a")[0] == "Obsahuje bibliografii, bibliografické odkazy a rejstřík"
+    ind_test = record.get_subfields("504", "a")[-1]
     assert ind_test.i1 == " "
     assert ind_test.i2 == " "
 
-    assert record.get_subfield("546", "a")[0] == "Přeloženo z angličtiny"
-    ind_test = record.get_subfield("546", "a")[-1]
+    assert record.get_subfields("546", "a")[0] == "Přeloženo z angličtiny"
+    ind_test = record.get_subfields("546", "a")[-1]
     assert ind_test.i1 == " "
     assert ind_test.i2 == " "
 
-    assert record.get_subfield("650", "a")[0] == "UNIX"
-    assert record.get_subfield("650", "7")[0] == "ph117153"
-    assert record.get_subfield("650", "2")[0] == "czenas"
-    ind_test = record.get_subfield("650", "2")[0]
+    assert record.get_subfields("650", "a")[0] == "UNIX"
+    assert record.get_subfields("650", "7")[0] == "ph117153"
+    assert record.get_subfields("650", "2")[0] == "czenas"
+    ind_test = record.get_subfields("650", "2")[0]
     assert ind_test.i1 == "0"
     assert ind_test.i2 == "7"
 
-    assert record.get_subfield("650", "a")[1] == "operační systémy"
-    assert record.get_subfield("650", "7")[1] == "ph115593"
-    assert record.get_subfield("650", "2")[1] == "czenas"
-    ind_test = record.get_subfield("650", "2")[1]
+    assert record.get_subfields("650", "a")[1] == "operační systémy"
+    assert record.get_subfields("650", "7")[1] == "ph115593"
+    assert record.get_subfields("650", "2")[1] == "czenas"
+    ind_test = record.get_subfields("650", "2")[1]
     assert ind_test.i1 == "0"
     assert ind_test.i2 == "7"
 
-    assert record.get_subfield("650", "a")[2] == "programování"
-    assert record.get_subfield("650", "7")[2] == "ph115891"
-    assert record.get_subfield("650", "2")[2] == "czenas"
-    ind_test = record.get_subfield("650", "2")[2]
+    assert record.get_subfields("650", "a")[2] == "programování"
+    assert record.get_subfields("650", "7")[2] == "ph115891"
+    assert record.get_subfields("650", "2")[2] == "czenas"
+    ind_test = record.get_subfields("650", "2")[2]
     assert ind_test.i1 == "0"
     assert ind_test.i2 == "7"
 
-    assert record.get_subfield("650", "a")[3] == "UNIX"
-    assert record.get_subfield("650", "2")[3] == "eczenas"
-    ind_test = record.get_subfield("650", "2")[3]
+    assert record.get_subfields("650", "a")[3] == "UNIX"
+    assert record.get_subfields("650", "2")[3] == "eczenas"
+    ind_test = record.get_subfields("650", "2")[3]
     assert ind_test.i1 == "0"
     assert ind_test.i2 == "9"
 
-    assert record.get_subfield("650", "a")[4] == "operating systems"
-    assert record.get_subfield("650", "2")[4] == "eczenas"
-    ind_test = record.get_subfield("650", "2")[4]
+    assert record.get_subfields("650", "a")[4] == "operating systems"
+    assert record.get_subfields("650", "2")[4] == "eczenas"
+    ind_test = record.get_subfields("650", "2")[4]
     assert ind_test.i1 == "0"
     assert ind_test.i2 == "9"
 
-    assert record.get_subfield("650", "a")[5] == "programming"
-    assert record.get_subfield("650", "2")[5] == "eczenas"
-    ind_test = record.get_subfield("650", "2")[5]
+    assert record.get_subfields("650", "a")[5] == "programming"
+    assert record.get_subfields("650", "2")[5] == "eczenas"
+    ind_test = record.get_subfields("650", "2")[5]
     assert ind_test.i1 == "0"
     assert ind_test.i2 == "9"
 
-    assert record.get_subfield("655", "a")[0] == "příručky"
-    assert record.get_subfield("655", "7")[0] == "fd133209"
-    assert record.get_subfield("655", "2")[0] == "czenas"
-    ind_test = record.get_subfield("655", "2")[0]
+    assert record.get_subfields("655", "a")[0] == "příručky"
+    assert record.get_subfields("655", "7")[0] == "fd133209"
+    assert record.get_subfields("655", "2")[0] == "czenas"
+    ind_test = record.get_subfields("655", "2")[0]
     assert ind_test.i1 == " "
     assert ind_test.i2 == "7"
 
-    assert record.get_subfield("655", "a")[1] == "handbooks, manuals, etc."
-    assert record.get_subfield("655", "2")[1] == "eczenas"
-    ind_test = record.get_subfield("655", "2")[1]
+    assert record.get_subfields("655", "a")[1] == "handbooks, manuals, etc."
+    assert record.get_subfields("655", "2")[1] == "eczenas"
+    ind_test = record.get_subfields("655", "2")[1]
     assert ind_test.i1 == " "
     assert ind_test.i2 == "9"
 
-    assert record.get_subfield("765", "t")[0] == "Art of UNIX programming"
-    assert record.get_subfield("765", "9")[0] == "Česky"
-    ind_test = record.get_subfield("765", "9")[-1]
+    assert record.get_subfields("765", "t")[0] == "Art of UNIX programming"
+    assert record.get_subfields("765", "9")[0] == "Česky"
+    ind_test = record.get_subfields("765", "9")[-1]
     assert ind_test.i1 == "0"
     assert ind_test.i2 == " "
 
-    assert record.get_subfield("901", "b")[0] == "9788025102251"
-    assert record.get_subfield("901", "f")[0] == "1. vyd."
-    assert record.get_subfield("901", "o")[0] == "20050217"
-    ind_test = record.get_subfield("901", "o")[-1]
+    assert record.get_subfields("901", "b")[0] == "9788025102251"
+    assert record.get_subfields("901", "f")[0] == "1. vyd."
+    assert record.get_subfields("901", "o")[0] == "20050217"
+    ind_test = record.get_subfields("901", "o")[-1]
     assert ind_test.i1 == " "
     assert ind_test.i2 == " "
 
-    assert record.get_subfield("910", "a")[0] == "ABA001"
-    ind_test = record.get_subfield("910", "a")[-1]
+    assert record.get_subfields("910", "a")[0] == "ABA001"
+    ind_test = record.get_subfields("910", "a")[-1]
     assert ind_test.i1 == "1"
     assert ind_test.i2 == " "
 
 
-def test_get_subfield_i_parameters(record):
-    assert record.get_subfield("901", "b", " ", " ")[0] == "9788025102251"
-    assert record.get_subfield("901", "f", " ", " ")[0] == "1. vyd."
-    assert record.get_subfield("901", "o", " ", " ")[0] == "20050217"
+def test_get_subfields_i_parameters(record):
+    assert record.get_subfields("901", "b", " ", " ")[0] == "9788025102251"
+    assert record.get_subfields("901", "f", " ", " ")[0] == "1. vyd."
+    assert record.get_subfields("901", "o", " ", " ")[0] == "20050217"
 
-    assert len(record.get_subfield("650", "a", "0", "9")) == 3
+    assert len(record.get_subfields("650", "a", "0", "9")) == 3
 
-    assert record.get_subfield("650", "a", "0", "9")[0] == "UNIX"
-    assert record.get_subfield("650", "2", "0", "9")[0] == "eczenas"
+    assert record.get_subfields("650", "a", "0", "9")[0] == "UNIX"
+    assert record.get_subfields("650", "2", "0", "9")[0] == "eczenas"
 
-    assert record.get_subfield("650", "a", "0", "9")[1] == "operating systems"
-    assert record.get_subfield("650", "2", "0", "9")[1] == "eczenas"
+    assert record.get_subfields("650", "a", "0", "9")[1] == "operating systems"
+    assert record.get_subfields("650", "2", "0", "9")[1] == "eczenas"
 
-    assert record.get_subfield("650", "a", "0", "9")[2] == "programming"
-    assert record.get_subfield("650", "2", "0", "9")[2] == "eczenas"
+    assert record.get_subfields("650", "a", "0", "9")[2] == "programming"
+    assert record.get_subfields("650", "2", "0", "9")[2] == "eczenas"
 
 
 def test_add_ctl_field():
@@ -329,9 +329,9 @@ def test_add_data_field_multiple_fields():
         ]],
     ])
 
-    assert rec.get_subfield("OST", "a") == ["aaa", "bbb"]
-    assert rec.get_subfield("OST", "a", " ", " ") == ["aaa"]
-    assert rec.get_subfield("OST", "a", "1", "2") == ["bbb"]
+    assert rec.get_subfields("OST", "a") == ["aaa", "bbb"]
+    assert rec.get_subfields("OST", "a", " ", " ") == ["aaa"]
+    assert rec.get_subfields("OST", "a", "1", "2") == ["bbb"]
 
 
 def test_add_data_field_exceptions():

@@ -81,7 +81,7 @@ class MARCXMLQuery(MARCXMLSerializer):
                 "Bad subfield specification - subield have to be 3 chars long!"
             )
         parsed_corporations = []
-        for corporation in self.get_subfield(datafield, subfield):
+        for corporation in self.get_subfields(datafield, subfield):
             other_subfields = corporation.other_subfields
 
             # check if corporation have at least one of the roles specified in
@@ -128,7 +128,7 @@ class MARCXMLQuery(MARCXMLSerializer):
         """
         # parse authors
         parsed_persons = []
-        raw_persons = self.get_subfield(datafield, subfield)
+        raw_persons = self.get_subfields(datafield, subfield)
         for person in raw_persons:
 
             # check if person have at least one of the roles specified in
@@ -198,7 +198,7 @@ class MARCXMLQuery(MARCXMLSerializer):
         Raises:
             KeyError: when name is not specified.
         """
-        return "".join(self.get_subfield("245", "a"))
+        return "".join(self.get_subfields("245", "a"))
 
     @remove_hairs_decorator
     def get_subname(self, undefined=""):
@@ -210,7 +210,7 @@ class MARCXMLQuery(MARCXMLSerializer):
             str: Sub-name of the book or `undefined` if name is not defined.
         """
         return _undefined_pattern(
-            "".join(self.get_subfield("245", "b")),
+            "".join(self.get_subfields("245", "b")),
             lambda x: x.strip() == "",
             undefined
         )
@@ -222,7 +222,7 @@ class MARCXMLQuery(MARCXMLSerializer):
             str: Price of the book (with currency).
         """
         return _undefined_pattern(
-            "".join(self.get_subfield("020", "c")),
+            "".join(self.get_subfields("020", "c")),
             lambda x: x.strip() == "",
             undefined
         )
@@ -234,7 +234,7 @@ class MARCXMLQuery(MARCXMLSerializer):
             str: Which part of the book series is this record.
         """
         return _undefined_pattern(
-            "".join(self.get_subfield("245", "p")),
+            "".join(self.get_subfields("245", "p")),
             lambda x: x.strip() == "",
             undefined
         )
@@ -246,7 +246,7 @@ class MARCXMLQuery(MARCXMLSerializer):
             str: Name of the part of the series.
         """
         return _undefined_pattern(
-            "".join(self.get_subfield("245", "n")),
+            "".join(self.get_subfields("245", "n")),
             lambda x: x.strip() == "",
             undefined
         )
@@ -258,7 +258,7 @@ class MARCXMLQuery(MARCXMLSerializer):
             str: name of the publisher ("``Grada``" for example)
         """
         return _undefined_pattern(
-            "".join(self.get_subfield("260", "b")),
+            "".join(self.get_subfields("260", "b")),
             lambda x: x.strip() == "",
             undefined
         )
@@ -270,7 +270,7 @@ class MARCXMLQuery(MARCXMLSerializer):
             str: date of publication (month and year usually)
         """
         return _undefined_pattern(
-            "".join(self.get_subfield("260", "c")),
+            "".join(self.get_subfields("260", "c")),
             lambda x: x.strip() == "",
             undefined
         )
@@ -282,7 +282,7 @@ class MARCXMLQuery(MARCXMLSerializer):
             str: information about order in which was the book published
         """
         return _undefined_pattern(
-            "".join(self.get_subfield("901", "f")),
+            "".join(self.get_subfields("901", "f")),
             lambda x: x.strip() == "",
             undefined
         )
@@ -294,7 +294,7 @@ class MARCXMLQuery(MARCXMLSerializer):
             str: name of city/country where the book was published
         """
         return _undefined_pattern(
-            "".join(self.get_subfield("260", "a")),
+            "".join(self.get_subfields("260", "a")),
             lambda x: x.strip() == "",
             undefined
         )
@@ -305,7 +305,7 @@ class MARCXMLQuery(MARCXMLSerializer):
             str: dimensions of the book ('``23 cm``' for example)
         """
         return _undefined_pattern(
-            "".join(self.get_subfield("300", "c")),
+            "".join(self.get_subfields("300", "c")),
             lambda x: x.strip() == "",
             undefined
         )
@@ -354,16 +354,16 @@ class MARCXMLQuery(MARCXMLSerializer):
             list: array with ISBN strings
         """
 
-        if self.get_subfield("020", "a"):
+        if self.get_subfields("020", "a"):
             return map(
                 lambda ISBN: ISBN.strip().split(" ", 1)[0],
-                self.get_subfield("020", "a", exception=True)
+                self.get_subfields("020", "a", exception=True)
             )
 
-        if self.get_subfield("901", "i"):
+        if self.get_subfields("901", "i"):
             return map(
                 lambda ISBN: ISBN.strip().split(" ", 1)[0],
-                self.get_subfield("901", "i", exception=True)
+                self.get_subfields("901", "i", exception=True)
             )
 
         return []
@@ -373,14 +373,14 @@ class MARCXMLQuery(MARCXMLSerializer):
         Returns:
             list: array of strings with bindings (``["brož."]``) or blank list
         """
-        if self.get_subfield("020", "a"):
+        if self.get_subfields("020", "a"):
             return map(
                 lambda x: remove_hairs_fn(
                     x.strip().split(" ", 1)[1]
                 ),
                 filter(
                     lambda x: "-" in x and " " in x,
-                    self.get_subfield("020", "a", exception=True)
+                    self.get_subfields("020", "a", exception=True)
                 )
             )
 
@@ -391,4 +391,4 @@ class MARCXMLQuery(MARCXMLSerializer):
         Returns:
             list: of original names
         """
-        return self.get_subfield("765", "t")
+        return self.get_subfields("765", "t")
