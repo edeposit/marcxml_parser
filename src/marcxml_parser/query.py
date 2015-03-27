@@ -12,6 +12,7 @@ from .serializer import MARCXMLSerializer
 
 from structures import Person
 from structures import Corporation
+from structures import PublicationType
 
 
 # Variables ===================================================================

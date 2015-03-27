@@ -8,5 +8,6 @@ from .record import MARCXMLRecord
 
 from structures import Person
 from structures import Corporation
+from structures import PublicationType
 
 from structures import MARCSubrecord
