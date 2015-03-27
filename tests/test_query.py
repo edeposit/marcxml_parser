@@ -132,6 +132,34 @@ def test_is_single_unit(parsed):
     assert parsed.is_single_unit() == False
 
 
+def test_indexing_operator(parsed):
+    assert parsed["015a"][0] == "cnb001492461"
+
+    assert parsed["901b  "][0] == "9788025102251"
+    assert parsed["901f  "][0] == "1. vyd."
+    assert parsed["901o  "][0] == "20050217"
+
+    assert len(parsed["650a09"]) == 3
+
+    assert parsed["650a09"][0] == "UNIX"
+    assert parsed["650209"][0] == "eczenas"
+
+    assert parsed["650a09"][1] == "operating systems"
+    assert parsed["650209"][1] == "eczenas"
+
+    assert parsed["650a09"][2] == "programming"
+    assert parsed["650209"][2] == "eczenas"
+
+
+def test_indexing_operator_fail(parsed):
+    assert parsed["001"] == "cpk20051492461"
+    assert parsed["003"] == "CZ-PrNK"
+    assert parsed["005"] == "20120509091037.0"
+    assert parsed["007"] == "ta"
+    assert parsed["008"] == "041216s2004----xr-a---e-f----001-0-cze--"
+
+    assert parsed["azg"] == None
+
 
 # Tests of epub file ==========================================================
 def test_epub_get_urls(epub):
