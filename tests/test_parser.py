@@ -9,9 +9,9 @@ from collections import OrderedDict
 
 import pytest
 
-from marcxml_parser import MARCXMLRecord
+from marcxml_parser.parser import MARCXMLParser
 
-from test_record import aleph_files
+from test_serializer import aleph_files
 
 
 # Functions & classes =========================================================
@@ -27,7 +27,7 @@ def unix_file():
 
 @pytest.fixture
 def record():
-    return MARCXMLRecord(unix_file())
+    return MARCXMLParser(unix_file())
 
 
 # Tests =======================================================================
@@ -276,7 +276,7 @@ def test_get_subfield_i_parameters(record):
 
 
 def test_add_ctl_field():
-    rec = MARCXMLRecord()
+    rec = MARCXMLParser()
     rec.controlfields = OrderedDict()
 
     rec.add_ctl_field("ASD", "Hello")
@@ -287,7 +287,7 @@ def test_add_ctl_field():
 
 
 def test_add_ctl_field_rewrite():
-    rec = MARCXMLRecord()
+    rec = MARCXMLParser()
 
     rec.add_ctl_field("ASD", "Hello")
     rec.add_ctl_field("ASD", "Hi")
@@ -298,14 +298,14 @@ def test_add_ctl_field_rewrite():
 
 
 def test_add_ctl_field_error():
-    rec = MARCXMLRecord()
+    rec = MARCXMLParser()
 
     with pytest.raises(ValueError):
         rec.add_ctl_field("A", "Hello")
 
 
 def test_add_data_field():
-    rec = MARCXMLRecord()
+    rec = MARCXMLParser()
     rec.datafields = OrderedDict()
 
     rec.add_data_field("OST", " ", " ", {"a": "1"})
@@ -316,7 +316,7 @@ def test_add_data_field():
 
 
 def test_add_data_field_multiple_fields():
-    rec = MARCXMLRecord()
+    rec = MARCXMLParser()
     rec.datafields = OrderedDict()
 
     rec.add_data_field("OST", " ", " ", {"a": "aaa"})
@@ -335,7 +335,7 @@ def test_add_data_field_multiple_fields():
 
 
 def test_add_data_field_exceptions():
-    rec = MARCXMLRecord()
+    rec = MARCXMLParser()
 
     with pytest.raises(ValueError):
         rec.add_data_field("OST", " ", " ", [])

@@ -8,7 +8,7 @@ import remove_hairs
 from remove_hairs import remove_hairs as remove_hairs_fn
 from remove_hairs import remove_hairs_decorator
 
-from . import record
+from .serializer import MARCXMLSerializer
 
 from structures import Person
 from structures import Corporation
@@ -29,7 +29,7 @@ def _undefined_pattern(value, fn, undefined):
     return value
 
 
-class MARCXMLQuery(record.MARCXMLRecord):
+class MARCXMLQuery(MARCXMLSerializer):
     """
     Highlevel abstractions
     ++++++++++++++++++++++

@@ -7,7 +7,7 @@
 import pytest
 
 from marcxml_parser import Person
-from marcxml_parser import MARCXMLQuery
+from marcxml_parser.query import MARCXMLQuery
 
 from test_parser import unix_file
 
