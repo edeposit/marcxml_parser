@@ -7,6 +7,8 @@
 import pytest
 
 from marcxml_parser import Person
+from marcxml_parser import PublicationType
+
 from marcxml_parser.query import MARCXMLQuery
 
 from test_parser import unix_file
@@ -110,6 +112,10 @@ def test_get_urls(parsed):
     assert parsed.get_urls() == []
 
 
+def test_publication_type(parsed):
+    assert parsed.get_publication_type() == PublicationType.monographic
+
+
 # Tests of epub file ==========================================================
 def test_epub_get_urls(epub):
     assert epub.get_urls() == []
@@ -129,3 +135,7 @@ def test_epub_get_internal_urls(epub):
         url + "0-2011/echa-2013-eva-jelinkova-michael-spirit-eds.epub",
         "http://aleph.nkp.cz/F/?func=direct&doc_number=000003059&local_base=CZE-DEP"
     ]
+
+
+def test_epub_publication_type(epub):
+    assert epub.get_publication_type() == PublicationType.monographic
