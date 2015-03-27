@@ -417,7 +417,7 @@ class MARCXMLQuery(MARCXMLSerializer):
 
         return map(lambda x: x.replace("&amp;", "&"), internal_urls)
 
-    def get_publication_type(self):
+    def get_pub_type(self):
         """
         Returns:
             PublicationType: :class:`.PublicationType` enum value.
@@ -445,3 +445,15 @@ class MARCXMLQuery(MARCXMLSerializer):
                 return PublicationType.single_unit
 
         return PublicationType.monographic
+
+    def is_monographic(self):
+        return self.get_pub_type() == PublicationType.monographic
+
+    def is_multi_mono(self):
+        return self.get_pub_type() == PublicationType.multipart_monograph
+
+    def is_continuing(self):
+        return self.get_pub_type() == PublicationType.continuing
+
+    def is_single_unit(self):
+        return self.get_pub_type() == PublicationType.single_unit
