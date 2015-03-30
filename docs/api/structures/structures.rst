@@ -8,8 +8,9 @@ List of structures
 ------------------
 
 .. toctree::
+    :maxdepth: 1
 
-   person
-   corporation
-   marcsubrecord
-   publication_type
+    person
+    corporation
+    marcsubrecord
+    publication_type
