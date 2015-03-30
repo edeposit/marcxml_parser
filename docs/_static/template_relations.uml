@@ -1,0 +1,117 @@
+package marcxml_parser {
+    package structures {
+        class struct_init as "_​_init__.py" <<M, Green>> {
+            Imports all structures to be
+            accessible at package level.
+            ---
+            $templater:module:structures/__init__
+        }
+        class person as "person.py" <<M, Green>> {
+            Holds informations
+            about pesons.
+
+            Used for authors.
+            ---
+            $templater:module:structures/person
+        }
+        class corporation as "corporation.py" <<M, Green>> {
+            Holds information
+            about corporations.
+            ---
+            $templater:module:structures/corporation
+        }
+        class marcsubrecord as "marcsubrecord.py" <<M, Green>> {
+            MARCSubrecord is used
+            to hold informations
+            about subrecord's
+            context.
+            ---
+            $templater:module:structures/marcsubrecord
+        }
+        class publication_type as "publication_type.py" <<M, Green>> {
+            Contains Enum, which
+            holds informations about
+            type of the publication.
+
+            Monographic/multi-mono
+            serials and so on.
+            ---
+            $templater:module:structures/publication_type
+        }
+    }
+    person ..> struct_init: imported
+    corporation ..> struct_init: imported
+    marcsubrecord ..> struct_init: imported
+    publication_type ..> struct_init: imported
+
+
+    package tools {
+        class tools_init as "_​_init__.py" <<M, Green>> {
+            Imports functions from
+            resorted.py to be
+            accessible at package
+            level.
+            ---
+            $templater:module:tools/__init__
+        }
+        class resorted as "resorted.py" <<M, Green>> {
+            Contains resorted
+            function and
+            decorator.
+            ---
+            $templater:module:tools/resorted
+        }
+    }
+    resorted ..> tools_init: imported
+
+
+    class parser as "parser.py" <<M, Green>> {
+        Lowlevel parsing of XML.
+
+        Also some basic getters
+        and setters.
+        ---
+        $templater:module:parser
+    }
+    class serializer as "serializer.py" <<M, Green>> {
+        Serialization back to XML.
+        ---
+        $templater:module:serializer
+    }
+    class query as "query.py" <<M, Green>> {
+        Highlevel queries.
+        ---
+        $templater:module:query
+    }
+    class record as "record.py" <<M, Green>> {
+        Unification of all
+        MARCXML classes.
+        ---
+        $templater:module:record
+    }
+    class init as "_​_init__.py" <<M, Green>> {
+        Makes visible only
+        important objects.
+        ---
+        class MARCXMLParser
+        class MARCSubrecord
+        class Person
+        class Corporation
+        enum PublicationType
+    }
+
+
+    struct_init ..> parser: MARCSubrecord
+    tools_init .r.> parser: resorted()
+
+    struct_init ..> query: Person
+    struct_init ..> query: Corporation
+    struct_init ..> query: PublicationType
+
+    parser -r-> serializer
+    serializer -r-> query
+    query -r-> record
+
+    record .d.> init: imported
+    struct_init ....> init: imports *
+}
