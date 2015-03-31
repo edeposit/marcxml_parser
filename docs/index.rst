@@ -19,6 +19,21 @@ Parser is split into multiple classes, which each have own responsibility. Most
 important is class :class:`.MARCXMLRecord`, which contains
 :class:`.MARCXMLParser`, :class:`.MARCXMLSerializer` and :class:`.MARCXMLQuery`.
 
+File relations
+++++++++++++++
+
+Import relations of files in project:
+
+.. image:: /_static/relations.png
+    :width: 600px
+
+Class relations
++++++++++++++++
+
+Relation of the classes in project:
+
+
+
 API
 ---
 
@@ -94,7 +109,7 @@ or for all users::
 
 
 Example
-^^^^^^^
++++++++
 ::
 
     $ ./run_tests.sh
