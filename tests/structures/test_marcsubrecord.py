@@ -17,7 +17,7 @@ def test_MARCSubrecord_class():
     )
 
     m2 = MARCSubrecord(
-        arg="ola",
+        val="ola",
         i1="1",
         i2="2",
         other_subfields=[]
@@ -26,7 +26,7 @@ def test_MARCSubrecord_class():
     assert m == m2
     assert m == "ola"
 
-    assert m.arg == "ola"
+    assert m.val == "ola"
     assert m.i1 == "1"
     assert m.i2 == "2"
     assert m.other_subfields == []

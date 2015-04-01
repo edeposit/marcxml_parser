@@ -24,21 +24,21 @@ class MARCSubrecord(str):
     with string, in which case only the value of `subrecord` is preserved.
 
     Attributes:
-        arg (str):   Value of `subrecord`.
+        val (str): Value of `subrecord`.
         ind1 (char): Indicator one.
         ind2 (char): Indicator two.
         other_subfields (dict): Dictionary with other subfields from the same
                                 `subrecord`.
 
     """
-    def __new__(self, arg, i1, i2, other_subfields):
-        return str.__new__(self, arg)
+    def __new__(self, val, i1, i2, other_subfields):
+        return str.__new__(self, val)
 
-    def __init__(self, arg, i1, i2, other_subfields):
-        self.arg = arg
+    def __init__(self, val, i1, i2, other_subfields):
+        self.val = val
         self.i1 = i1
         self.i2 = i2
         self.other_subfields = other_subfields
 
     def __str__(self):
-        return self.arg
+        return self.val

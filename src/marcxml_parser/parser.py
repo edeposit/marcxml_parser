@@ -226,7 +226,7 @@ class MARCXMLParser(object):
                     continue
 
                 content = MARCSubrecord(
-                    arg=subfield.getContent().strip(),
+                    val=subfield.getContent().strip(),
                     i1=field_repr[self.i1_name],
                     i2=field_repr[self.i2_name],
                     other_subfields=field_repr
