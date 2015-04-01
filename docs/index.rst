@@ -25,14 +25,15 @@ File relations
 Import relations of files in project:
 
 .. image:: /_static/relations.png
-    :width: 600px
+    :width: 400px
 
 Class relations
 +++++++++++++++
 
-Relation of the classes in project:
+Relations of the classes in project:
 
-
+.. image:: /_static/class_relations.png
+    :width: 400px
 
 API
 ---
