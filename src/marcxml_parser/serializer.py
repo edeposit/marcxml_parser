@@ -12,8 +12,8 @@ from .parser import MARCXMLParser
 # Classes =====================================================================
 class MARCXMLSerializer(MARCXMLParser):
     """
-    Class which holds all the data from parser, but contains also serialization
-    methods back to XML.
+    Class which holds all the data from parser, but contains also XML
+    serialization methods.
     """
     def __init__(self, xml=None, resort=True):
         super(MARCXMLSerializer, self).__init__(xml, resort)
@@ -104,7 +104,7 @@ class MARCXMLSerializer(MARCXMLParser):
 
     def to_XML(self):
         """
-        Convert object back to XML string.
+        Serialize object back to XML string.
 
         Returns:
             str: String which should be same as original input, if everything\
@@ -150,6 +150,9 @@ $DATA_FIELDS
         return xml_output
 
     def __str__(self):
+        """
+        Alias for :meth:`to_XML`.
+        """
         return self.to_XML()
 
     def __repr__(self):

@@ -1,5 +1,5 @@
-marcxml_parser.serializer module
-================================
+Serializer sub-module
+=====================
 
 .. automodule:: marcxml_parser.serializer
     :members:
