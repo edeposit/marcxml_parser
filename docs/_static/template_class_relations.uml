@@ -1,3 +1,7 @@
+class str {
+    String class in python.
+}
+
 package marcxml_parser {
     package structures {
         class Person {
@@ -10,16 +14,13 @@ package marcxml_parser {
             $templater:struct:structures/person
         }
         class Corporation{
-            Holds information
+            Basic informations
             about corporations.
             ---
             $templater:struct:structures/corporation
         }
         class MARCSubrecord {
-            MARCSubrecord is used
-            to hold informations
-            about subrecord's
-            context.
+            Subrecords context.
             ---
             .arg
             .i1
@@ -27,11 +28,8 @@ package marcxml_parser {
             .other_subfields
         }
         class PublicationType {
-            Informations about
-            type of the publication.
-
-            Monographic/multi-mono
-            serials and so on.
+            Enum holding informations
+            about type of the book.
             ---
             .monographic
             .continuing
@@ -73,12 +71,17 @@ package marcxml_parser {
     class MARCXMLRecord {
         Unification of all
         MARCXML classes.
+
+        Used mostly for
+        compatibility.
         ---
         $templater:struct:record
     }
 }
 
-resorted .d.> MARCXMLSerializer
+str -d-> MARCSubrecord
+
+resorted .d.> MARCXMLSerializer: uses
 
 Person .d..> MARCXMLQuery
 Corporation .d..> MARCXMLQuery
