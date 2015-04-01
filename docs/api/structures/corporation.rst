@@ -1,5 +1,5 @@
-marcxml_parser.structures.corporation module
-============================================
+Corporation structure
+=====================
 
 .. automodule:: marcxml_parser.structures.corporation
     :members:

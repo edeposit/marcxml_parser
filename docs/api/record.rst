@@ -1,5 +1,5 @@
-marcxml_parser.record module
-============================
+Record sub-module
+=================
 
 .. automodule:: marcxml_parser.record
     :members:

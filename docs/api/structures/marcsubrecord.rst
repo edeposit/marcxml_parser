@@ -1,5 +1,5 @@
-marcxml_parser.structures.marcsubrecord module
-==============================================
+MARCSubrecord structure
+=======================
 
 .. automodule:: marcxml_parser.structures.marcsubrecord
     :members:

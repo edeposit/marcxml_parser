@@ -1,5 +1,5 @@
-marcxml_parser.tools.resorted module
-====================================
+Resorted sub-module
+===================
 
 .. automodule:: marcxml_parser.tools.resorted
     :members:

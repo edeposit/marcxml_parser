@@ -1,5 +1,5 @@
-marcxml_parser.structures.person module
-=======================================
+Person structure
+================
 
 .. automodule:: marcxml_parser.structures.person
     :members:

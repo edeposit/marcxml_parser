@@ -12,16 +12,12 @@ class MARCSubrecord(str):
     This class is used to store data returned from
     :meth:`.MARCXMLParser.get_datafield()`.
 
-    It looks kinda like overshot, but when you are parsing the MARC XML,
-    values from `subrecords`, you need to know the context in which the
-    `subrecord` is put.
+    It may look like overshot, but when you are parsing the MARC XML, values
+    from `subrecords`, you need to know the context in which the `subrecord` is
+    put.
 
     This context is provided by the ``i1``/``i2`` values, but sometimes it is
     also useful to have access to the other subfields from this `subrecord`.
-
-    This class provides this access by :meth:`getI1`/:meth:`getI2` and
-    :meth:`getOtherSubfields` getters. As a bonus, it is also fully replaceable
-    with string, in which case only the value of `subrecord` is preserved.
 
     Attributes:
         val (str): Value of `subrecord`.

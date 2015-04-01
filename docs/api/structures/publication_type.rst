@@ -1,5 +1,5 @@
-marcxml_parser.structures.publication_type module
-=================================================
+PublicationType enum
+====================
 
 .. automodule:: marcxml_parser.structures.publication_type
     :members:

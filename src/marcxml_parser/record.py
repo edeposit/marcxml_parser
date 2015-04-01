@@ -11,7 +11,7 @@ from .query import MARCXMLQuery
 class MARCXMLRecord(MARCXMLQuery):
     """
     Syndication of :class:`.MARCXMLParser`, :class:`.MARCXMLSerializer` and
-    :class:`:class:`.MARCXMLQuery` into one class.
+    :class:`.MARCXMLQuery` into one class for backward compatibility.
     """
     def __init__(self, xml=None, resort=True):
         super(MARCXMLRecord, self).__init__(xml, resort)

@@ -10,7 +10,7 @@ from collections import namedtuple
 # Functions & classes =========================================================
 class Corporation(namedtuple("Corporation", ["name", "place", "date"])):
     """
-    Some informations about corporations (fields 110, 610, 710, 810).
+    Informations about corporations (fields 110, 610, 710, 810).
 
     Attributes:
         name (str):  Name of the corporation.
