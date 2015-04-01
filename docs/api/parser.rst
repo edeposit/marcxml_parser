@@ -1,5 +1,5 @@
-marcxml_parser.parser module
-============================
+Parser submodule
+================
 
 .. automodule:: marcxml_parser.parser
     :members:

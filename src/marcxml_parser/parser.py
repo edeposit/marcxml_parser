@@ -16,35 +16,15 @@ from .structures import MARCSubrecord
 # Functions & classes =========================================================
 class MARCXMLParser(object):
     """
-    Class for serialization/deserialization of MARC XML and MARC OAI
-    documents.
-
     This class parses everything between ``<root>`` elements. It checks, if
     there is root element, so please, give it full XML.
 
-    Internal format is described in module docstring. You can access
-    internal data directly, or using few handy methods on two different
-    levels of abstraction.
-
-    **No abstraction at all**
-
-    You can choose to access data directly and for this use, there is few
-    important properties:
-
-    Attributes:
-      leader         (string): Leader of MARC XML document.
-      oai_marc       (bool): True/False, depending if doc is OAI doc or not
-      controlfields  (dict): Controlfields stored in dict.
-      datafields     (dict of arrays of dict of arrays of strings ^-^):
-                     Datafileds stored in nested dicts/arrays.
-
-    :attr:`controlfields` is simple and easy to use dictionary, where keys are
-    field identificators (string, 3 chars, all chars digits). Value is
-    always string.
+    :attr:`controlfields` is simple dictionary, where keys are field
+    identificators (string, 3 chars). Value is always string.
 
     :attr:`datafields` is little more complicated; it is dictionary made of
-    arrays of dictionaries, which consists of arrays of strings and two special
-    parameters.
+    arrays of dictionaries, which consists of arrays of :class:`MARCSubrecord`
+    objects and two special parameters.
 
     It sounds horrible, but it is not that hard to understand::
 
@@ -71,47 +51,12 @@ class MARCXMLParser(object):
             ]
         }
 
-    Notice ``ind1``/``ind2`` keywords, which are reserved indicators and used
-    in few cases thru MARC standard.
-
-    Dict structure is not that hard to understand, but kinda long to access,
-    so there is also higher-level abstraction access methods.
-
-    **Lowlevel abstraction**
-
-    To access data little bit easier, there are defined two methods to
-    access and two methods to add data to internal dictionaries:
-
-        - :meth:`add_ctl_field`
-        - :meth:`add_data_field`
-
-    Getters are also simple to use:
-
-        - :meth:`getControlRecord`
-        - :meth:`get_subfields`
-
-    :meth:`getControlRecord` is just wrapper over :attr:`controlfields` and
-    works same way as accessing ``.controlfields[controlfield]``.
-
-    ``.getDataRecords(datafield, subfield, throw_exceptions)`` return list of
-    :class:`MARCSubrecord` objects* with informations from section `datafield`
-    subsection `subfield`.
-
-    If `throw_exceptions` parameter is set to ``False``, method returns empty
-    list instead of throwing :exc:`~exceptions.KeyError`.
-
-    \*As I said, function returns list of :class:`MARCSubrecord` objects. They
-    are almost same thing as normal ``str`` (they are actually subclassed
-    strings), but defines few important methods, which can make your life
-    little bit easier:
-
-        - :meth:`~MARCSubrecord.getI1`
-        - :meth:`~MARCSubrecord.getI2`
-        - :meth:`~MARCSubrecord.getOtherSubfields`
-
-    :meth:`~MARCSubrecord.getOtherSubfields` returns dictionary with other
-    subsections from subfield requested by calling :meth:`getDataRecords`. It
-    works as backlink to object, from which you get the record.
+    Attributes:
+      leader         (string): Leader of MARC XML document.
+      oai_marc       (bool): True/False, depending if doc is OAI doc or not
+      controlfields  (dict): Controlfields stored in dict.
+      datafields     (dict of arrays of dict of arrays of strings): Datafileds
+                     stored in nested dicts/arrays.
     """
     def __init__(self, xml=None, resort=True):
         """
@@ -257,9 +202,8 @@ class MARCXMLParser(object):
 
     def add_data_field(self, name, i1, i2, subfields_dict):
         """
-        Add new datafield into :attr:`datafields`.
-
-        Function take care of OAI MARC differencies.
+        Add new datafield into :attr:`datafields` and take care of OAI MARC
+        differencies.
 
         Args:
             name (str): Name of datafield.
@@ -277,7 +221,8 @@ class MARCXMLParser(object):
 
         Warning:
             For your own good, use OrderedDict for `subfields_dict`, or
-            `resort` parameter.
+            constructor's `resort` parameter set to ``True`` (it is by
+            default).
 
         Warning:
             ``field_id`` can be only one character long!
@@ -363,10 +308,16 @@ class MARCXMLParser(object):
 
     @property
     def i1_name(self):
+        """
+        Property getter / alias for ``self.get_i_name(1)``.
+        """
         return self.get_i_name(1)
 
     @property
     def i2_name(self):
+        """
+        Property getter / alias for ``self.get_i_name(2)``.
+        """
         return self.get_i_name(2)
 
     def get_ctl_field(self, controlfield, alt=None):
@@ -376,7 +327,7 @@ class MARCXMLParser(object):
         Args:
             controlfield (str): Name of the controlfield.
             alt (object, default None): Alternative value of the `controlfield`
-                couldn't be found.
+                when `controlfield` couldn't be found.
 
         Returns:
             str: record from given `controlfield`
