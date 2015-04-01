@@ -1,0 +1,91 @@
+package marcxml_parser {
+    package structures {
+        class Person {
+            Holds informations
+            about pesons.
+
+            Used for mostly for
+            authors.
+            ---
+            $templater:struct:structures/person
+        }
+        class Corporation{
+            Holds information
+            about corporations.
+            ---
+            $templater:struct:structures/corporation
+        }
+        class MARCSubrecord {
+            MARCSubrecord is used
+            to hold informations
+            about subrecord's
+            context.
+            ---
+            .arg
+            .i1
+            .i2
+            .other_subfields
+        }
+        class PublicationType {
+            Informations about
+            type of the publication.
+
+            Monographic/multi-mono
+            serials and so on.
+            ---
+            .monographic
+            .continuing
+            .multipart_monograph
+            .single_unit
+        }
+    }
+
+
+    package tools {
+        class resorted as "resorted.py" <<M, Green>> {
+            Contains resorted
+            function and
+            decorator.
+            ---
+            $templater:module:tools/resorted
+        }
+    }
+
+
+    class MARCXMLParser {
+        Lowlevel parsing of XML.
+
+        Also some basic getters
+        and setters.
+        ---
+        $templater:struct:parser
+    }
+    class MARCXMLSerializer {
+        Serialization back to XML.
+        ---
+        $templater:struct:serializer
+    }
+    class MARCXMLQuery {
+        Highlevel queries.
+        ---
+        $templater:struct:query
+    }
+    class MARCXMLRecord {
+        Unification of all
+        MARCXML classes.
+        ---
+        $templater:struct:record
+    }
+}
+
+resorted .d.> MARCXMLSerializer
+
+Person .d..> MARCXMLQuery
+Corporation .d..> MARCXMLQuery
+PublicationType .d..> MARCXMLQuery
+MARCSubrecord .d..> MARCXMLQuery
+MARCSubrecord .d..> MARCXMLParser
+
+MARCXMLParser -r-> MARCXMLSerializer
+MARCXMLSerializer -r-> MARCXMLQuery
+MARCXMLQuery -r-> MARCXMLRecord

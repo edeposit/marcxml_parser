@@ -1,0 +1,176 @@
+package marcxml_parser {
+    package structures {
+        class Person {
+            Holds informations
+            about pesons.
+
+            Used for mostly for
+            authors.
+            ---
+            .name
+            .second_name
+            .surname
+            .title
+        }
+        class Corporation{
+            Holds information
+            about corporations.
+            ---
+            .date
+            .name
+            .place
+        }
+        class MARCSubrecord {
+            MARCSubrecord is used
+            to hold informations
+            about subrecord's
+            context.
+            ---
+            .arg
+            .i1
+            .i2
+            .other_subfields
+        }
+        class PublicationType {
+            Informations about
+            type of the publication.
+
+            Monographic/multi-mono
+            serials and so on.
+            ---
+            .monographic
+            .continuing
+            .multipart_monograph
+            .single_unit
+        }
+    }
+
+
+    package tools {
+        class resorted as "resorted.py" <<M, Green>> {
+            Contains resorted
+            function and
+            decorator.
+            ---
+            resorted(values)
+        }
+    }
+
+
+    class MARCXMLParser {
+        Lowlevel parsing of XML.
+
+        Also some basic getters
+        and setters.
+        ---
+        .i1_name
+        .i2_name
+        .add_ctl_field()
+        .add_data_field()
+        .getDataRecords()
+        .get_ctl_field()
+        .get_i_name()
+        .get_subfields()
+    }
+    class MARCXMLSerializer {
+        Serialization back to XML.
+        ---
+        .__str__()
+        .i1_name
+        .i2_name
+        .add_ctl_field()
+        .add_data_field()
+        .getDataRecords()
+        .get_ctl_field()
+        .get_i_name()
+        .get_subfields()
+        .to_XML()
+    }
+    class MARCXMLQuery {
+        Highlevel queries.
+        ---
+        .__str__()
+        .i1_name
+        .i2_name
+        .add_ctl_field()
+        .add_data_field()
+        .getDataRecords()
+        .get_ISBNs()
+        .get_authors()
+        .get_binding()
+        .get_corporations()
+        .get_ctl_field()
+        .get_distributors()
+        .get_format()
+        .get_i_name()
+        .get_internal_urls()
+        .get_name()
+        .get_originals()
+        .get_part()
+        .get_part_name()
+        .get_price()
+        .get_pub_date()
+        .get_pub_order()
+        .get_pub_place()
+        .get_pub_type()
+        .get_publisher()
+        .get_subfields()
+        .get_subname()
+        .get_urls()
+        .is_continuing()
+        .is_monographic()
+        .is_multi_mono()
+        .is_single_unit()
+        .to_XML()
+    }
+    class MARCXMLRecord {
+        Unification of all
+        MARCXML classes.
+        ---
+        .__str__()
+        .i1_name
+        .i2_name
+        .add_ctl_field()
+        .add_data_field()
+        .getDataRecords()
+        .get_ISBNs()
+        .get_authors()
+        .get_binding()
+        .get_corporations()
+        .get_ctl_field()
+        .get_distributors()
+        .get_format()
+        .get_i_name()
+        .get_internal_urls()
+        .get_name()
+        .get_originals()
+        .get_part()
+        .get_part_name()
+        .get_price()
+        .get_pub_date()
+        .get_pub_order()
+        .get_pub_place()
+        .get_pub_type()
+        .get_publisher()
+        .get_subfields()
+        .get_subname()
+        .get_urls()
+        .is_continuing()
+        .is_monographic()
+        .is_multi_mono()
+        .is_single_unit()
+        .to_XML()
+    }
+}
+
+resorted .d.> MARCXMLSerializer
+
+Person .d..> MARCXMLQuery
+Corporation .d..> MARCXMLQuery
+PublicationType .d..> MARCXMLQuery
+MARCSubrecord .d..> MARCXMLQuery
+MARCSubrecord .d..> MARCXMLParser
+
+MARCXMLParser -r-> MARCXMLSerializer
+MARCXMLSerializer -r-> MARCXMLQuery
+MARCXMLQuery -r-> MARCXMLRecord
