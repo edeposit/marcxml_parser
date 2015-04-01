@@ -1,5 +1,5 @@
-marcxml_parser.query module
-===========================
+Query sub-module
+================
 
 .. automodule:: marcxml_parser.query
     :members:

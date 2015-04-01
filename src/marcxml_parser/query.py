@@ -32,26 +32,7 @@ def _undefined_pattern(value, fn, undefined):
 
 class MARCXMLQuery(MARCXMLSerializer):
     """
-    Highlevel abstractions
-    ++++++++++++++++++++++
-
-    Getters:
-        - :meth:`get_name`
-        - :meth:`get_subname`
-        - :meth:`get_price`
-        - :meth:`get_part`
-        - :meth:`get_part_name`
-        - :meth:`get_publisher`
-        - :meth:`get_pub_date`
-        - :meth:`get_pub_order`
-        - :meth:`get_pub_place`
-        - :meth:`get_format`
-        - :meth:`get_authors`
-        - :meth:`get_corporations`
-        - :meth:`get_distributors`
-        - :meth:`get_ISBNs`
-        - :meth:`get_binding`
-        - :meth:`get_originals`
+    This class defines highlevel getters over MARC XML / OAI records.
     """
     def __init__(self, xml=None, resort=True):
         super(MARCXMLQuery, self).__init__(xml, resort)
@@ -197,7 +178,7 @@ class MARCXMLQuery(MARCXMLSerializer):
             str: Name of the book.
 
         Raises:
-            KeyError: when name is not specified.
+            KeyError: When name is not specified.
         """
         return "".join(self.get_subfields("245", "a"))
 
@@ -205,10 +186,12 @@ class MARCXMLQuery(MARCXMLSerializer):
     def get_subname(self, undefined=""):
         """
         Args:
-            undefined (optional): returned if sub-name record is not found.
+            undefined (optional): Argument, which will be returned if the
+                      `subname` record is not found.
 
         Returns:
-            str: Sub-name of the book or `undefined` if name is not defined.
+            str: Subname of the book or `undefined` if `subname` is not \
+                 found.
         """
         return _undefined_pattern(
             "".join(self.get_subfields("245", "b")),
@@ -219,8 +202,13 @@ class MARCXMLQuery(MARCXMLSerializer):
     @remove_hairs_decorator
     def get_price(self, undefined=""):
         """
+        Args:
+            undefined (optional): Argument, which will be returned if the
+                      `price` record is not found.
+
         Returns:
-            str: Price of the book (with currency).
+            str: Price of the book (with currency) or `undefined` if `price` \
+                 is not found.
         """
         return _undefined_pattern(
             "".join(self.get_subfields("020", "c")),
@@ -231,8 +219,13 @@ class MARCXMLQuery(MARCXMLSerializer):
     @remove_hairs_decorator
     def get_part(self, undefined=""):
         """
+        Args:
+            undefined (optional): Argument, which will be returned if the
+                      `part` record is not found.
+
         Returns:
-            str: Which part of the book series is this record.
+            str: Which part of the book series is this record or `undefined` \
+                 if `part` is not found.
         """
         return _undefined_pattern(
             "".join(self.get_subfields("245", "p")),
@@ -243,8 +236,13 @@ class MARCXMLQuery(MARCXMLSerializer):
     @remove_hairs_decorator
     def get_part_name(self, undefined=""):
         """
+        Args:
+            undefined (optional): Argument, which will be returned if the
+                      `part_name` record is not found.
+
         Returns:
-            str: Name of the part of the series.
+            str: Name of the part of the series. or `undefined` if `part_name`\
+                 is not found.
         """
         return _undefined_pattern(
             "".join(self.get_subfields("245", "n")),
@@ -255,8 +253,13 @@ class MARCXMLQuery(MARCXMLSerializer):
     @remove_hairs_decorator
     def get_publisher(self, undefined=""):
         """
+        Args:
+            undefined (optional): Argument, which will be returned if the
+                      `publisher` record is not found.
+
         Returns:
-            str: name of the publisher ("``Grada``" for example)
+            str: Name of the publisher ("``Grada``" for example) or \
+                 `undefined` if `publisher` is not found.
         """
         return _undefined_pattern(
             "".join(self.get_subfields("260", "b")),
@@ -267,8 +270,13 @@ class MARCXMLQuery(MARCXMLSerializer):
     @remove_hairs_decorator
     def get_pub_date(self, undefined=""):
         """
+        Args:
+            undefined (optional): Argument, which will be returned if the
+                      `pub_date` record is not found.
+
         Returns:
-            str: date of publication (month and year usually)
+            str: Date of publication (month and year usually) or `undefined` \
+                 if `pub_date` is not found.
         """
         return _undefined_pattern(
             "".join(self.get_subfields("260", "c")),
@@ -279,8 +287,13 @@ class MARCXMLQuery(MARCXMLSerializer):
     @remove_hairs_decorator
     def get_pub_order(self, undefined=""):
         """
+        Args:
+            undefined (optional): Argument, which will be returned if the
+                      `pub_order` record is not found.
+
         Returns:
-            str: information about order in which was the book published
+            str: Information about order in which was the book published or \
+                 `undefined` if `pub_order` is not found.
         """
         return _undefined_pattern(
             "".join(self.get_subfields("901", "f")),
@@ -291,8 +304,13 @@ class MARCXMLQuery(MARCXMLSerializer):
     @remove_hairs_decorator
     def get_pub_place(self, undefined=""):
         """
+        Args:
+            undefined (optional): Argument, which will be returned if the
+                      `pub_place` record is not found.
+
         Returns:
-            str: name of city/country where the book was published
+            str: Name of city/country where the book was published or \
+                 `undefined` if `pub_place` is not found.
         """
         return _undefined_pattern(
             "".join(self.get_subfields("260", "a")),
@@ -302,8 +320,14 @@ class MARCXMLQuery(MARCXMLSerializer):
 
     @remove_hairs_decorator
     def get_format(self, undefined=""):
-        """_p  _p     Returns:
-            str: dimensions of the book ('``23 cm``' for example)
+        """
+        Args:
+            undefined (optional): Argument, which will be returned if the
+                      `format` record is not found.
+
+        Returns:
+            str: Dimensions of the book ('``23 cm``' for example) or 
+                `undefined` if `format` is not found.
         """
         return _undefined_pattern(
             "".join(self.get_subfields("300", "c")),
@@ -314,7 +338,7 @@ class MARCXMLQuery(MARCXMLSerializer):
     def get_authors(self):
         """
         Returns:
-            list: authors represented as Person objects
+            list: Authors represented as :class:`.Person` objects.
         """
         authors = self._parse_persons("100", "a")
         authors += self._parse_persons("600", "a")
@@ -326,14 +350,15 @@ class MARCXMLQuery(MARCXMLSerializer):
     def get_corporations(self, roles=["dst"]):
         """
         Args:
-            roles (list, optional): specify which types of corporations you
+            roles (list, optional): Specify which types of corporations you
                   need. Set to ``["any"]`` for any role, ``["dst"]`` for
                   distributors, etc..
-                  See http://www.loc.gov/marc/relators/relaterm.html for
-                  details.
+
+        Note:
+            See http://www.loc.gov/marc/relators/relaterm.html for details.
 
         Returns:
-            list: :class:`Corporation` objects specified by roles parameter.
+            list: :class:`.Corporation` objects specified by roles parameter.
         """
         corporations = self._parse_corporations("110", "a", roles)
         corporations += self._parse_corporations("610", "a", roles)
@@ -345,7 +370,7 @@ class MARCXMLQuery(MARCXMLSerializer):
     def get_distributors(self):
         """
         Returns:
-            list: distributors represented as :class:`Corporation` object
+            list: Distributors represented as :class:`.Corporation` object.
         """
         return self.get_corporations(roles=["dst"])
 
@@ -372,7 +397,7 @@ class MARCXMLQuery(MARCXMLSerializer):
     def get_binding(self):
         """
         Returns:
-            list: array of strings with bindings (``["brož."]``) or blank list
+            list: Array of strings with bindings (``["brož."]``) or blank list.
         """
         if self.get_subfields("020", "a"):
             return map(
@@ -390,7 +415,8 @@ class MARCXMLQuery(MARCXMLSerializer):
     def get_originals(self):
         """
         Returns:
-            list: List of strings with original names.
+            list: List of strings with names of original books (names of books\
+                  in original language, before translation).
         """
         return self.get_subfields("765", "t")
 
@@ -420,7 +446,7 @@ class MARCXMLQuery(MARCXMLSerializer):
     def get_pub_type(self):
         """
         Returns:
-            PublicationType: :class:`.PublicationType` enum value.
+            PublicationType: :class:`.PublicationType` enum **value**.
         """
         INFO_CHAR_INDEX = 6
         SECOND_INFO_CHAR_I = 18
@@ -447,15 +473,31 @@ class MARCXMLQuery(MARCXMLSerializer):
         return PublicationType.monographic
 
     def is_monographic(self):
+        """
+        Returns:
+            bool: True if the record is monographic.
+        """
         return self.get_pub_type() == PublicationType.monographic
 
     def is_multi_mono(self):
+        """
+        Returns:
+            bool: True if the record is multi_mono.
+        """
         return self.get_pub_type() == PublicationType.multipart_monograph
 
     def is_continuing(self):
+        """
+        Returns:
+            bool: True if the record is continuing.
+        """
         return self.get_pub_type() == PublicationType.continuing
 
     def is_single_unit(self):
+        """
+        Returns:
+            bool: True if the record is single unit.
+        """
         return self.get_pub_type() == PublicationType.single_unit
 
     def __getitem__(self, item):
