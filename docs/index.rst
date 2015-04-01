@@ -70,6 +70,10 @@ API
 Usage example
 -------------
 
+.. toctree::
+    :maxdepth: 2
+
+    /example/example
 
 Installation
 ============
