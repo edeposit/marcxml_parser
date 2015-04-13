@@ -1,0 +1,115 @@
+<record>
+<metadata>
+<oai_marc>
+<fixfield id="LDR">-----nam-a22------a-4500</fixfield>
+<fixfield id="FMT">BK</fixfield>
+<fixfield id="001">nkc20150003035</fixfield>
+<fixfield id="003">CZ-PrNK</fixfield>
+<fixfield id="005">20150225131511.0</fixfield>
+<fixfield id="007">ta</fixfield>
+<fixfield id="008">150225s2013----xr-abe-e------000-0-cze--</fixfield>
+<varfield id="BAS" i1=" " i2=" ">
+<subfield label="a">90</subfield>
+</varfield>
+<varfield id="PJM" i1=" " i2=" ">
+<subfield label="a">Seriálový záznam viz nkc20150003043</subfield>
+</varfield>
+<varfield id="020" i1=" " i2=" ">
+<subfield label="a">978-80-904739-3-5</subfield>
+<subfield label="q">(online :</subfield>
+<subfield label="q">pdf)</subfield>
+</varfield>
+<varfield id="040" i1=" " i2=" ">
+<subfield label="a">ABA001</subfield>
+<subfield label="b">cze</subfield>
+</varfield>
+<varfield id="041" i1="0" i2=" ">
+<subfield label="a">cze</subfield>
+<subfield label="a">eng</subfield>
+<subfield label="a">ger</subfield>
+<subfield label="a">slo</subfield>
+<subfield label="b">cze</subfield>
+<subfield label="b">eng</subfield>
+</varfield>
+<varfield id="245" i1="0" i2="0">
+<subfield label="a">Pasivní domy 2013 /</subfield>
+<subfield label="c">[editor publikace Jan Bárta]</subfield>
+<subfield label="h">[elektronický zdroj]</subfield>
+</varfield>
+<varfield id="250" i1=" " i2=" ">
+<subfield label="a">Vyd. 1.</subfield>
+</varfield>
+<varfield id="260" i1=" " i2=" ">
+<subfield label="a">Brno :</subfield>
+<subfield label="b">Centrum pasivního domu,</subfield>
+<subfield label="c">2013</subfield>
+</varfield>
+<varfield id="300" i1=" " i2=" ">
+<subfield label="a">1 online zdroj (400 s.) :</subfield>
+<subfield label="b">il. (převážně barev.), mapy, plány</subfield>
+</varfield>
+<varfield id="504" i1=" " i2=" ">
+<subfield label="a">Obsahuje bibliografie a bibliografické odkazy</subfield>
+</varfield>
+<varfield id="546" i1=" " i2=" ">
+<subfield label="a">Část. anglický, německý a slovenský text, anglická a česká resumé</subfield>
+</varfield>
+<varfield id="700" i1="1" i2=" ">
+<subfield label="a">Bárta, Jan</subfield>
+<subfield label="4">edt</subfield>
+</varfield>
+<varfield id="856" i1="4" i2="0">
+<subfield label="u">http://edeposit-test.nkp.cz/producents/nakladatelstvi-gama/epublications/pasivni-domy-2013/pd2013_sbornik.pdf</subfield>
+<subfield label="4">N</subfield>
+</varfield>
+<varfield id="856" i1="4" i2="2">
+<subfield label="u">http://edeposit-test.nkp.cz/</subfield>
+<subfield label="4">N</subfield>
+</varfield>
+<varfield id="901" i1=" " i2=" ">
+<subfield label="f">[1. vyd.]</subfield>
+<subfield label="o">20150224</subfield>
+</varfield>
+<varfield id="910" i1=" " i2=" ">
+<subfield label="a">ABA001</subfield>
+</varfield>
+<varfield id="928" i1="1" i2=" ">
+<subfield label="a">Centrum pasivního domu</subfield>
+</varfield>
+<varfield id="998" i1=" " i2=" ">
+<subfield label="a">http://aleph.nkp.cz/F/?func=direct&amp;doc_number=000003035&amp;local_base=CZE-DEP</subfield>
+</varfield>
+<varfield id="IST" i1="1" i2=" ">
+<subfield label="a">ox20150218</subfield>
+<subfield label="b">anna.dlouha</subfield>
+</varfield>
+<varfield id="IST" i1="1" i2=" ">
+<subfield label="a">ii20150224</subfield>
+<subfield label="b">anje</subfield>
+</varfield>
+<varfield id="IST" i1="1" i2=" ">
+<subfield label="a">jp20150225</subfield>
+<subfield label="b">kola</subfield>
+</varfield>
+<varfield id="POV" i1=" " i2=" ">
+<subfield label="a">550</subfield>
+<subfield label="b">550</subfield>
+<subfield label="c">1. vyd.</subfield>
+<subfield label="i">400 s.</subfield>
+<subfield label="k">0</subfield>
+<subfield label="l">15</subfield>
+</varfield>
+<varfield id="HLD" i1=" " i2=" ">
+<subfield label="l">15/EB 00008</subfield>
+<subfield label="n">uložení</subfield>
+<subfield label="s">20150219</subfield>
+<subfield label="j">e-book</subfield>
+<subfield label="z">978-80-904739_18022015_00001</subfield>
+</varfield>
+<varfield id="STZ" i1=" " i2=" ">
+<subfield label="a">du20150219</subfield>
+<subfield label="b">mazi</subfield>
+</varfield>
+</oai_marc>
+</metadata>
+</record>
