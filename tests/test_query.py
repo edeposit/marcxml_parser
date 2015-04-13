@@ -16,14 +16,22 @@ from test_serializer import aleph_files
 
 
 # Functions & classes =========================================================
-@pytest.fixture
-def epub_file():
+def read_file_from_partial_name(partial_name):
     files = aleph_files()
 
-    filename = next((x for x in files if "epub" in x))
+    filename = next((x for x in files if partial_name in x))
 
     with open(filename) as f:
         return f.read()
+
+
+@pytest.fixture
+def epub_file():
+    return read_file_from_partial_name("epub")
+
+
+def pasivni_domy_file():
+    return read_file_from_partial_name("pasivni")
 
 
 @pytest.fixture
@@ -34,6 +42,11 @@ def parsed():
 @pytest.fixture
 def epub():
     return MARCXMLQuery(epub_file())
+
+
+@pytest.fixture
+def pasivni_domy():
+    return MARCXMLQuery(pasivni_domy_file())
 
 
 # Tests =======================================================================
@@ -200,3 +213,15 @@ def test_epub_is_continuing(epub):
 
 def test_epub_is_single_unit(epub):
     assert epub.is_single_unit() == False
+
+
+# Tests of pasivni domy =======================================================
+def test_get_authors_pasivni_domy(pasivni_domy):
+    author = Person(
+        name='Jan',
+        second_name="",
+        surname='Bárta',
+        title="",
+    )
+
+    assert pasivni_domy.get_authors() == [author]
