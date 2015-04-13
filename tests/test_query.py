@@ -217,11 +217,4 @@ def test_epub_is_single_unit(epub):
 
 # Tests of pasivni domy =======================================================
 def test_get_authors_pasivni_domy(pasivni_domy):
-    author = Person(
-        name='Jan',
-        second_name="",
-        surname='Bárta',
-        title="",
-    )
-
-    assert pasivni_domy.get_authors() == [author]
+    assert pasivni_domy.get_authors() == []

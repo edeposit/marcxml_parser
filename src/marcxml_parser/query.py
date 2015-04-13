@@ -112,7 +112,6 @@ class MARCXMLQuery(MARCXMLSerializer):
         parsed_persons = []
         raw_persons = self.get_subfields(datafield, subfield)
         for person in raw_persons:
-
             # check if person have at least one of the roles specified in
             # 'roles' parameter of function
             other_subfields = person.other_subfields
