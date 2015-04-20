@@ -87,7 +87,7 @@ and can be easily installed using `PIP`_::
 
 Source code
 -----------
-Project is released as opensource (GPL) and source codes can be found at
+Project is released as opensource (MIT) and source code can be found at
 GitHub:
 
 - https://github.com/edeposit/marcxml_parser
