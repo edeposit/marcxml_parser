@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.0.1
+-----
+    - Fixed small bugs in code and documentation.
+    - Added more tests.
+
 1.0.0
 -----
     - First working version.
