@@ -7,7 +7,7 @@ package marcxml_parser {
         }
         class person as "person.py" <<M, Green>> {
             Holds informations
-            about pesons.
+            about persons.
 
             Used for authors.
             ---

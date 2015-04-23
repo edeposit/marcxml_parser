@@ -6,7 +6,7 @@ package marcxml_parser {
     package structures {
         class Person {
             Holds informations
-            about pesons.
+            about persons.
 
             Used for mostly for
             authors.

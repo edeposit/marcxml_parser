@@ -164,9 +164,9 @@ you just open it and create :class:`.MARCXMLRecord` object from the string:
     from marcxml_parser import MARCXMLRecord
 
     with open("tests/data/aleph_epub.xml") as f:
-        data = f.read()
+        rec = MARCXMLRecord(f.read())
 
-    rec = MARCXMLRecord(data)
+    
 
 Lowlevel access
 ---------------
@@ -192,7 +192,7 @@ All the controlfields and datafields were parsed into
 
 .. code-block:: python
 
-    >>> rec.controlfields
+    >>> rec.datafields
 
 .. code-block:: python
 
@@ -445,7 +445,7 @@ Which is equivalent with following code without ordered dicts:
         ]
     }
 
-Notice the ``q`` sub-record, qhich was three times in original XML and now is
+Notice the ``q`` sub-record, which was three times in original XML and now is
 in list.
 
 This is the reason why most of the getters returns lists and not just simply
@@ -584,7 +584,8 @@ Highlevel getters are defined by :class:`.MARCXMLQuery`:
 - :meth:`.get_binding`
 - :meth:`.get_originals`
 
-You will probably like the indexing operator, which was redefined:
+You will probably like the indexing operator, which can be used as shortcut for
+``rec.get_subfields`` calls, for example ``rec.get_subfields("500", "a")``:
 
     >>> rec["500a"]
 
@@ -609,7 +610,7 @@ or with ``i1``/``i2`` arguments:
 
 .. code-block:: python
 
-    >>> rec["500a 9"]
+    >>> rec["500a 9"]  # equivalent to rec.get_subfields("500", "a", i1=" ", i2="9")
 
 .. code-block:: python
 

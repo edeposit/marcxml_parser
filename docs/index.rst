@@ -38,7 +38,7 @@ Relations of the classes in project:
 API
 ---
 
-:any:`/api/marcxml_parser`:
+:doc:`/api/marcxml_parser`:
 
 .. toctree::
     :maxdepth: 1
@@ -49,7 +49,7 @@ API
     /api/record.rst
 
 
-:any:`/api/structures/structures`:
+:doc:`/api/structures/structures`:
 
 .. toctree::
     :maxdepth: 1
@@ -60,7 +60,7 @@ API
     /api/structures/publication_type.rst
 
 
-:any:`/api/tools/tools`:
+:doc:`/api/tools/tools`:
 
 .. toctree::
     :maxdepth: 1
