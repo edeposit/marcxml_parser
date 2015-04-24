@@ -1,0 +1,64 @@
+<root>
+<record xmlns="http://www.loc.gov/MARC21/slim/"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+<leader>-----cam-a22------a-4500</leader>
+<controlfield tag="001">nkc20081807432</controlfield>
+<controlfield tag="003">CZ-PrNK</controlfield>
+<controlfield tag="005">20111012085733.0</controlfield>
+<controlfield tag="007">ta</controlfield>
+<controlfield tag="008">080513s2008----xr-----g------000-f-cze-d</controlfield>
+<datafield tag="015" ind1=" " ind2=" ">
+<subfield code="a">cnb001807432</subfield>
+</datafield>
+<datafield tag="020" ind1=" " ind2=" ">
+<subfield code="a">978-80-260-0791-3 (v knize neuvedeno : brož.)</subfield>
+<subfield code="z">978-80-85892-15-4</subfield>
+<subfield code="z">80-85892-15-4 :</subfield>
+<subfield code="c">Kč 99,00</subfield>
+</datafield>
+</record>
+
+<record xmlns="http://www.loc.gov/MARC21/slim/"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+<leader>-----cam-a22------a-4500</leader>
+<controlfield tag="001">nkc20081807432</controlfield>
+<controlfield tag="003">CZ-PrNK</controlfield>
+<controlfield tag="005">20111012085733.0</controlfield>
+<controlfield tag="007">ta</controlfield>
+<controlfield tag="008">080513s2008----xr-----g------000-f-cze-d</controlfield>
+<datafield tag="015" ind1=" " ind2=" ">
+<subfield code="a">cnb001807432</subfield>
+</datafield>
+<datafield tag="020" ind1=" " ind2=" ">
+<subfield code="a">978-80-260-0791-3 (v knize neuvedeno : brož.)</subfield>
+<subfield code="z">978-80-85892-15-4</subfield>
+<subfield code="z">80-85892-15-4 :</subfield>
+<subfield code="c">Kč 99,00</subfield>
+</datafield>
+</record>
+
+<record xmlns="http://www.loc.gov/MARC21/slim/"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+<leader>-----cam-a22------a-4500</leader>
+<controlfield tag="001">nkc20081807432</controlfield>
+<controlfield tag="003">CZ-PrNK</controlfield>
+<controlfield tag="005">20111012085733.0</controlfield>
+<controlfield tag="007">ta</controlfield>
+<controlfield tag="008">080513s2008----xr-----g------000-f-cze-d</controlfield>
+<datafield tag="015" ind1=" " ind2=" ">
+<subfield code="a">cnb001807432</subfield>
+</datafield>
+<datafield tag="020" ind1=" " ind2=" ">
+<subfield code="a">978-80-260-0791-3 (v knize neuvedeno : brož.)</subfield>
+<subfield code="z">978-80-85892-15-4</subfield>
+<subfield code="z">80-85892-15-4 :</subfield>
+<subfield code="c">Kč 99,00</subfield>
+</datafield>
+</record>
+</root>

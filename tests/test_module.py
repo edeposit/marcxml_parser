@@ -15,6 +15,7 @@ def test_module_imports():
     from marcxml_parser import PublicationType
 
     from marcxml_parser import MARCXMLRecord
+    from marcxml_parser import record_iterator
 
 
 def test_module_imports_hidden():
