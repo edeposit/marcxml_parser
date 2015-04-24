@@ -24,12 +24,16 @@ def record_iterator(xml):
     Iterate over all ``<record>`` tags in `xml`.
 
     Args:
-        xml (str): Input string with XML. UTF-8 is prefered encoding, unicode
-                   should be ok.
+        xml (str/file): Input string with XML. UTF-8 is prefered encoding,
+                        unicode should be ok.
 
     Yields:
         MARCXMLRecord: For each corresponding ``<record>``.
     """
+    # handle file-like objects
+    if hasattr(xml, "read"):
+        xml = xml.read()
+
     dom = None
     try:
         dom = dhtmlparser.parseString(xml)

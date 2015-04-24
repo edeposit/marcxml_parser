@@ -63,7 +63,8 @@ class MARCXMLParser(object):
         Constructor.
 
         Args:
-            xml (str, default None): XML to be parsed.
+            xml (str/file, default None): XML to be parsed. May be file-like
+                object.
             resort (bool, default True): Sort the output alphabetically?
         """
         self.leader = None
@@ -74,6 +75,10 @@ class MARCXMLParser(object):
 
         # resort output XML alphabetically
         self.resorted = tools.resorted if resort else lambda x: x
+
+        # handle file-like objects
+        if hasattr(xml, "read"):
+            xml = xml.read()
 
         # it is always possible to create blank object and add values into it
         # piece by piece using .add_ctl_field()/.add_data_field() methods.
