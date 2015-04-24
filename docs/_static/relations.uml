@@ -85,6 +85,7 @@ package marcxml_parser {
         Unification of all
         MARCXML classes.
         ---
+        record_iterator(xml)
         class MARCXMLRecord
     }
     class init as "_​_init__.py" <<M, Green>> {
