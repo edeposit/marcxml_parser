@@ -5,6 +5,7 @@
 #
 # Imports =====================================================================
 import os.path
+import StringIO
 
 import pytest
 
@@ -33,3 +34,9 @@ def test_record_iterator(multi_file):
 
     for record in records:
         assert isinstance(record, MARCXMLRecord)
+
+
+def test_record_iterator_filelike_obj(multi_file):
+    multi_file = StringIO.StringIO(multi_file)
+
+    test_record_iterator(multi_file)

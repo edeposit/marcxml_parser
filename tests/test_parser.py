@@ -4,7 +4,7 @@
 # Interpreter version: python 2.7
 #
 # Imports =====================================================================
-
+import StringIO
 from collections import OrderedDict
 
 import pytest
@@ -256,6 +256,11 @@ def test_data_getters(record):
     ind_test = record.get_subfields("910", "a")[-1]
     assert ind_test.i1 == "1"
     assert ind_test.i2 == " "
+
+
+def test_data_getters_filelike_obj(unix_file):
+    record = StringIO.StringIO(unix_file)
+    test_data_getters(MARCXMLParser(record))
 
 
 def test_get_subfields_i_parameters(record):
