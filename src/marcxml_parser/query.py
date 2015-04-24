@@ -373,43 +373,73 @@ class MARCXMLQuery(MARCXMLSerializer):
         """
         return self.get_corporations(roles=["dst"])
 
+    def _clean_isbn(self, isbn):
+        """
+        Clean ISBN from other information (binding).
+        """
+        return isbn.strip().split(" ", 1)[0]
+
+    def get_invalid_ISBNs(self):
+        """
+        Get list of invalid ISBN (``020z``).
+
+        Returns:
+            list: List with INVALID ISBN strings.
+        """
+        return [
+            self._clean_isbn(isbn)
+            for isbn in self["020z"]
+        ]
+
     def get_ISBNs(self):
         """
+        Get list of VALID ISBN.
+
         Returns:
-            list: array with ISBN strings
+            list: List with *valid* ISBN strings.
         """
+        invalid_isbns = self.get_invalid_ISBNs()
 
-        if self.get_subfields("020", "a"):
-            return map(
-                lambda ISBN: ISBN.strip().split(" ", 1)[0],
-                self.get_subfields("020", "a", exception=True)
-            )
+        valid_isbns = [
+            self._clean_isbn(isbn)
+            for isbn in self["020a"]
+            if self._clean_isbn(isbn) not in invalid_isbns
+        ]
 
-        if self.get_subfields("901", "i"):
-            return map(
-                lambda ISBN: ISBN.strip().split(" ", 1)[0],
-                self.get_subfields("901", "i", exception=True)
-            )
+        if valid_isbns:
+            return valid_isbns
 
-        return []
+        # this is used sometimes in czech national library
+        return [
+            self._clean_isbn(isbn)
+            for isbn in self["901i"]
+        ]
+
+    def _filter_binding(self, binding):
+        """
+        Filter binding from ISBN record. In MARC XML / OAI, the binding
+        information is stored in same subrecord as ISBN.
+
+        Example:
+            ``<subfield code="a">80-251-0225-4 (brož.) :</subfield>`` ->
+            ``brož.``.
+        """
+        binding = binding.strip().split(" ", 1)[-1]  # isolate bind. from ISBN
+        binding = remove_hairs_fn(binding)  # remove special chars from binding
+
+        return binding.split(":")[-1].strip()
 
     def get_binding(self):
         """
         Returns:
             list: Array of strings with bindings (``["brož."]``) or blank list.
         """
-        if self.get_subfields("020", "a"):
-            return map(
-                lambda x: remove_hairs_fn(
-                    x.strip().split(" ", 1)[1]
-                ),
-                filter(
-                    lambda x: "-" in x and " " in x,
-                    self.get_subfields("020", "a", exception=True)
-                )
-            )
-
-        return []
+        # binding is stored after space in ISBN
+        return [
+            self._filter_binding(binding)
+            for binding in self["020a"]
+            if "-" in binding and " " in binding
+        ]
 
     def get_originals(self):
         """
