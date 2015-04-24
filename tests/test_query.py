@@ -49,6 +49,16 @@ def pasivni_domy():
     return MARCXMLQuery(pasivni_domy_file())
 
 
+@pytest.fixture
+def zavate_doby():
+    return MARCXMLQuery(read_file_from_partial_name("zavate"))
+
+
+@pytest.fixture
+def vladci_strachu():
+    return MARCXMLQuery(read_file_from_partial_name("vladci"))
+
+
 # Tests =======================================================================
 def test_get_name(parsed):
     assert parsed.get_name() == "Umění programování v UNIXu"
@@ -113,6 +123,10 @@ def test_get_ISBNs(parsed):
     assert parsed.get_ISBNs() == ['80-251-0225-4']
 
 
+def test_get_invalid_ISBNs(parsed):
+    assert parsed.get_invalid_ISBNs() == []
+
+
 def test_get_binding(parsed):
     assert parsed.get_binding() == ["brož."]
 
@@ -171,7 +185,11 @@ def test_indexing_operator_fail(parsed):
     assert parsed["007"] == "ta"
     assert parsed["008"] == "041216s2004----xr-a---e-f----001-0-cze--"
 
-    assert parsed["azg"] == None
+    assert parsed["azg"] is None
+
+
+def test_binding_of_parsed(parsed):
+    assert parsed.get_binding() == ["brož."]
 
 
 # Tests of epub file ==========================================================
@@ -200,21 +218,45 @@ def test_epub_publication_type(epub):
 
 
 def test_epub_is_monographic(epub):
-    assert epub.is_monographic() == True
+    assert epub.is_monographic()
 
 
 def test_epub_is_multi_mono(epub):
-    assert epub.is_multi_mono() == False
+    assert not epub.is_multi_mono()
 
 
 def test_epub_is_continuing(epub):
-    assert epub.is_continuing() == False
+    assert not epub.is_continuing()
 
 
 def test_epub_is_single_unit(epub):
-    assert epub.is_single_unit() == False
+    assert not epub.is_single_unit()
+
+
+def test_binding_of_epub(epub):
+    assert epub.get_binding() == []
 
 
 # Tests of pasivni domy =======================================================
 def test_get_authors_pasivni_domy(pasivni_domy):
     assert pasivni_domy.get_authors() == []
+
+
+# Tests of zavate doby ========================================================
+def test_invalid_isbns(zavate_doby):
+    invalid = zavate_doby.get_invalid_ISBNs()
+
+    assert invalid == ["978-80-260-9075-5"]
+
+
+def test_valid_isbns(zavate_doby):
+    assert zavate_doby.get_ISBNs() == ["978-80-260-9077-9", "978-80-260-9076-2"]
+
+
+def test_binding_of_zavate_doby(zavate_doby):
+    assert zavate_doby.get_binding() == []
+
+
+# Tests of vladci strachu =====================================================
+def test_binding_of_vladci_strachu(vladci_strachu):
+    assert vladci_strachu.get_binding() == ["brož."]

@@ -1,0 +1,73 @@
+<record>
+<metadata>
+<oai_marc>
+<fixfield id="LDR">-----nam-a22------a-4500</fixfield>
+<fixfield id="FMT">BK</fixfield>
+<fixfield id="001">nkc20150003109</fixfield>
+<fixfield id="003">CZ-PrNK</fixfield>
+<fixfield id="005">20150421160647.0</fixfield>
+<varfield id="BAS" i1=" " i2=" ">
+<subfield label="a">49</subfield>
+</varfield>
+<varfield id="020" i1=" " i2=" ">
+<subfield label="a">978-80-260-9077-9</subfield>
+<subfield label="q">(online :</subfield>
+<subfield label="q">pdf)</subfield>
+<subfield label="z">978-80-260-9075-5</subfield>
+</varfield>
+<varfield id="020" i1=" " i2=" ">
+<subfield label="a">978-80-260-9076-2</subfield>
+<subfield label="q">(soubor :</subfield>
+<subfield label="q">pdf)</subfield>
+</varfield>
+<varfield id="245" i1="0" i2="0">
+<subfield label="a">Zaváté doby se probouzejí</subfield>
+<subfield label="h">[elektronický zdroj]</subfield>
+<subfield label="n">Svazek II.,</subfield>
+<subfield label="p">Atlantis, Říše Inků ...</subfield>
+</varfield>
+<varfield id="260" i1=" " i2=" ">
+<subfield label="a">[Brno :</subfield>
+<subfield label="b">Defensor Pacis,</subfield>
+<subfield label="c">2013]</subfield>
+</varfield>
+<varfield id="856" i1="4" i2="0">
+<subfield label="u">http://edeposit-test.nkp.cz/producents/testovaci-nakladatelstvi-1/epublications/zavate-doby-se-probouzeji/edeposit-content-originalfile</subfield>
+<subfield label="4">N</subfield>
+</varfield>
+<varfield id="856" i1="4" i2="2">
+<subfield label="u">http://edeposit.nkp.cz/</subfield>
+<subfield label="4">N</subfield>
+</varfield>
+<varfield id="928" i1="1" i2=" ">
+<subfield label="a">Author-Publisher (miscellaneous)</subfield>
+</varfield>
+<varfield id="998" i1=" " i2=" ">
+<subfield label="a">http://aleph.nkp.cz/F/?func=direct&amp;doc_number=000003109&amp;local_base=CZE-DEP</subfield>
+</varfield>
+<varfield id="IST" i1="1" i2=" ">
+<subfield label="a">ox20150421</subfield>
+<subfield label="b">jiri.kraus</subfield>
+</varfield>
+<varfield id="POV" i1=" " i2=" ">
+<subfield label="a">002</subfield>
+<subfield label="b">002</subfield>
+<subfield label="c">[1. vyd.]</subfield>
+<subfield label="i">408 s.</subfield>
+<subfield label="k">0</subfield>
+<subfield label="l">03</subfield>
+</varfield>
+<varfield id="HLD" i1=" " i2=" ">
+<subfield label="l">15/EB 00024</subfield>
+<subfield label="n">uložení</subfield>
+<subfield label="s">20150421</subfield>
+<subfield label="j">e-book</subfield>
+<subfield label="z">978-80-260_21042015_00001</subfield>
+</varfield>
+<varfield id="STZ" i1=" " i2=" ">
+<subfield label="a">du20150421</subfield>
+<subfield label="b">mazi</subfield>
+</varfield>
+</oai_marc>
+</metadata>
+</record>

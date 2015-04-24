@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.1.1
+-----
+    - ISBN is now discriminated to valid and invalid. Added new method ``.get_invalid_ISBNs()``, ``.get_ISBNs()`` now returns just valid ISBNs.
+    - Fixed bugs in ``.get_binding()``.
+
 1.1.0
 -----
     - Fixed typos in documentation.
