@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.1.2
+-----
+    - Added field ``URLu`` to output from ``.get_internal_urls()``.
+
 1.1.1
 -----
     - ISBN is now discriminated to valid and invalid. Added new method ``.get_invalid_ISBNs()``, ``.get_ISBNs()`` now returns just valid ISBNs.
