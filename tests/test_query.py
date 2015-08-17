@@ -161,6 +161,7 @@ def test_is_single_unit(parsed):
 
 def test_indexing_operator(parsed):
     assert parsed["015a"][0] == "cnb001492461"
+    assert parsed["015b"] == []
 
     assert parsed["901b  "][0] == "9788025102251"
     assert parsed["901f  "][0] == "1. vyd."
