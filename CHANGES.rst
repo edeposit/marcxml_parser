@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.1.3
+-----
+    - Added one more test.
+    - Fixed few typos in documentation.
+
 1.1.2
 -----
     - Added field ``URLu`` to output from ``.get_internal_urls()``.

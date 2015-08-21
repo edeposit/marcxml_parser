@@ -156,8 +156,7 @@ Lets say, that you have following MARC OAI document, which you need to process:
     </metadata>
     </record>
 
-This document is saved at ``tests/data/aleph_epub.xml``. To parse this document,
-you just open it and create :class:`.MARCXMLRecord` object from the string:
+This document is saved at ``tests/data/aleph_epub.xml``. To parse this document, you just open it and create :class:`.MARCXMLRecord` object from the string:
 
 .. code-block:: python
 
@@ -166,13 +165,11 @@ you just open it and create :class:`.MARCXMLRecord` object from the string:
     with open("tests/data/aleph_epub.xml") as f:
         rec = MARCXMLRecord(f.read())
 
-    
 
 Lowlevel access
 ---------------
 
-All the controlfields and datafields were parsed into
-:attr:`.controlfields` and :attr:`.datafields`:
+All the controlfields and datafields were parsed into :attr:`.controlfields` and :attr:`.datafields`:
 
 .. code-block:: python
 
@@ -376,9 +373,7 @@ All the controlfields and datafields were parsed into
         ])]),
     ])
 
-As you can see, this is more lowlevel, than you would ever want to use,
-but it shows one important aspect of the parser - all values are parsed to
-(ordered) dicts.
+As you can see, this format is probably too much lowlevel, than you would ever want to use, but it demonstrates one important aspect of the parser; All values are parsed to (ordered) dicts.
 
 That means, that XML:
 
@@ -399,7 +394,7 @@ That means, that XML:
     <subfield label="z">978-80-87899-05-2</subfield>
     </varfield>
 
-Have is parsed to:
+Is parsed to:
 
 .. code-block:: python
 
@@ -422,7 +417,7 @@ Have is parsed to:
         ]),
     ])
 
-Which is equivalent with following code without ordered dicts:
+Which is equivalent to following code (without ordered dicts for simplicity):
 
 .. code-block:: python
 
@@ -445,18 +440,14 @@ Which is equivalent with following code without ordered dicts:
         ]
     }
 
-Notice the ``q`` sub-record, which was three times in original XML and now is
-in list.
+Notice the ``q`` sub-record, which was three times in original XML and now is stored as list.
 
-This is the reason why most of the getters returns lists and not just simply
-values - the nature of MARC records are lists.
+This is the reason why most of the getters returns lists and not just simply values - the nature of MARC records are lists.
 
 Getters
 -------
 
-To access values inside :attr:`.controlfields` and :attr:`.datafields`, you can
-use direct access to this dicts, but it is highly recommended to use highlevel
-getters:
+To access values inside :attr:`.controlfields` and :attr:`.datafields`, you can use direct access to internal `dict` structure:
 
 .. code-block:: python
 
@@ -466,7 +457,7 @@ getters:
 
     ['(2012 :', 'online :', 'ePub)']
 
-vs:
+but I can highly recommend to use highlevel getters:
 
 .. code-block:: python
 
@@ -504,8 +495,7 @@ vs:
         'pdf)',
     ]
 
-Whoa. What happened? There wasn't specified any more arguments to
-:meth:`.get_subfields`, so all the ``902q`` subrecords were returned.
+Whoa. What happened? There weren't specified any more arguments to :meth:`.get_subfields`, so all the ``902q`` subrecords were returned.
 
 Lets look at the first returned item:
 
@@ -565,7 +555,7 @@ That means, that it has more context, than ordinary string:
 Highlevel getters
 -----------------
 
-Highlevel getters are defined by :class:`.MARCXMLQuery`:
+Here is the list of all highlevel getters are defined by :class:`.MARCXMLQuery`:
 
 - :meth:`.get_name`
 - :meth:`.get_subname`
@@ -585,7 +575,7 @@ Highlevel getters are defined by :class:`.MARCXMLQuery`:
 - :meth:`.get_originals`
 
 You will probably like the indexing operator, which can be used as shortcut for
-``rec.get_subfields`` calls, for example ``rec.get_subfields("500", "a")``:
+``rec.get_subfields`` calls, for example ``rec.get_subfields("500", "a")`` can be shortened to:
 
     >>> rec["500a"]
 
