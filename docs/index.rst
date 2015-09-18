@@ -1,4 +1,4 @@
-MARX XML Parser
+MARC XML Parser
 ===============
 
 This module is used to parse MARC XML and OAI documents. Module provides API
