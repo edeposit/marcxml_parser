@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.1.6
+-----
+    - Added more RDA fixes.
+
 1.1.5
 -----
     - Fixed parsing of the place to reflect changes in RDA.

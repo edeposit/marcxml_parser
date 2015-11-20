@@ -278,3 +278,11 @@ def test_periodical_issn(periodical):
 
 def test_periodical_place(periodical):
     assert periodical.get_pub_place() == "Praha"
+
+
+def test_periodical_publisher(periodical):
+    assert periodical.get_publisher() == "JASTOG.CZ"
+
+
+def test_periodical_pub_date(periodical):
+    assert periodical.get_pub_date() == "2002-"

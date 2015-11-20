@@ -260,13 +260,17 @@ class MARCXMLQuery(MARCXMLSerializer):
             str: Name of the publisher ("``Grada``" for example) or \
                  `undefined` if `publisher` is not found.
         """
+        publishers = set([
+            remove_hairs_fn(publisher)
+            for publisher in self["260b  "] + self["264b"]
+        ])
+
         return _undefined_pattern(
-            "".join(self.get_subfields("260", "b")),
+            ", ".join(publishers),
             lambda x: x.strip() == "",
             undefined
         )
 
-    @remove_hairs_decorator
     def get_pub_date(self, undefined=""):
         """
         Args:
@@ -278,7 +282,7 @@ class MARCXMLQuery(MARCXMLSerializer):
                  if `pub_date` is not found.
         """
         return _undefined_pattern(
-            "".join(self.get_subfields("260", "c")),
+            ", ".join(self["260c  "] + self["264c"]),
             lambda x: x.strip() == "",
             undefined
         )
