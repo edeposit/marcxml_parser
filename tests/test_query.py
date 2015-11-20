@@ -243,6 +243,10 @@ def test_binding_of_epub(epub):
     assert epub.get_binding() == []
 
 
+def test_epub_get_pub_date(epub):
+    assert epub.get_pub_date() == "2014"
+
+
 # Tests of pasivni domy =======================================================
 def test_get_authors_pasivni_domy(pasivni_domy):
     assert pasivni_domy.get_authors() == []
