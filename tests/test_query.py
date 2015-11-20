@@ -273,3 +273,4 @@ def test_periodical_issn(periodical):
     assert periodical.get_ISSNs() == ["1213-8215"]
     assert not periodical.get_invalid_ISSNs()
     assert not periodical.get_linking_ISSNs()
+    assert periodical.is_continuing

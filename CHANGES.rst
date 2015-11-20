@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.1.4
+-----
+    - Added support for ISSN querying.
+    - Fixed bug in ``run_test.sh``.
+
 1.1.3
 -----
     - Added one more test.
