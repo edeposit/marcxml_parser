@@ -398,7 +398,7 @@ class MARCXMLQuery(MARCXMLSerializer):
         Returns:
             list: List with *valid* ISBN strings.
         """
-        invalid_isbns = self.get_invalid_ISBNs()
+        invalid_isbns = set(self.get_invalid_ISBNs())
 
         valid_isbns = [
             self._clean_isbn(isbn)
