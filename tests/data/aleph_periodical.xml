@@ -1,0 +1,182 @@
+<record>
+<metadata>
+<oai_marc>
+<fixfield id="LDR">-----nas-a22------a-4500</fixfield>
+<fixfield id="FMT">SE</fixfield>
+<fixfield id="001">cps20021122037</fixfield>
+<fixfield id="003">CZ-PrNK</fixfield>
+<fixfield id="005">20150408164946.0</fixfield>
+<fixfield id="007">ta</fixfield>
+<fixfield id="008">020524c20029999xr-mr-p------u0----0cze--</fixfield>
+<varfield id="015" i1=" " i2=" ">
+<subfield label="a">cnb001122037</subfield>
+</varfield>
+<varfield id="022" i1=" " i2=" ">
+<subfield label="a">1213-8215</subfield>
+</varfield>
+<varfield id="040" i1=" " i2=" ">
+<subfield label="a">ABA001</subfield>
+<subfield label="b">cze</subfield>
+<subfield label="d">ABA001</subfield>
+<subfield label="d">BOA001</subfield>
+<subfield label="d">OLA001</subfield>
+</varfield>
+<varfield id="043" i1=" " i2=" ">
+<subfield label="a">e-xr---</subfield>
+<subfield label="b">e-xr-pg</subfield>
+<subfield label="2">czenas</subfield>
+</varfield>
+<varfield id="072" i1=" " i2="7">
+<subfield label="a">821-1/-8</subfield>
+<subfield label="x">Literatura různých forem a žánrů</subfield>
+<subfield label="2">Konspekt</subfield>
+<subfield label="9">25</subfield>
+</varfield>
+<varfield id="080" i1=" " i2=" ">
+<subfield label="a">791</subfield>
+<subfield label="2">MRF-sel</subfield>
+</varfield>
+<varfield id="080" i1=" " i2=" ">
+<subfield label="a">82-1/-9</subfield>
+<subfield label="2">MRF-sel</subfield>
+</varfield>
+<varfield id="080" i1=" " i2=" ">
+<subfield label="a">050</subfield>
+<subfield label="2">MRF-sel</subfield>
+</varfield>
+<varfield id="210" i1="0" i2=" ">
+<subfield label="a">Pevnost</subfield>
+<subfield label="b">(Praha)</subfield>
+</varfield>
+<varfield id="222" i1=" " i2="0">
+<subfield label="a">Pevnost</subfield>
+<subfield label="b">(Praha)</subfield>
+</varfield>
+<varfield id="245" i1="0" i2="0">
+<subfield label="a">Pevnost :</subfield>
+<subfield label="b">měsíčník o fantasy, mystice a historii : film - seriál - hudba - literatura - comics - internet - hry</subfield>
+</varfield>
+<varfield id="260" i1=" " i2=" ">
+<subfield label="a">Praha :</subfield>
+<subfield label="b">JASTOG.CZ,</subfield>
+<subfield label="c">2002-</subfield>
+</varfield>
+<varfield id="260" i1="2" i2=" ">
+<subfield label="3">[200-]-[200-]</subfield>
+<subfield label="a">[S.l.] :</subfield>
+<subfield label="b">DXT REALITY</subfield>
+</varfield>
+<varfield id="260" i1="2" i2=" ">
+<subfield label="3">2004-2011</subfield>
+<subfield label="a">Praha :</subfield>
+<subfield label="b">Pražská vydavatelská společnost</subfield>
+</varfield>
+<varfield id="260" i1="2" i2=" ">
+<subfield label="3">2011-2012</subfield>
+<subfield label="a">Praha :</subfield>
+<subfield label="b">Květa Vtípilová - K4K Publishing</subfield>
+</varfield>
+<varfield id="260" i1="3" i2=" ">
+<subfield label="3">2013-</subfield>
+<subfield label="a">Praha :</subfield>
+<subfield label="b">Kristina Nowakowska</subfield>
+</varfield>
+<varfield id="300" i1=" " i2=" ">
+<subfield label="a">^^^sv. ;</subfield>
+<subfield label="c">30 cm</subfield>
+</varfield>
+<varfield id="310" i1=" " i2=" ">
+<subfield label="a">1x měsíčně</subfield>
+</varfield>
+<varfield id="362" i1="0" i2=" ">
+<subfield label="a">Č. 1 (2002)-</subfield>
+</varfield>
+<varfield id="500" i1=" " i2=" ">
+<subfield label="a">Podnázev v l. 2004-2005: měsíčník o fantastice, hrách a historii</subfield>
+</varfield>
+<varfield id="500" i1=" " i2=" ">
+<subfield label="a">Podnázev od r. 2006: měsíčník o fantasy, sci-fi a hororu</subfield>
+</varfield>
+<varfield id="500" i1=" " i2=" ">
+<subfield label="a">Podnázev od r. 2012: váš průvodce fantastickými světy</subfield>
+</varfield>
+<varfield id="500" i1=" " i2=" ">
+<subfield label="a">Nepravidelně vycházejí speciální č. (některá s ISBN) věnovaná určitým tématům</subfield>
+</varfield>
+<varfield id="500" i1=" " i2=" ">
+<subfield label="a">&quot;Dech draka&quot; vycházel do r. 2006 samostatně, od r. 2007 je součástí časopisu Pevnost</subfield>
+</varfield>
+<varfield id="650" i1="0" i2="7">
+<subfield label="a">fantasy</subfield>
+<subfield label="7">ph120132</subfield>
+<subfield label="2">czenas</subfield>
+</varfield>
+<varfield id="650" i1="0" i2="7">
+<subfield label="a">fantasy filmy</subfield>
+<subfield label="7">ph184277</subfield>
+<subfield label="2">czenas</subfield>
+</varfield>
+<varfield id="650" i1="0" i2="7">
+<subfield label="a">fantastická literatura</subfield>
+<subfield label="7">ph114522</subfield>
+<subfield label="2">czenas</subfield>
+</varfield>
+<varfield id="650" i1="0" i2="7">
+<subfield label="a">vědecko-fantastická literatura</subfield>
+<subfield label="7">ph116678</subfield>
+<subfield label="2">czenas</subfield>
+</varfield>
+<varfield id="650" i1="0" i2="7">
+<subfield label="a">fantasy hry</subfield>
+<subfield label="7">ph187559</subfield>
+<subfield label="2">czenas</subfield>
+</varfield>
+<varfield id="650" i1="0" i2="7">
+<subfield label="a">mystika</subfield>
+<subfield label="7">ph123078</subfield>
+<subfield label="2">czenas</subfield>
+</varfield>
+<varfield id="655" i1=" " i2="7">
+<subfield label="a">zájmové časopisy</subfield>
+<subfield label="7">fd133885</subfield>
+<subfield label="2">czenas</subfield>
+</varfield>
+<varfield id="780" i1="0" i2="5">
+<subfield label="t">Dech draka : časopis pro ctitele fantasy a her na hrdiny</subfield>
+<subfield label="x">1211-2771</subfield>
+</varfield>
+<varfield id="856" i1="4" i2="2">
+<subfield label="3">WWW stránky vydavatele</subfield>
+<subfield label="u">http://www.pevnost.cz</subfield>
+<subfield label="4">N</subfield>
+</varfield>
+<varfield id="902" i1=" " i2=" ">
+<subfield label="a">978-80-7250-465-7</subfield>
+<subfield label="q">(2010/Televizní seriály :</subfield>
+<subfield label="q">brož.)</subfield>
+</varfield>
+<varfield id="910" i1=" " i2=" ">
+<subfield label="a">ABA001</subfield>
+<subfield label="r">2002-</subfield>
+<subfield label="t">p</subfield>
+</varfield>
+<varfield id="968" i1=" " i2=" ">
+<subfield label="a">12a</subfield>
+</varfield>
+<varfield id="969" i1=" " i2=" ">
+<subfield label="a">a9</subfield>
+</varfield>
+<varfield id="979" i1=" " i2=" ">
+<subfield label="n">Pevnost - redakce</subfield>
+<subfield label="i">Fajkus</subfield>
+<subfield label="j">Martin</subfield>
+<subfield label="a">Černokostelecká 20, PO BOX 8, 100 00 Praha 10</subfield>
+<subfield label="e">736 769 601</subfield>
+<subfield label="x">redakce@pevnost.cz</subfield>
+</varfield>
+<varfield id="998" i1=" " i2=" ">
+<subfield label="a">http://aleph.nkp.cz/F/?func=direct&amp;doc_number=001122037&amp;local_base=NKC</subfield>
+</varfield>
+</oai_marc>
+</metadata>
+</record>

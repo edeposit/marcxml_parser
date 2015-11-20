@@ -59,6 +59,11 @@ def vladci_strachu():
     return MARCXMLQuery(read_file_from_partial_name("vladci"))
 
 
+@pytest.fixture
+def periodical():
+    return MARCXMLQuery(read_file_from_partial_name("periodical"))
+
+
 # Tests =======================================================================
 def test_get_name(parsed):
     assert parsed.get_name() == "Umění programování v UNIXu"
@@ -261,3 +266,10 @@ def test_binding_of_zavate_doby(zavate_doby):
 # Tests of vladci strachu =====================================================
 def test_binding_of_vladci_strachu(vladci_strachu):
     assert vladci_strachu.get_binding() == ["brož."]
+
+
+# Tests of periodical documents ===============================================
+def test_periodical_issn(periodical):
+    assert periodical.get_ISSNs() == ["1213-8215"]
+    assert not periodical.get_invalid_ISSNs()
+    assert not periodical.get_linking_ISSNs()
