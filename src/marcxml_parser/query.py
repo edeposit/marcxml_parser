@@ -415,6 +415,45 @@ class MARCXMLQuery(MARCXMLSerializer):
             for isbn in self["901i"]
         ]
 
+    def get_invalid_ISSNs(self):
+        """
+        Get list of invalid ISSNs (``022z`` + ``022y``).
+
+        Returns:
+            list: List with INVALID ISSN strings.
+        """
+        return [
+            self._clean_isbn(issn)
+            for issn in self["022z"] + self["022y"]
+        ]
+
+    def get_ISSNs(self):
+        """
+        Get list of VALID ISSNs (``022a``).
+
+        Returns:
+            list: List with *valid* ISSN strings.
+        """
+        invalid_issns = set(self.get_invalid_ISSNs())
+
+        return [
+            self._clean_isbn(issn)
+            for issn in self["022a"]
+            if self._clean_isbn(issn) not in invalid_issns
+        ]
+
+    def get_linking_ISSNs(self):
+        """
+        Get list of linking ISSNs (``022l``).
+
+        Returns:
+            list: List with linking ISSN strings.
+        """
+        return [
+            self._clean_isbn(issn)
+            for issn in self["022l"]
+        ]
+
     def _filter_binding(self, binding):
         """
         Filter binding from ISBN record. In MARC XML / OAI, the binding
