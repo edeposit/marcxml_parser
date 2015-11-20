@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.1.5
+-----
+    - Fixed parsing of the place to reflect changes in RDA.
+
 1.1.4
 -----
     - Added support for ISSN querying.

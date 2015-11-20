@@ -274,3 +274,7 @@ def test_periodical_issn(periodical):
     assert not periodical.get_invalid_ISSNs()
     assert not periodical.get_linking_ISSNs()
     assert periodical.is_continuing
+
+
+def test_periodical_place(periodical):
+    assert periodical.get_pub_place() == "Praha"
