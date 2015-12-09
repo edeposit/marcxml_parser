@@ -64,6 +64,11 @@ def periodical():
     return MARCXMLQuery(read_file_from_partial_name("periodical"))
 
 
+@pytest.fixture
+def kviti():
+    return MARCXMLQuery(read_file_from_partial_name("kviti"))
+
+
 # Tests =======================================================================
 def test_get_name(parsed):
     assert parsed.get_name() == "Umění programování v UNIXu"
@@ -290,3 +295,10 @@ def test_periodical_publisher(periodical):
 
 def test_periodical_pub_date(periodical):
     assert periodical.get_pub_date() == "2002-"
+
+
+# Tests of kviti ==============================================================
+def test_kviti_type(periodical):
+    assert not periodical.is_continuing()
+    assert not periodical.is_multi_mono()
+    assert periodical.is_monographic()

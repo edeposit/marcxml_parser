@@ -1,0 +1,134 @@
+<record>
+<metadata>
+<oai_marc>
+<fixfield id="LDR">-----nam-a22------i-4500</fixfield>
+<fixfield id="FMT">BK</fixfield>
+<fixfield id="001">nkc20150003390</fixfield>
+<fixfield id="003">CZ-PrNK</fixfield>
+<fixfield id="005">20151120152542.0</fixfield>
+<fixfield id="007">ta</fixfield>
+<fixfield id="008">151109s2011----xr-----e------000-0-cze--</fixfield>
+<varfield id="BAS" i1=" " i2=" ">
+<subfield label="a">01</subfield>
+</varfield>
+<varfield id="015" i1=" " i2=" ">
+<subfield label="a">cnb000003390</subfield>
+</varfield>
+<varfield id="020" i1=" " i2=" ">
+<subfield label="a">978-80-260-9149-3</subfield>
+<subfield label="q">(v knize neuvedeno :</subfield>
+<subfield label="q">online :</subfield>
+<subfield label="q">pdf)</subfield>
+</varfield>
+<varfield id="040" i1=" " i2=" ">
+<subfield label="a">ABA001</subfield>
+<subfield label="b">cze</subfield>
+<subfield label="e">rda</subfield>
+</varfield>
+<varfield id="100" i1="1" i2=" ">
+<subfield label="a">Neruda, Jan</subfield>
+<subfield label="4">aut</subfield>
+</varfield>
+<varfield id="245" i1="1" i2="0">
+<subfield label="a">Hřbitovní kvítí /</subfield>
+<subfield label="c">Jan Neruda</subfield>
+</varfield>
+<varfield id="250" i1=" " i2=" ">
+<subfield label="a">V MKP 1. vydání</subfield>
+</varfield>
+<varfield id="264" i1=" " i2="1">
+<subfield label="a">Praha :</subfield>
+<subfield label="b">Městská knihovna v Praze,</subfield>
+<subfield label="c">2011</subfield>
+</varfield>
+<varfield id="300" i1=" " i2=" ">
+<subfield label="a">1 online zdroj</subfield>
+</varfield>
+<varfield id="336" i1=" " i2=" ">
+<subfield label="a">text</subfield>
+<subfield label="b">txt</subfield>
+<subfield label="2">rdacontent</subfield>
+</varfield>
+<varfield id="337" i1=" " i2=" ">
+<subfield label="a">počítač</subfield>
+<subfield label="b">c</subfield>
+<subfield label="2">rdamedia</subfield>
+</varfield>
+<varfield id="338" i1=" " i2=" ">
+<subfield label="a">online zdroj</subfield>
+<subfield label="b">cr</subfield>
+<subfield label="2">rdacarrier</subfield>
+</varfield>
+<varfield id="490" i1="1" i2=" ">
+<subfield label="a">e-knihovna</subfield>
+</varfield>
+<varfield id="520" i1=" " i2=" ">
+<subfield label="a">Nakladatelská anotace</subfield>
+</varfield>
+<varfield id="588" i1=" " i2=" ">
+<subfield label="a">Popsáno podle náhledu v e-deposit (66 stran)</subfield>
+<subfield label="5">CZ-PrNK</subfield>
+</varfield>
+<varfield id="830" i1=" " i2="0">
+<subfield label="a">e-knihovna</subfield>
+</varfield>
+<varfield id="856" i1="4" i2="0">
+<subfield label="u">http://web2.mlp.cz/koweb/00/03/37/00/12/hrbitovni_kviti.pdf</subfield>
+<subfield label="4">N</subfield>
+</varfield>
+<varfield id="901" i1=" " i2=" ">
+<subfield label="f">1. vydání v MKP</subfield>
+<subfield label="g">ISBN přiděleno NA ISBN v ČR</subfield>
+<subfield label="o">20151106</subfield>
+</varfield>
+<varfield id="910" i1=" " i2=" ">
+<subfield label="a">ABA001</subfield>
+</varfield>
+<varfield id="998" i1=" " i2=" ">
+<subfield label="a">http://aleph.nkp.cz/F/?func=direct&amp;doc_number=000003390&amp;local_base=CZE-DEP</subfield>
+</varfield>
+<varfield id="IST" i1="1" i2=" ">
+<subfield label="a">ox20151104</subfield>
+<subfield label="b">sarka.moos</subfield>
+</varfield>
+<varfield id="IST" i1="1" i2=" ">
+<subfield label="a">ii20151106</subfield>
+<subfield label="b">anje</subfield>
+</varfield>
+<varfield id="IST" i1="1" i2=" ">
+<subfield label="a">jp20151109</subfield>
+<subfield label="b">juri</subfield>
+</varfield>
+<varfield id="IST" i1="1" i2=" ">
+<subfield label="a">jr20151116</subfield>
+<subfield label="b">japr</subfield>
+</varfield>
+<varfield id="IST" i1="1" i2=" ">
+<subfield label="a">vp20151118</subfield>
+<subfield label="b">maba</subfield>
+</varfield>
+<varfield id="URL" i1=" " i2=" ">
+<subfield label="u">http://edeposit-test.nkp.cz/@@redirect-to-uuid/a5c78db8066f4ace9c8c3d8423453c85</subfield>
+</varfield>
+<varfield id="POV" i1=" " i2=" ">
+<subfield label="a">002</subfield>
+<subfield label="b">002</subfield>
+<subfield label="c">1. vyd. v MKP</subfield>
+<subfield label="i">66 s.</subfield>
+<subfield label="k">0</subfield>
+<subfield label="l">26</subfield>
+</varfield>
+<varfield id="HLD" i1=" " i2=" ">
+<subfield label="l">15/EB 00147</subfield>
+<subfield label="n">uložení</subfield>
+<subfield label="s">20151104</subfield>
+<subfield label="j">e-book</subfield>
+<subfield label="z">978-80-260_04112015_00001</subfield>
+</varfield>
+<varfield id="STZ" i1=" " i2=" ">
+<subfield label="a">du20151120</subfield>
+<subfield label="b">mazi</subfield>
+</varfield>
+</oai_marc>
+</metadata>
+</record>
