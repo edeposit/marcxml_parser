@@ -620,10 +620,11 @@ class MARCXMLQuery(MARCXMLSerializer):
         or list (or blank list) in case of ``len(item) >= 4``.
 
         Returns:
-            list/str: See :meth:`.MARCXMLParser.get_subfields` for details.
+            list/str: See :meth:`.MARCXMLParser.get_subfields` for details, or\
+                None in case that nothing was found.
         """
         if not isinstance(item, basestring):
-            raise ValueError("Only str/unide indexes are supported!")
+            raise ValueError("Only str/unicode indexes are supported!")
 
         if len(item) == 3:
             return self.controlfields.get(item, None)
@@ -655,3 +656,21 @@ class MARCXMLQuery(MARCXMLSerializer):
             i2=i2,
             exception=False
         )
+
+    def get(self, item, alt=None):
+        """
+        Standard dict-like .get() method.
+
+        Args:
+            item (str): See :meth:`.__getitem__` for details.
+            alt (default None): Alternative value, if item is not found.
+
+        Returns:
+            obj: `item` or `alt`, if item is not found.
+        """
+        try:
+            val = self[item]
+        except ValueError:
+            return alt
+
+        return val if val is not None else alt

@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.2.0
+-----
+    - Implemented ``.get()`` method.
+
 1.1.7
 -----
     - Fixed bug in parsing of the dates.
