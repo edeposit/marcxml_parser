@@ -203,6 +203,12 @@ def test_binding_of_parsed(parsed):
     assert parsed.get_binding() == ["brož."]
 
 
+def test_get(parsed):
+    assert parsed.get("001") == "cpk20051492461"
+    assert parsed.get("azg") is None
+    assert parsed.get("azg", False) == False
+
+
 # Tests of epub file ==========================================================
 def test_epub_get_urls(epub):
     assert epub.get_urls() == []
