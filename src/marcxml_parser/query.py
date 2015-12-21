@@ -562,6 +562,9 @@ class MARCXMLQuery(MARCXMLSerializer):
         if not len(self.leader) >= INFO_CHAR_INDEX + 1:
             return PublicationType.monographic
 
+        if self.controlfields.get("FMT") == "SE":
+            return PublicationType.continuing
+
         info_char = self.leader[INFO_CHAR_INDEX]
         multipart_n = self.get_subfields("245", "n", exception=False)
         multipart_p = self.get_subfields("245", "p", exception=False)

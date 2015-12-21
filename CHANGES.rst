@@ -1,15 +1,15 @@
 Changelog
 =========
 
+1.2.1
+-----
+    - Fixed bug in the publication type parser.
+
 1.2.0
 -----
     - Implemented ``.get()`` method.
 
-1.1.7
------
-    - Fixed bug in parsing of the dates.
-
-1.1.0 - 1.1.6
+1.1.0 - 1.1.7
 -------------
     - Fixed typos in documentation.
     - Added ``record_itrator()``.
@@ -23,6 +23,7 @@ Changelog
     - Fixed bug in ``run_test.sh``.
     - Fixed parsing of the place to reflect changes in RDA.
     - Added more RDA fixes.
+    - Fixed bug in parsing of the dates.
 
 1.0.1
 -----

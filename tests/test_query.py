@@ -231,16 +231,15 @@ def test_epub_get_internal_urls(epub):
         url + "0-2011-1/echa-2010-2011-eva-jelinkova-michael-spirit-eds.mobi",
         url + "2-1/echa-2012-eva-jelinkova-michael-spirit-eds.mobi",
         url + "0-2011/echa-2013-eva-jelinkova-michael-spirit-eds.epub",
-        "http://aleph.nkp.cz/F/?func=direct&doc_number=000003059&local_base=CZE-DEP"
-    ]
+        "http://aleph.nkp.cz/F/?func=direct&doc_number=000003059&local_base=CZE-DEP"]
 
 
 def test_epub_publication_type(epub):
-    assert epub.get_pub_type() == PublicationType.monographic
+    assert epub.get_pub_type() == PublicationType.continuing
 
 
 def test_epub_is_monographic(epub):
-    assert epub.is_monographic()
+    assert not epub.is_monographic()
 
 
 def test_epub_is_multi_mono(epub):
@@ -248,7 +247,7 @@ def test_epub_is_multi_mono(epub):
 
 
 def test_epub_is_continuing(epub):
-    assert not epub.is_continuing()
+    assert epub.is_continuing()
 
 
 def test_epub_is_single_unit(epub):
@@ -276,7 +275,8 @@ def test_invalid_isbns(zavate_doby):
 
 
 def test_valid_isbns(zavate_doby):
-    assert zavate_doby.get_ISBNs() == ["978-80-260-9077-9", "978-80-260-9076-2"]
+    assert zavate_doby.get_ISBNs() == [
+        "978-80-260-9077-9", "978-80-260-9076-2"]
 
 
 def test_binding_of_zavate_doby(zavate_doby):
@@ -309,10 +309,10 @@ def test_periodical_pub_date(periodical):
 
 
 # Tests of kviti ==============================================================
-def test_kviti_type(periodical):
-    assert not periodical.is_continuing()
-    assert not periodical.is_multi_mono()
-    assert periodical.is_monographic()
+def test_kviti_type(kviti):
+    assert not kviti.is_continuing()
+    assert not kviti.is_multi_mono()
+    assert kviti.is_monographic()
 
 
 # Tests of buletin ============================================================
