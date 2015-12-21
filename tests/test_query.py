@@ -69,6 +69,11 @@ def kviti():
     return MARCXMLQuery(read_file_from_partial_name("kviti"))
 
 
+@pytest.fixture
+def buletin():
+    return MARCXMLQuery(read_file_from_partial_name("buletin"))
+
+
 # Tests =======================================================================
 def test_get_name(parsed):
     assert parsed.get_name() == "Umění programování v UNIXu"
@@ -288,7 +293,7 @@ def test_periodical_issn(periodical):
     assert periodical.get_ISSNs() == ["1213-8215"]
     assert not periodical.get_invalid_ISSNs()
     assert not periodical.get_linking_ISSNs()
-    assert periodical.is_continuing
+    assert periodical.is_continuing()
 
 
 def test_periodical_place(periodical):
@@ -308,3 +313,11 @@ def test_kviti_type(periodical):
     assert not periodical.is_continuing()
     assert not periodical.is_multi_mono()
     assert periodical.is_monographic()
+
+
+# Tests of buletin ============================================================
+def test_buletin_is_periodical(buletin):
+    assert not buletin.get_ISSNs()
+    assert not buletin.get_invalid_ISSNs()
+    assert not buletin.get_linking_ISSNs()
+    assert buletin.is_continuing()

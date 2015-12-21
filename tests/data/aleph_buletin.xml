@@ -1,0 +1,99 @@
+<record>
+<metadata>
+<oai_marc>
+<fixfield id="LDR">-----nas-a22------i-4500</fixfield>
+<fixfield id="FMT">SE</fixfield>
+<fixfield id="001">cps20150003483</fixfield>
+<fixfield id="003">CZ-PrNK</fixfield>
+<fixfield id="005">20151215083843.0</fixfield>
+<fixfield id="007">ta</fixfield>
+<fixfield id="008">151215c20159999xr-mr-p-------0---b0cze--</fixfield>
+<varfield id="BAS" i1=" " i2=" ">
+<subfield label="a">01</subfield>
+</varfield>
+<varfield id="040" i1=" " i2=" ">
+<subfield label="a">ABA001</subfield>
+<subfield label="b">cze</subfield>
+<subfield label="e">rda</subfield>
+</varfield>
+<varfield id="072" i1=" " i2="7">
+<subfield label="a">00</subfield>
+<subfield label="x">V\u011bda. V\u0161eobecnosti. Z\u00e1klady v\u011bdy a kultury. V\u011bdeck\u00e1 pr\u00e1ce</subfield>
+<subfield label="2">Konspekt</subfield>
+<subfield label="9">12</subfield>
+</varfield>
+<varfield id="080" i1=" " i2=" ">
+<subfield label="a">0/9</subfield>
+<subfield label="2">MRF</subfield>
+</varfield>
+<varfield id="080" i1=" " i2=" ">
+<subfield label="a">(051)379.81/.84</subfield>
+<subfield label="2">MRF</subfield>
+</varfield>
+<varfield id="245" i1="0" i2="0">
+<subfield label="a">Bulletin na zkou\u0161ku :</subfield>
+<subfield label="b">pokusn\u00fd \u010dasopis pro v\u0161emo\u017en\u00e9 \u00fa\u010dely</subfield>
+</varfield>
+<varfield id="264" i1=" " i2="1">
+<subfield label="a">Z\u00e1meck\u00e1 Lhota :</subfield>
+<subfield label="b">Anast\u00e1zie \u010cumpel\u00edkov\u00e1,,</subfield>
+<subfield label="c">2015-</subfield>
+</varfield>
+<varfield id="300" i1=" " i2=" ">
+<subfield label="a">1 online zdroj</subfield>
+</varfield>
+<varfield id="310" i1=" " i2=" ">
+<subfield label="a">1x m\u011bs\u00ed\u010dn\u011b</subfield>
+</varfield>
+<varfield id="336" i1=" " i2=" ">
+<subfield label="a">text</subfield>
+<subfield label="b">txt</subfield>
+<subfield label="2">rdacontent</subfield>
+</varfield>
+<varfield id="337" i1=" " i2=" ">
+<subfield label="a">po\u010d\u00edta\u010d</subfield>
+<subfield label="b">c</subfield>
+<subfield label="2">rdamedia</subfield>
+</varfield>
+<varfield id="338" i1=" " i2=" ">
+<subfield label="a">online zdroj</subfield>
+<subfield label="b">cr</subfield>
+<subfield label="2">rdacarrier</subfield>
+</varfield>
+<varfield id="362" i1="0" i2=" ">
+<subfield label="a">Ro\u010dn\u00edk 1, \u010d\u00edslo 1 (2015)-</subfield>
+</varfield>
+<varfield id="650" i1="0" i2="7">
+<subfield label="a">v\u0161eobecnosti a zaj\u00edmavosti</subfield>
+<subfield label="7">ph116736</subfield>
+<subfield label="2">czenas</subfield>
+</varfield>
+<varfield id="655" i1=" " i2="7">
+<subfield label="a">z\u00e1jmov\u00e9 \u010dasopisy</subfield>
+<subfield label="7">fd133885</subfield>
+<subfield label="2">czenas</subfield>
+</varfield>
+<varfield id="856" i1="4" i2=" ">
+<subfield label="u">http://edeposit-test.nkp.cz/@@redirect-to-uuid/87ec0b87da144c1aa5eaa9f143b2add1</subfield>
+<subfield label="4">N</subfield>
+</varfield>
+<varfield id="910" i1=" " i2=" ">
+<subfield label="a">ABA001</subfield>
+<subfield label="r">2015-</subfield>
+</varfield>
+<varfield id="998" i1=" " i2=" ">
+<subfield label="a">http://aleph.nkp.cz/F/?func=direct&amp;doc_number=000003483&amp;local_base=CZE-DEP</subfield>
+</varfield>
+<varfield id="IST" i1="1" i2=" ">
+<subfield label="a">sk20151215</subfield>
+<subfield label="b">pepe</subfield>
+</varfield>
+<varfield id="URL" i1=" " i2=" ">
+<subfield label="u">http://edeposit-test.nkp.cz/@@redirect-to-uuid/87ec0b87da144c1aa5eaa9f143b2add1</subfield>
+</varfield>
+<varfield id="SKC" i1=" " i2=" ">
+<subfield label="a">2015</subfield>
+</varfield>
+</oai_marc>
+</metadata>
+</record>
