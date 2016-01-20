@@ -71,7 +71,7 @@ class MARCXMLParser(object):
         self.oai_marc = False
         self.controlfields = OrderedDict()
         self.datafields = OrderedDict()
-        self.valid_i_chars = list(" 0123456789")
+        self.valid_i_chars = set(list(" 0123456789*"))
 
         # resort output XML alphabetically
         self.resorted = tools.resorted if resort else lambda x: x

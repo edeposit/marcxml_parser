@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.2.2
+-----
+    - Updated set of possible `i` characters.
+
 1.2.1
 -----
     - Fixed bug in the publication type parser.
