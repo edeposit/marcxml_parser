@@ -175,6 +175,9 @@ def test_is_single_unit(parsed):
 
 
 def test_indexing_operator(parsed):
+    expected = {"ind1": " ", "ind2": " ", "a": ["cnb001492461"]}
+    assert parsed["015"][0] == expected
+
     assert parsed["015a"][0] == "cnb001492461"
     assert parsed["015b"] == []
 
