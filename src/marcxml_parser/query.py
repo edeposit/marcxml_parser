@@ -630,7 +630,12 @@ class MARCXMLQuery(MARCXMLSerializer):
             raise ValueError("Only str/unicode indexes are supported!")
 
         if len(item) == 3:
-            return self.controlfields.get(item, None)
+            val = self.controlfields.get(item, None)
+
+            if val:
+                return val
+
+            return self.datafields.get(item, None)
 
         if len(item) < 3:
             raise ValueError(

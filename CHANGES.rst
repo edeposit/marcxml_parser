@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.2.3
+-----
+    - Fixed ability to query tags codes using indexing operator.
+
 1.2.2
 -----
     - Updated set of possible `i` characters.
